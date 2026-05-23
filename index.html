@@ -1,859 +1,370 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script type='text/javascript' >
-const lsijVersion = 1;
-
-
-
-class Flags {
-	constructor(url, terms) {
-		this.url = url;
-		this.matched = {};
-
-		this.terms = [];
-		terms.forEach((term) => {
-			let s = term.replace(/[\]{}?^$().*\\+|[]/g, '\\$&');
-			s = s.replace(/\\\*/g, '.*');
-			s = s.replace(/\\\?/g, '.');
-			let regex = new RegExp('\\b' + s + '\\b', 'gi');
-			this.terms.push({term: term, regex: regex});
-		});
-	}
-
-	report(flags) {
-        console.debug('[LS Filter] flag report');
-		if (!flags.length)
-            return;
-
-		const xhr = new XMLHttpRequest();
-		xhr.open('POST', document.location.origin + '/772ff609488b2c9bb6bb2871cac430715c14f39e1462bea30062462d694cfd9a/log_flag', true);
-		console.debug('[LS Filter] sending -> ', flags);
-		xhr.send(JSON.stringify({
-			url: this.url.href,
-			flags: flags,
-			at_epoch_ms: Date.now()
-		}));
-	}
-
-	matchTerms(input, flagAll) {
-		const matches = [];
-		this.terms.forEach((term) => {
-			const hits = input.match(term.regex);
-			if (!hits || !hits.length)
-				return;
-
-			let added = false;
-			if (typeof(this.matched[term.term]) === 'undefined')
-				added = true
-
-			let count = hits.length;
-			if (!added)
-				count -= this.matched[term.term];
-
-			this.matched[term.term] = hits.length;
-
-			if (added || flagAll)
-				matches.push([term.term, count]);
-		});
-		return matches;
-	}
-
-	scanIntentValue(value) {
-		const matches = this.matchTerms(value, true);
-		const changes = [];
-		matches.forEach((match) => {
-			match[2] = true; // mark as user entered
-			changes.push(match);
-		});
-
-		if (changes.length)
-			this.report(changes);
-	}
-
-	scanIntentValues(values) {
-		values.forEach((value) => {
-			this.scanIntentValue(value);
-		});
-	}
-
-	scanIntentEvent(event) {
-		switch (event.target.tagName.toLowerCase()) {
-		case 'input':
-			let type = event.target.type || 'text';
-			type = type.toLowerCase();
-
-			// Dont scan password fields
-			if (type === 'password')
-				return;
-			this.scanIntentValue(event.target.value);
-			break;
-		case 'textarea':
-			this.scanIntentValue(event.target.value);
-			break;
-		}
-	}
-
-	scanIntent(event) {
-		if (typeof(gatherIntent) === 'function') {
-			const intent = gatherIntent();
-			if (intent.length)
-				this.scanIntentValues(intent);
-		}
-	}
-
-	onChange(event) {
-		this.scanIntentEvent(event);
-	}
-
-	onKeyup(event) {
-		this.scanIntentEvent(event);
-	}
-
-	bindDOM() {
-		document.addEventListener('change', this.onChange.bind(this));
-		document.addEventListener('keyup', this.onKeyup.bind(this));
-		setInterval(() => {
-			this.scanIntent();
-		}, 1000);
-	}
-}
-
-const initFlagScanning = function(terms) {
-	if (!terms.length)
-		return;
-
-	console.debug('[LS Filter] init flag scanning');
-	const a = document.createElement('A');
-	a.href = window.location.href;
-	const flags = new Flags(a, terms);
-	
-	console.debug('[LS Filter] flagging intent');
-	if (typeof(initGatherIntent) === 'function')
-		initGatherIntent();
-
-	flags.bindDOM();
-	
-};
-
-initFlagScanning(["suicide","glype","proxy","Anarchist cookbook","Become a terrorist","Binge and purge","binging and purging","Blow up school","Bitch","Bong rips","Bulimia ","Buy alcohol underage","Buy gun","Buy knives","commit suicide","Cock","Cunt","Cutting yourself","Dumb bitch","Dumbass","Dyke","Faggot","Gun in school","Fuck you","Heroin","Homemade bomb","How to hang yourself","How to become anorexic","How to get revenge","How to join a gang","How to join ISIS","How to kill","How to make myself throw up","How to sext","How to sneak things past security","I hate myself","I want to cut myself","kill you","Kill myself","I want to die","Make a bomb","Make a bong","Murder suicide","My life is shit","My life is worthless","Naked girls","Naked pics","nigga","Nigger","Pipe bomb","Porn","Pussy","Rape","Retard","Sex online","Slut","Smoke weed","Sneak gun in school","Suicide","Suicide bomb","Suicide by cop","Suicide vest","Where to buy drugs","White pride","Whore"]);
-
-
-
-function checkCurrentSite(yt, url) {
-  const xhr = new XMLHttpRequest();
-  const body = JSON.stringify({
-    url: url || window.location.href,
-    youtube: yt
-  });
-  console.log('[LS Filter] reporting ->', body);
-  const checkUrl = document.location.origin + '/772ff609488b2c9bb6bb2871cac430715c14f39e1462bea30062462d694cfd9a/log';
-  xhr.open('POST', checkUrl, true);
-  xhr.send(body);
-  xhr.onreadystatechange = function () {
-    if (this.status === 200 && xhr.responseText) {
-      const score = JSON.parse(xhr.responseText);
-      console.log('[LS Filter] score ->', score.allow);
-      if (score.redirect) {
-        window.location.href = score.redirect;
-        hardBlock();
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Henglong Dang — Research, Systems, and Human-Centered AI</title>
+  <meta name="description" content="Henglong Dang is an AI/HCI researcher, systems thinker, and builder focused on human-centered intelligence, design strategy, and data-driven frameworks." />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Henglong Dang" />
+  <meta property="og:title" content="Henglong Dang — Research, Systems, and Human-Centered AI" />
+  <meta property="og:description" content="Editorial portfolio exploring research, writing, and systems for human-centered AI and product thinking." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./public/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Henglong Dang — Research, Systems, and Human-Centered AI" />
+  <meta name="twitter:description" content="Researcher, builder, writer. Exploring AI/HCI through systems thinking and editorial narratives." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #11100f;
+      --bg-soft: #171513;
+      --bg-elevated: #1d1a17;
+      --text: #efece6;
+      --text-muted: #b6aea1;
+      --accent: #d6b179;
+      --line: rgba(239, 236, 230, 0.12);
+      --glow: rgba(214, 177, 121, 0.18);
+      --max: 1160px;
     }
-  };
-}
 
-let hardBlockPolicy;
-function getHardBlockPolicy() {
-  if (typeof(trustedTypes) !== 'undefined' && !hardBlockPolicy) {
-    hardBlockPolicy = trustedTypes.createPolicy('hardBlock', {
-      createHTML: (string) => string
-    });
-  }
-  return hardBlockPolicy;
-}
-
-function hardBlock() {
-  stopVideo();
-  const stopInt = setInterval(stopVideo, 500);
-  setTimeout(() => {
-    const policy = getHardBlockPolicy();
-    if (policy) {
-      document.body.innerHTML = policy.createHTML('<img height="675" width="1200" loading="lazy" src="/772ff609488b2c9bb6bb2871cac430715c14f39e1462bea30062462d694cfd9a/blocked-image-search.png" style="width: 100%; height: 100%">');
-    } else {
-      document.body.innerHTML = '<img height="675" width="1200" loading="lazy" src="/772ff609488b2c9bb6bb2871cac430715c14f39e1462bea30062462d694cfd9a/blocked-image-search.png" style="width: 100%; height: 100%">';
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 12% 12%, #282119 0%, transparent 40%),
+                  radial-gradient(circle at 82% 20%, #221d18 0%, transparent 44%),
+                  linear-gradient(180deg, #0f0e0d 0%, #12110f 100%);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    clearInterval(stopInt);
-  }, 3000)
-}
-
-function stopVideo() {
-  const ea = document.getElementsByTagName('video');
-  for (i in ea) {
-    if (typeof(ea[i].pause) !== 'function') {
-      continue;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.035) 0.6px, transparent 0.6px);
+      background-size: 2px 2px;
+      opacity: .5;
+      mix-blend-mode: soft-light;
     }
-    if (!ea[i].paused) {
-        console.debug('[LS Filter] pause video');
-        ea[i].pause();
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      transform: translate3d(0,0,0);
     }
-  }
-}
+    .ambient span {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(58px);
+      opacity: 0.22;
+      animation: drift 20s ease-in-out infinite alternate;
+      background: var(--glow);
+    }
+    .ambient span:nth-child(1) { width: 260px; height: 260px; top: 8%; left: 4%; }
+    .ambient span:nth-child(2) { width: 180px; height: 180px; top: 58%; right: 10%; animation-duration: 26s; }
+    .ambient span:nth-child(3) { width: 220px; height: 220px; bottom: 12%; left: 34%; animation-duration: 31s; }
 
-function googleVideo() {
-  if (window.location.href.match(/google\.com\/search\?/)) {
-    const vidMatcher = /google\.com\/search\?.*vid:([^#\&\?]{11})/;
-    let prevVideo;
-    new MutationObserver(function() {
-      console.log('[LS Filter] MutationObserver');
-      let video;
-      let m = window.location.href.match(vidMatcher)
-      if (m) {
-        video = m[1];
-      }
-      if (video === prevVideo) { return; }           
-      console.log('[LS Filter] scoring video ->', video);
-      prevVideo = video;
-      checkCurrentSite(true, 'https://www.youtube.com/watch?v=' + video);
-    }).observe(document, {subtree: true, childList: true});
-  }
-}
+    @keyframes drift {
+      from { transform: translateY(0) translateX(0) scale(1); }
+      to { transform: translateY(-32px) translateX(16px) scale(1.08); }
+    }
 
-function onLoad() {
-  console.log('[LS Filter] loaded');
-  if (window.top === window.self) {
-    console.log('[LS Filter] top window: ' + window.location.href);
-    googleVideo();
-  }
-}
+    .container { width: min(100% - 3rem, var(--max)); margin-inline: auto; }
 
-onLoad();
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      background: rgba(17, 16, 15, 0.66);
+      border-bottom: 1px solid var(--line);
+      z-index: 50;
+    }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: .85rem 0; }
+    .brand { font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-size: .82rem; }
+    .nav-links { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: .9rem; transition: color .25s ease; }
+    .nav-links a:hover { color: var(--accent); }
 
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home | Henglong Dang Portfolio</title>
-    <meta name="description" content="Explore Henglong Dang’s portfolio featuring UX strategy, AI ethics research, product design leadership, and human-centered innovation projects.">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Henglong Dang">
-    <link rel="canonical" href="https://yourdomain.com/">
-    <meta property="og:title" content="Home | Henglong Dang Portfolio">
-    <meta property="og:description" content="Explore Henglong Dang’s portfolio featuring UX strategy, AI ethics research, product design leadership, and human-centered innovation projects.">
-    <meta property="og:image" content="https://yourdomain.com/og-image.svg">
-    <meta property="og:url" content="https://yourdomain.com/">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Home | Henglong Dang Portfolio">
-    <meta name="twitter:description" content="Explore Henglong Dang’s portfolio featuring UX strategy, AI ethics research, product design leadership, and human-centered innovation projects.">
-    <meta name="twitter:image" content="https://yourdomain.com/og-image.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      place-items: center;
+      padding: 5.5rem 0 4rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .9fr;
+      gap: 2.6rem;
+      align-items: end;
+    }
+    .kicker { text-transform: uppercase; letter-spacing: .2em; color: var(--accent); font-size: .76rem; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 700; line-height: 1.06; margin: 0; }
+    h1 { font-size: clamp(2.2rem, 6vw, 5.3rem); margin: .9rem 0 1.2rem; }
+    .lede { color: var(--text-muted); font-size: clamp(1rem, 2vw, 1.22rem); max-width: 52ch; }
+    .hero-meta { display: flex; gap: 1.4rem; margin-top: 2rem; flex-wrap: wrap; }
+    .hero-meta span { border-top: 1px solid var(--line); padding-top: .7rem; color: var(--text-muted); font-size: .92rem; }
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #0f172a;
-            --secondary-color: #3b82f6;
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --text-main: #334155;
-            --text-light: #64748b;
-        }
+    .portrait {
+      background: linear-gradient(160deg, #1f1b17 0%, #141210 80%);
+      border: 1px solid var(--line);
+      padding: 1rem;
+      transform: translateY(20px);
+    }
+    .portrait img { width: 100%; display: block; filter: saturate(.92) contrast(1.02); }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
+    section { padding: 6rem 0; border-top: 1px solid var(--line); }
+    .section-title { font-size: clamp(2rem, 5vw, 4.2rem); margin-bottom: 1.5rem; }
+    .section-kicker { text-transform: uppercase; letter-spacing: .18em; color: var(--accent); font-size: .72rem; margin-bottom: .8rem; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
+    .split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 2rem; }
+    p { margin: 0 0 1rem; color: var(--text-muted); }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
+    .timeline { display: grid; gap: 1.4rem; }
+    .timeline article {
+      padding: 1.2rem 1.1rem;
+      border-left: 2px solid var(--accent);
+      background: linear-gradient(100deg, rgba(214,177,121,.08), rgba(214,177,121,0));
+      transition: transform .35s ease, border-color .35s ease;
+    }
+    .timeline article:hover { transform: translateX(6px); border-color: #f1c98b; }
+    .timeline h3 { font-size: 1.27rem; margin-bottom: .2rem; }
+    .timeline small { color: #9f9588; }
 
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+    .project {
+      border: 1px solid var(--line);
+      padding: 1.2rem;
+      background: rgba(29, 26, 23, 0.52);
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .25s ease, background .25s ease;
+    }
+    .project:hover { transform: translateY(-4px); background: rgba(38, 33, 27, .75); }
+    .project:nth-child(1) { grid-column: span 8; }
+    .project:nth-child(2) { grid-column: span 4; }
+    .project:nth-child(3) { grid-column: span 5; }
+    .project:nth-child(4) { grid-column: span 7; }
 
-        .nav-logo {
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
+    .big-quote {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      line-height: 1.2;
+      color: #ddd6ca;
+      max-width: 22ch;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
+    .links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+    .links a, .project a, .timeline a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid #7f6a49;
+      padding-bottom: .15rem;
+    }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
+    footer { padding: 3.2rem 0 4.8rem; color: var(--text-muted); }
 
-        .nav-links a:hover {
-            color: var(--secondary-color);
-        }
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-        /* Layout */
-        section {
-            padding: 6rem 2rem 4rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 2.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 40px;
-            height: 3px;
-            background: var(--secondary-color);
-            border-radius: 2px;
-        }
-
-        /* Hero Section */
-        #home {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 8rem;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-subtitle {
-            color: var(--secondary-color);
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-
-        .hero-desc {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            transition: color 0.2s, transform 0.2s;
-        }
-
-        .social-links a:hover {
-            color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Cards and Lists */
-        .card {
-            background: var(--surface-color);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .card-subtitle {
-            color: var(--secondary-color);
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-date {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .bullet-list {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .bullet-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-main);
-        }
-
-        .bullet-list li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--secondary-color);
-            font-weight: bold;
-        }
-
-        .details-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--secondary-color);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: gap 0.2s, color 0.2s;
-        }
-
-        .details-link:hover {
-            color: var(--primary-color);
-            gap: 0.75rem;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding: 0.75rem 1.25rem;
-            background: transparent;
-            color: var(--secondary-color);
-            border: 1px solid var(--secondary-color);
-            border-radius: 999px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.18);
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
-        }
-
-        .hero-cta:hover {
-            background: var(--secondary-color);
-            color: var(--bg-color);
-            transform: translateY(-1px);
-            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.28);
-        }
-
-        /* Grid Layouts */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        /* Badges */
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--secondary-color);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-            .nav-links {
-                display: none; /* simple mobile handling */
-            }
-        }
-    
-
-        /* === Technical Dark Retheme Overrides === */
-        :root {
-            --primary-color: #f5f8ff;
-            --secondary-color: #7dd3fc;
-            --bg-color: #0d0f14;
-            --surface-color: #131a22;
-            --text-main: #e8edf5;
-            --text-light: #cbd5e1;
-            --grid-color: rgba(88, 166, 199, 0.06);
-        }
-
-        * { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-        body {
-            background: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-            background-image:
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 30px 30px;
-            background-attachment: fixed;
-        }
-
-        nav {
-            background: rgba(13, 15, 20, 0.85) !important;
-            border-bottom: 1px solid rgba(88, 166, 199, 0.2);
-            box-shadow: 0 1px 0 rgba(88, 166, 199, 0.08);
-        }
-
-        .nav-logo, .hero-title, .section-title, .card-title { font-family: "Space Grotesk", Inter, system-ui, sans-serif; letter-spacing: 0.01em; }
-        .nav-links a {
-            position: relative;
-            color: var(--text-main);
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 1px;
-            background: var(--secondary-color);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.28s ease;
-        }
-        .nav-links a:hover::after,
-        .nav-links a:focus-visible::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .section-title {
-            border-left: 1px solid var(--secondary-color);
-            padding-left: 0.75rem;
-        }
-        .section-title::after { opacity: 0.65; }
-
-        .card {
-            background: rgba(19, 26, 34, 0.9);
-            border: 1px solid rgba(88, 166, 199, 0.16);
-            box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28);
-        }
-
-        .card-subtitle, .hero-subtitle, .details-link, a { color: var(--secondary-color); }
-        .hero-desc, .card-date { color: var(--text-light); }
-        p, li { color: var(--text-main); }
-
-        .badge, .card-date, .card-subtitle {
-            display: inline-block;
-            padding: 0.2rem 0.65rem;
-            border-radius: 999px;
-            border: 1px solid rgba(125, 211, 252, 0.45);
-            background: rgba(125, 211, 252, 0.18);
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-            font-size: 0.82rem;
-            letter-spacing: 0.02em;
-        }
-
-        .hero-cta {
-            box-shadow: 0 10px 24px rgba(36, 87, 112, 0.2);
-        }
-
-        #home { position: relative; overflow: hidden; }
-        #home::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: radial-gradient(circle at 15% 25%, rgba(88, 166, 199, 0.14), transparent 38%);
-        }
-
-
-        /* === Accessibility Contrast Overrides === */
-        .pill, .badge, .card-subtitle, .card-date {
-            color: var(--primary-color) !important;
-        }
-
-        .cta a.secondary, .actions a.secondary {
-            background: #334155;
-            color: #f8fafc;
-            border: 1px solid #64748b;
-        }
-
-        .cta a, .actions a, .hero-cta {
-            color: #f8fafc !important;
-        }
-
-    
-.skip-link{position:absolute;left:8px;top:-40px;background:#0f172a;color:#fff;padding:8px 12px;z-index:1000;}
-.skip-link:focus{top:8px;}
-.back-to-top{position:fixed;right:16px;bottom:16px;display:none;padding:12px;min-width:44px;min-height:44px;border-radius:999px;border:0;background:#2563eb;color:#fff;}
-.nav-active{color:#60a5fa!important;}
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Henglong Dang","url":"https://yourdomain.com","sameAs":["https://github.com/yourhandle","https://linkedin.com/in/yourhandle"],"jobTitle":"Frontend Engineer, UX & Strategy Leader","worksFor":{"@type":"Organization","name":"Freelance"}}</script>
+    @media (max-width: 900px) {
+      .hero-grid, .split { grid-template-columns: 1fr; }
+      .project:nth-child(n) { grid-column: span 12; }
+      .nav-links { gap: .75rem; }
+    }
+  </style>
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="ambient" aria-hidden="true"><span></span><span></span><span></span></div>
 
-    <nav role="navigation">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">HD.</a>
-            <div class="nav-links">
-                <a href="#experience">Experience</a>
-                <a href="#research">Research & Publications</a>
-                <a href="#activities">Leadership</a>
-                <a href="#background">Background</a>
-            </div>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">Henglong Dang</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#writing">Writing</a>
+          <a href="#experience">Experience</a>
+          <a href="#background">Background</a>
+          <a href="#archives">Archives</a>
+          <a href="#contact">Contact</a>
         </div>
-    </nav>
+      </nav>
+    </div>
+  </header>
 
-    <main id="main-content" role="main">
-    <section id="home">
-        <div class="hero-content">
-            <span class="hero-subtitle">Data Science • AI Ethics • Human-Centered Design</span>
-            <h1 class="hero-title"><a href="profile.html" style="color: inherit; text-decoration: none;">Henglong Dang</a></h1>
-            <p class="hero-desc">
-                <a href="profile.html" style="color: inherit; text-decoration: none;">A system-minded leader of human-centered, socially-responsible innovation exploring the intersection of interdisciplinary innovation, human-computer interaction, and purpose-driven technology.</a>
-            </p>
-            <a href="profile.html" class="hero-cta">Enter my innovation narrative <i class="fas fa-arrow-right"></i></a>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/henglongdang/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:danghenglong@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://scholar.google.com/citations?user=D06-T50AAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-            </div>
+  <main>
+    <section class="hero container">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker reveal">Researcher · Builder · Systems Thinker</div>
+          <h1 class="reveal">Designing human-centered intelligence through systems, research, and narrative.</h1>
+          <p class="lede reveal">I work at the intersection of AI, HCI, and data science—turning complex sociotechnical problems into rigorous frameworks, products, and essays that are built to last.</p>
+          <div class="hero-meta reveal">
+            <span>AI/HCI + Data Science</span>
+            <span>Product & Research Strategy</span>
+            <span>Independent Vision</span>
+          </div>
         </div>
+        <figure class="portrait reveal">
+          <img src="./Profile Picture.jpg" alt="Portrait of Henglong Dang" loading="eager" />
+        </figure>
+      </div>
     </section>
 
-    <section id="experience">
-        <h2 class="section-title">Professional Experience</h2>
-        
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title"><a href="experience-dfdraw.html" style="color: inherit; text-decoration: none;">Strategic Operations Lead</a></h3>
-                    <div class="card-subtitle"><a href="experience-dfdraw.html" style="color: var(--secondary-color); text-decoration: none;">DFDraw Lab</a></div>
-                </div>
-                <div class="card-date">Apr 2025 — Present</div>
-            </div>
-            <p style="margin-bottom: 1rem; color: var(--text-light); font-style: italic;">
-                Multinational design & strategy studio that blends creativity & function to shape innovative experiences.
-            </p>
-            <ul class="bullet-list">
-                <li>Leads cross-functional operating design across strategy, product, and creative teams, translating long-range priorities into executable roadmaps with clear ownership and measurable milestones.</li>
-                <li>Built governance rhythms for planning, risk review, and decision escalation that improved execution predictability and reduced coordination overhead across distributed collaborators.</li>
-                <li>Drove structural reforms that increased team scalability, clarified accountability, and created a more resilient foundation for sustained organizational growth.</li>
-            </ul>
-            <a href="experience-dfdraw.html" class="details-link">Explore DFDraw Lab <i class="fas fa-arrow-right"></i></a>
+    <section id="about">
+      <div class="container split reveal">
+        <div>
+          <div class="section-kicker">Philosophy</div>
+          <h2 class="section-title">A practice of thoughtful construction.</h2>
         </div>
-
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title"><a href="synaperge.html" style="color: inherit; text-decoration: none;">Founder and President</a></h3>
-                    <div class="card-subtitle"><a href="synaperge.html" style="color: inherit; text-decoration: none;">Synaperge</a></div>
-                </div>
-                <div class="card-date">2023 — Present</div>
-            </div>
-            <p style="margin-bottom: 1rem; color: var(--text-light); font-style: italic;">
-                Providing a platform for interdisciplinary innovation through discussion, research, and real-world experimentation.
-            </p>
-            <ul class="bullet-list">
-                <li>Scaled Synaperge to 56 members across multiple countries, establishing a durable interdisciplinary community spanning AI, design, behavioral science, and social-impact innovation.</li>
-                <li>Designed a project-based operating model that combines structured dialogue, research sprints, and prototype testing to move ideas from discussion to real-world experimentation.</li>
-                <li>Mentored cross-functional teams through 3 innovation initiatives, including AI bias in ed-tech systems, fast-food branding psychology, and accessibility in personal finance UX.</li>
-                <li>Built a leadership culture centered on intellectual rigor, ethical reflection, and practical execution so members can develop both analytical depth and implementation capability.</li>
-            </ul>
-            <a href="synaperge.html" class="details-link">Explore Synaperge initiatives <i class="fas fa-arrow-right"></i></a>
+        <div>
+          <p>I approach technology as both infrastructure and culture. My work focuses on how AI systems shape behavior, trust, and decision-making across real human contexts.</p>
+          <p>Rather than shipping noise, I prioritize clarity: clear hypotheses, clear interfaces, clear outcomes. The goal is not novelty for its own sake—it is durable intelligence.</p>
+          <div class="links">
+            <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="#contact">Email</a>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="research">
-        <h2 class="section-title">Research & Publications</h2>
-        
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title"><a href="research-finance.html" style="color: inherit; text-decoration: none;">Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management</a></h3>
-                    <div class="card-subtitle">First Author | HCII 2025 Conference</div>
-                </div>
-                <div class="card-date">2024 — 2025</div>
-            </div>
-            <ul class="bullet-list">
-                <li>Led a Human-Computer Interaction and fintech research program focused on reducing financial management friction, benchmarking feature fragmentation across 8 widely used consumer finance applications.</li>
-                <li>Designed and executed a mixed-method study combining quantitative (N = 342 survey) and qualitative (N = 35 interviews) methods to map pain points in budgeting, bill tracking, savings coordination, and long-term planning workflows.</li>
-                <li>Synthesized behavioral and interaction findings into a unified product architecture, then translated insights into a high-fidelity prototype for holistic household financial management.</li>
-                <li><strong>Paper accepted and presented at 27th International Conference on Human-Computer Interaction (HCII 2025).</strong></li>
-            </ul>
-            <a href="research-finance.html" class="details-link">View research paper <i class="fas fa-arrow-right"></i></a>
+      <div class="container">
+        <div class="section-kicker reveal">Research & Projects</div>
+        <h2 class="section-title reveal">Selected systems and inquiry.</h2>
+        <div class="projects reveal">
+          <article class="project">
+            <h3>Revolutionizing Household Finance</h3>
+            <p>First Author · 27th Intl. Conference on Human-Computer Interaction (HCII 2025) · ISBN: 978-3032131645</p>
+            <p>Led HCI + fintech study with 24 usability interviews and cross-app analysis of 8 platforms.</p>
+            <p><a href="research-finance.html">Read project page →</a></p>
+          </article>
+          <article class="project">
+            <h3>Human-Centered, Sustainable, and Socially-Responsible Innovation</h3>
+            <p>Author · ISBN: 979-8248682874 · 257 pages on the “Great Outsourcing.”</p>
+            <p><a href="research-outsourcing.html">Open publication page →</a></p>
+          </article>
+          <article class="project">
+            <h3>Echoes in the Machine: Relevance Gravity of Generative AI</h3>
+            <p>Author · ISBN: 979-8296185310 · A framework on epistemic collapse and AI cognition.</p>
+            <p><a href="research-echoes.html">Open publication page →</a></p>
+          </article>
+          <article class="project">
+            <h3>Human-Centered Intelligence Frameworks</h3>
+            <p>Methods for evaluating agency, explainability, and cognitive load in adaptive systems.</p>
+          </article>
         </div>
-
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title"><a href="research-outsourcing.html" style="color: inherit; text-decoration: none;">Human-Centered, Sustainable, and Socially-Responsible Innovation</a></h3>
-                    <div class="card-subtitle">Author | ISBN: 979-8248682874</div>
-                </div>
-                <div class="card-date">2025 — 2026</div>
-            </div>
-            <ul class="bullet-list">
-                <li>Authored a 257-page book introducing the "Great Outsourcing"—the systemic transfer of human judgment to generative systems through defaults, rankings, and automated recommendations.</li>
-                <li>Maps concrete failure modes across education, healthcare, finance, and organizational governance, including decision atrophy, accountability diffusion, and over-trust in model outputs.</li>
-                <li>Proposes a human-centered design framework with friction-aware interfaces, dissent checkpoints, and reflection prompts that keep critical thinking active in high-stakes workflows.</li>
-                <li>Reframes innovation success around sustainability, social responsibility, and institutional resilience, arguing that efficiency without agency is a fragile and incomplete metric.</li>
-            </ul>
-            <a href="research-outsourcing.html" class="details-link">Read book synopsis & excerpts <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title"><a href="research-echoes.html" style="color: inherit; text-decoration: none;">Echoes in the Machine: Relevance Gravity of Generative AI</a></h3>
-                    <div class="card-subtitle">Author | ISBN: 979-8296185310</div>
-                </div>
-                <div class="card-date">2025</div>
-            </div>
-            <ul class="bullet-list">
-                <li>Defines <strong>Relevance Gravity</strong> as an algorithmic attention force that promotes what is most legible and engaging, then traces how this distorts collective sense-making across education, media, and public discourse.</li>
-                <li>Introduces a technical vocabulary—<strong>Epistemic Surface</strong>, <strong>Antididacticism</strong>, and <strong>Mythic Academicism</strong>—to explain why AI-era learning can appear comprehensive while actually reducing depth, struggle, and retention.</li>
-                <li>Analyzes temporal and linguistic risks through <strong>Epistemic Latency</strong> and <strong>Semantic Drift</strong>, showing how static model knowledge can diverge from fast-moving social realities and fracture shared meaning.</li>
-                <li>Argues that metric-first design can trigger <strong>Ethical Collapse</strong> by turning dignity, empathy, and wisdom into optimization targets, creating blind spots that feel efficient while eroding human responsibility.</li>
-            </ul>
-            <a href="research-echoes.html" class="details-link">View theoretical frameworks <i class="fas fa-arrow-right"></i></a>
-        </div>
+      </div>
     </section>
 
-    <section id="activities">
-        <h2 class="section-title">Leadership & Activities</h2>
-        
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Representative</h3>
-                    <div class="card-subtitle">Bellevue School District Strategic Planning Coalition</div>
-                </div>
-                <div class="card-date">2024 — 2025</div>
-            </div>
-            <ul class="bullet-list">
-                <li>Advised district leaders on policies to expand student voices and qualitative measures. Contributed to policy discussions on human-centered systems.</li>
-                <li>Helped shape long-term strategies balancing student needs with a $20M district budget deficit.</li>
-            </ul>
-            <a href="leadership-bellevue.html" class="details-link">View policy contributions <i class="fas fa-arrow-right"></i></a>
+    <section id="writing">
+      <div class="container split reveal">
+        <div>
+          <div class="section-kicker">Writing & Publications</div>
+          <h2 class="section-title">Essays, frameworks, and critical notes.</h2>
         </div>
+        <div>
+          <p class="big-quote">“The best interface is not invisible. It is legible, deliberate, and ethically intelligible.”</p>
+          <p>My writing explores AI cognition, interface philosophy, and data-mediated behavior change. Essays are structured as working theories with practical implications.</p>
+        </div>
+      </div>
+    </section>
 
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title"><a href="aaai.html" style="color: inherit; text-decoration: none;">Member</a></h3>
-                    <div class="card-subtitle">Association for the Advancement of Artificial Intelligence (<a href="aaai.html" style="color: inherit; text-decoration: underline;">AAAI</a>)</div>
-                </div>
-                <div class="card-date">2025 — Present</div>
-            </div>
-            <ul class="bullet-list">
-                <li>Participated in AAAI seminars and actively engaged in research on AI ethics, model alignment, and HCI-AI intersections.</li>
-            </ul>
-            <a href="aaai.html" class="details-link">View AAAI involvements <i class="fas fa-arrow-right"></i></a>
+    <section id="experience">
+      <div class="container">
+        <div class="section-kicker reveal">Experience</div>
+        <h2 class="section-title reveal">Built across research, leadership, and applied systems.</h2>
+        <div class="timeline reveal">
+          <article><h3>Strategic Operations Lead · DFDraw Lab</h3><small>2024 — Present</small><p>Led cross-functional operations, structural reforms, and research-facing communication initiatives.</p><p><a href="experience-dfdraw.html">View role details →</a></p></article>
+          <article><h3>Founder and President · Synaperge</h3><small>2023 — Present</small><p>Scaled to 56 members internationally and launched seminars, youth ethics courses, and innovation projects.</p><p><a href="synaperge.html">View organization page →</a></p></article>
+          <article><h3>Representative · Bellevue Strategic Planning Coalition</h3><small>2024 — 2025</small><p>Contributed policy input on student voice, equity, and long-range district strategy.</p><p><a href="leadership-bellevue.html">View leadership details →</a></p></article>
+          <article><h3>Member · Association for the Advancement of Artificial Intelligence (AAAI)</h3><small>2025 — Present</small><p>Active in ethics, model alignment, and HCI-AI research discourse.</p><p><a href="aaai.html">View activity details →</a></p></article>
         </div>
+      </div>
     </section>
 
     <section id="background">
-        <h2 class="section-title">Academic Background</h2>
-        <div class="grid-2">
-            <div class="card" style="margin-bottom: 0;">
-                <h3 class="card-title">Academic Degrees</h3>
-                <p style="margin-bottom: 1rem; margin-top: 0.5rem; font-size: 1.2rem; font-weight: 700; color: var(--text-main);">B.S. in Statistics and Data Science</p>
-                <div class="card-subtitle">University of California, Los Angeles (UCLA)</div>
-            </div>
-            
-            <div class="card" style="margin-bottom: 0;">
-                <h3 class="card-title">Professional Certifications</h3>
-                <div style="margin-top: 1rem;">
-                    <div style="margin-bottom: 1rem;">
-                        <div style="font-weight: 600; color: var(--text-main);">Machine Learning Specialization Certificate</div>
-                        <div style="color: var(--text-light); font-size: 0.9rem;">Stanford University</div>
-                    </div>
-                    <div>
-                        <div style="font-weight: 600; color: var(--text-main);">Artificial Intelligence Fundamentals Certificate</div>
-                        <div style="color: var(--text-light); font-size: 0.9rem;">IBM</div>
-                    </div>
-                </div>
-            </div>
+      <div class="container split reveal">
+        <div>
+          <div class="section-kicker">Background</div>
+          <h2 class="section-title">Technical depth with philosophical grounding.</h2>
         </div>
+        <div>
+          <p>My background spans UX strategy, sociotechnical systems, behavioral research, and data science. I combine empirical rigor with editorial sensibility to communicate difficult ideas with precision.</p>
+          <p>This site is designed as a living publication: modular, narrative-first, and oriented around ideas rather than résumé fragments.</p>
+        </div>
+      </div>
     </section>
 
-    </main>
 
-    <footer>
-        <p>&copy; 2026 Henglong Dang. All rights reserved.</p>
-    </footer>
+    <section id="archives">
+      <div class="container">
+        <div class="section-kicker reveal">Linked Archives</div>
+        <h2 class="section-title reveal">Every legacy page, preserved in one unified system.</h2>
+        <div class="projects reveal">
+          <article class="project"><h3>Profile</h3><p>Comprehensive profile narrative and credentials.</p><p><a href="profile.html">Open profile →</a></p></article>
+          <article class="project"><h3>Research & Publications</h3><p>Dedicated pages for books and conference work.</p><p><a href="research-outsourcing.html">Book I</a> · <a href="research-echoes.html">Book II</a> · <a href="research-finance.html">Finance Paper</a></p></article>
+          <article class="project"><h3>Experience</h3><p>Deep-dives into organizational and leadership roles.</p><p><a href="experience-dfdraw.html">DFDraw</a> · <a href="synaperge.html">Synaperge</a></p></article>
+          <article class="project"><h3>Leadership & Membership</h3><p>Policy and research-community participation.</p><p><a href="leadership-bellevue.html">Bellevue Coalition</a> · <a href="aaai.html">AAAI</a></p></article>
+        </div>
+      </div>
+    </section>
 
-<button class="back-to-top" aria-label="Back to top">↑</button>
-<script defer>const b=document.querySelector(".back-to-top");window.addEventListener("scroll",()=>{b.style.display=window.scrollY>400?"block":"none";document.querySelectorAll("nav a[href^="#"]").forEach(a=>{const s=document.querySelector(a.getAttribute("href"));if(!s)return;const r=s.getBoundingClientRect();a.classList.toggle("nav-active",r.top<120&&r.bottom>120);});});b?.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));document.querySelectorAll(".card,.section-title").forEach(el=>el.classList.add("reveal"));const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in")}));document.querySelectorAll(".reveal").forEach(el=>io.observe(el));</script>
+    <section id="contact">
+      <div class="container split reveal">
+        <div>
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Let’s build thoughtful systems.</h2>
+        </div>
+        <div>
+          <p>If you’re working on AI products, HCI research, or editorially-driven technical strategy, I’d be glad to connect.</p>
+          <div class="links">
+            <a href="mailto:hello@henglongdang.com">hello@henglongdang.com</a>
+            <a href="https://cal.com" target="_blank" rel="noopener">Schedule a conversation</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <small>© 2026 Henglong Dang · Research, writing, and human-centered systems.</small>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 6;
+      const y = (e.clientY / window.innerHeight - 0.5) * 6;
+      document.querySelector('.ambient').style.transform = `translate(${x}px, ${y}px)`;
+    });
+  </script>
 </body>
 </html>
