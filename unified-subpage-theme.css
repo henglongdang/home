@@ -5,6 +5,8 @@
   --text: #efece6;
   --text-muted: #b6aea1;
   --accent: #d6b179;
+  --accent-strong: #bea06f;
+  --accent-soft: rgba(214,177,121,.16);
   --line: rgba(239,236,230,.12);
   --max: 1160px;
 }
@@ -22,10 +24,23 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background-im
 .container{width:min(100% - 3rem,var(--max))!important;max-width:none!important;padding:2.5rem 0 4rem!important}
 .card,.profile-card,article,section>div,.content-card{background:rgba(29,26,23,.52)!important;border:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important}
 h1,h2,h3{font-family:"Fraunces",Georgia,serif!important;color:var(--text)!important;line-height:1.1}
+h2{letter-spacing:.01em}
 p,li,.subtitle,small,.bio{color:var(--text-muted)!important}
-a,.back-link{color:var(--accent)!important}
-.cta a,.actions a,button{background:transparent!important;color:var(--text)!important;border:1px solid #7f6a49!important;border-radius:0!important}
-.cta a:hover,.actions a:hover,button:hover{background:rgba(214,177,121,.1)!important}
+a,.back-link,.back{color:var(--accent)!important}
+
+/* Unified button system */
+.cta a,.actions a,.btn-row .btn,button,[role="button"]{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:.4rem!important;padding:.64rem 1rem!important;background:transparent!important;color:var(--text)!important;border:1px solid #7f6a49!important;border-radius:0!important;font-weight:600!important;letter-spacing:.01em!important;text-decoration:none!important;line-height:1.2!important;transition:background-color .24s ease,border-color .24s ease,color .24s ease,transform .24s ease!important}
+.cta a.secondary,.actions a.secondary{background:rgba(127,106,73,.16)!important;color:var(--text)!important;border-color:#8d7651!important}
+.cta a:hover,.actions a:hover,.btn-row .btn:hover,button:hover,[role="button"]:hover{background:var(--accent-soft)!important;border-color:var(--accent-strong)!important;color:var(--text)!important;transform:translateY(-1px)}
+.cta a:focus-visible,.actions a:focus-visible,.btn-row .btn:focus-visible,button:focus-visible,[role="button"]:focus-visible{outline:2px solid var(--accent)!important;outline-offset:2px!important}
+
+/* Unified metadata chips/tags */
+.pill,.badge,.card-date,.card-subtitle,.metric strong+span,.tag,[class*="tag"],[class*="badge"],[class*="chip"]{display:inline-block!important;padding:.24rem .68rem!important;border-radius:999px!important;border:1px solid rgba(190,160,111,.45)!important;background:rgba(127,106,73,.22)!important;color:#e8dcc7!important;font-size:.74rem!important;font-weight:600!important;letter-spacing:.08em!important;text-transform:uppercase!important}
+
+/* Abstract / quote block refinement */
+blockquote{border-left:1px solid rgba(190,160,111,.65)!important;background:rgba(29,26,23,.72)!important;color:#ddd5c8!important;padding:1rem 1.05rem 1rem 1.1rem!important;border-radius:0!important}
+
+.metric{border-color:rgba(190,160,111,.34)!important;background:rgba(127,106,73,.12)!important}
 img{max-width:100%;height:auto}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .site-footer{border-top:1px solid var(--line);padding:2rem 0 3rem;color:var(--text-muted)}
