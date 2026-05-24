@@ -159,6 +159,29 @@
     .project:nth-child(3) { grid-column: span 5; }
     .project:nth-child(4) { grid-column: span 7; }
 
+    .project h3 {
+      font-size: clamp(1.04rem, 1.8vw, 1.28rem);
+      line-height: 1.25;
+      margin-bottom: .4rem;
+    }
+    .project-meta {
+      color: #9f9588;
+      font-size: .8rem;
+      letter-spacing: .02em;
+      margin-bottom: .7rem;
+      display: block;
+    }
+    .timeline ul {
+      margin: .8rem 0 0 1rem;
+      padding: 0;
+      color: var(--text-muted);
+      display: grid;
+      gap: .5rem;
+    }
+    .timeline li {
+      line-height: 1.55;
+    }
+
     .big-quote {
       font-family: "Fraunces", Georgia, serif;
       font-size: clamp(1.5rem, 3vw, 2.5rem);
@@ -215,9 +238,9 @@
     <section class="hero container">
       <div class="hero-grid">
         <div>
-          <div class="kicker reveal">Researcher · Builder · Systems Thinker</div>
+          <div class="kicker reveal">Systems Thinker · Innovator · Strategic Futurist</div>
           <h1 class="reveal">Designing human-centered intelligence through systems, research, and narrative.</h1>
-          <p class="lede reveal">I work at the intersection of AI, HCI, and data science—turning complex sociotechnical problems into rigorous frameworks, products, and essays that are built to last.</p>
+          <p class="lede reveal">I work at the intersection of AI, HCI, and data science, where complex sociotechnical problems are shaped into rigorous frameworks, products, and essays built to last.</p>
           <div class="hero-meta reveal">
             <span>AI/HCI + Data Science</span>
             <span>Product & Research Strategy</span>
@@ -238,11 +261,12 @@
         </div>
         <div>
           <p>I approach technology as both infrastructure and culture. My work focuses on how AI systems shape behavior, trust, and decision-making across real human contexts.</p>
-          <p>Rather than shipping noise, I prioritize clarity: clear hypotheses, clear interfaces, clear outcomes. The goal is not novelty for its own sake—it is durable intelligence.</p>
+          <p>I prioritize clarity through strong hypotheses, legible interfaces, and measurable outcomes. My aim is durable intelligence that remains useful beyond a single trend cycle.</p>
           <div class="links">
             <a href="profile.html">Profile</a>
             <a href="https://www.linkedin.com/in/henglongdang/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="synaperge.html">Synaperge</a>
+            <a href="https://scholar.google.com/citations?user=P8L6hUIAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+            <a href="https://www.crunchbase.com/person/henglong-dang" target="_blank" rel="noopener">Crunchbase</a>
           </div>
         </div>
       </div>
@@ -254,20 +278,23 @@
         <h2 class="section-title reveal">Research & publications.</h2>
         <div class="projects reveal">
           <article class="project">
-            <h3><a href="research-finance.html" style="color:inherit;text-decoration:none;">Revolutionizing Household Finance</a></h3>
-            <p>First-author HCII 2025 research on holistic financial management and cross-app usability fragmentation.</p>
+            <h3><a href="research-finance.html" style="color:inherit;text-decoration:none;">Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management</a></h3>
+            <small class="project-meta">DOI: https://doi.org/10.1007/978-3-032-13164-5_2</small>
+            <p>This first-author HCII 2025 study examines how fragmented consumer finance ecosystems force users to build unstable mental models across budgeting, investing, and payment tools. It develops a user-centered systems framework grounded in comparative interface analysis to propose integrated design principles for coherent long-horizon financial decision-making.</p>
           </article>
           <article class="project">
-            <h3><a href="research-outsourcing.html" style="color:inherit;text-decoration:none;">Human-Centered, Sustainable, and Socially-Responsible Innovation</a></h3>
-            <p>257-page book introducing the “Great Outsourcing” and human-centered decision frameworks for AI.</p>
+            <h3><a href="research-outsourcing.html" style="color:inherit;text-decoration:none;">Human-Centered, Sustainable, and Socially Responsible Innovation: Strategic Leadership in the Age of AI and Global Outsourcing</a></h3>
+            <small class="project-meta">ISBN: 979-8248682874</small>
+            <p>This 257-page book analyzes a structural shift it calls the Great Outsourcing, where organizations externalize execution, judgment, and institutional memory through automated systems and distributed partners. It introduces a decision architecture for leaders who must align productivity, social responsibility, and strategic resilience under accelerated technological change.</p>
           </article>
           <article class="project">
-            <h3><a href="research-echoes.html" style="color:inherit;text-decoration:none;">Echoes in the Machine</a></h3>
-            <p>Conceptual framework on epistemic collapse and relevance gravity in the age of generative AI.</p>
+            <h3><a href="research-echoes.html" style="color:inherit;text-decoration:none;">Echoes in the Machine: Information Warfare and Reality Collapse in the Post-Truth Age</a></h3>
+            <small class="project-meta">ISBN: 979-8296185310</small>
+            <p>This research monograph investigates how algorithmic amplification, generative content loops, and adversarial narrative engineering can destabilize shared epistemic baselines in digital publics. It advances the concepts of relevance gravity and synthetic consensus as analytical tools for studying governance risk, civic trust, and information integrity.</p>
           </article>
           <article class="project">
-            <h3><a href="aaai.html" style="color:inherit;text-decoration:none;">AAAI Research Activity</a></h3>
-            <p>Engagement with AI ethics, alignment, and HCI-AI intersections through seminars and research dialogue.</p>
+            <h3><a href="aaai.html" style="color:inherit;text-decoration:none;">AAAI Research Activity: Ethics, Alignment, and Human-Centered Evaluation in Contemporary AI Systems</a></h3>
+            <p>I use AAAI conferences, papers, and technical forums as a core research resource for my broader work in AI ethics, alignment, and evaluation practice. These materials guide how I frame methods, critique assumptions, and translate theory into grounded standards for human-centered deployment decisions.</p>
           </article>
         </div>
       </div>
@@ -280,8 +307,8 @@
           <h2 class="section-title">Essays, frameworks, and critical notes.</h2>
         </div>
         <div>
-          <p class="big-quote">“The best interface is not invisible. It is legible, deliberate, and ethically intelligible.”</p>
-          <p>My writing explores AI cognition, interface philosophy, and data-mediated behavior change. Essays are structured as working theories with practical implications.</p>
+          <p class="big-quote">“The best interface is legible, deliberate, and ethically intelligible.”</p>
+          <p>My writing examines AI cognition, interface philosophy, and behavior shaped by data systems. Each essay is treated as a working theory that can inform real design and governance choices.</p>
           <div class="links">
             <a href="research-echoes.html">Echoes in the Machine</a>
             <a href="research-outsourcing.html">Human-Centered Innovation</a>
@@ -297,9 +324,9 @@
         <div class="section-kicker reveal">Experience</div>
         <h2 class="section-title reveal">Professional experience.</h2>
         <div class="timeline reveal">
-          <article><h3><a href="experience-dfdraw.html" style="color:inherit;text-decoration:none;">Strategic Operations Lead · DFDraw Lab</a></h3><small>2024 — Present · Multinational design & strategy operations</small></article>
-          <article><h3><a href="synaperge.html" style="color:inherit;text-decoration:none;">Founder and President · Synaperge</a></h3><small>2023 — Present · Interdisciplinary innovation community</small></article>
-          <article><h3><a href="leadership-bellevue.html" style="color:inherit;text-decoration:none;">Representative · Bellevue School District Coalition</a></h3><small>2024 — 2025 · Strategic planning and policy input</small></article>
+          <article><h3><a href="experience-dfdraw.html" style="color:inherit;text-decoration:none;">Strategic Operations Lead · DFDraw Lab</a></h3><small>2024 — Present · Multinational design & strategy operations</small><ul><li>At DFDraw Lab, I focus on turning ambitious strategy into coherent operating practice, helping teams move with discipline while keeping design quality and long-term judgment at the center.</li></ul></article>
+          <article><h3><a href="synaperge.html" style="color:inherit;text-decoration:none;">Founder and President · Synaperge</a></h3><small>2023 — Present · Interdisciplinary innovation community</small><ul><li>I built Synaperge as a long-horizon community for serious interdisciplinary work, where people can test ideas, publish thoughtful outputs, and grow into principled technical leadership.</li></ul></article>
+          <article><h3><a href="leadership-bellevue.html" style="color:inherit;text-decoration:none;">Representative · Bellevue School District Coalition</a></h3><small>2024 — 2025 · Strategic planning and policy input</small><ul><li>In coalition work, I contributed a systems perspective that connected policy discussion to lived student realities, with emphasis on trust, implementation integrity, and public accountability.</li></ul></article>
         </div>
       </div>
     </section>
@@ -311,7 +338,7 @@
           <h2 class="section-title">Academic background and education.</h2>
         </div>
         <div>
-          <p><strong>Education:</strong> University of California, Los Angeles (UCLA), B.S. in Statistics and Data Science; Bellevue College coursework in statistical modeling, software development, calculus, marketing, and chemistry.</p>
+          <p><strong>Education:</strong> University of California, Los Angeles (UCLA), B.S. in Statistics and Data Science.</p>
           <p><strong>Professional certifications:</strong> Stanford University Machine Learning Specialization Certificate; IBM Artificial Intelligence Fundamentals Certificate.</p>
         </div>
       </div>
