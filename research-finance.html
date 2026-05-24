@@ -44,8 +44,47 @@
     .pill { display: inline-block; background: #dbeafe; color: #1d4ed8; font-size: .84rem; font-weight: 600; padding: .35rem .7rem; border-radius: 999px; margin-bottom: .9rem; }
     .cta a { display: inline-block; margin-right: .7rem; margin-top: .7rem; text-decoration: none; font-weight: 600; color: var(--secondary-color); background: transparent; border: 1px solid var(--secondary-color); padding: .65rem 1rem; border-radius: 10px; }
     .cta a.secondary { background: transparent; color: var(--secondary-color); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 12px; margin-top: 1rem; }
-    .grid img { width: 100%; border-radius: 10px; border: 1px solid #e2e8f0; background: #f1f5f9; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 1rem;
+    }
+    .visual-card {
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.45);
+      box-shadow: 0 6px 18px rgba(2, 6, 23, 0.2);
+    }
+    .visual-card.primary { grid-column: span 7; }
+    .visual-card.secondary { grid-column: span 5; }
+    .visual-card.tertiary { grid-column: span 4; }
+    .visual-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      background: #020617;
+    }
+    .visual-card figcaption {
+      padding: 0.75rem 0.9rem 0.9rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+    @media (max-width: 900px) {
+      .visual-card.primary,
+      .visual-card.secondary,
+      .visual-card.tertiary { grid-column: span 6; }
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .visual-card.primary,
+      .visual-card.secondary,
+      .visual-card.tertiary { grid-column: span 1; }
+    }
     blockquote {
       border-left: 4px solid #60a5fa;
       background: #0f172a;
@@ -259,11 +298,26 @@
       <h2>Selected Visuals</h2>
       <p class="subtitle">Representative visuals sourced from the FamilyPulse case page.</p>
       <div class="grid">
-        <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/66fa13c3e82c283b404b3734_66d54d8780378e00e01a4ea7_Copy%20FPulse-1.png" alt="FamilyPulse overview visual">
-        <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/67b63f29305c712e4dfe0f2a_FamilyPulsegif-ezgif.com-optimize.gif" alt="FamilyPulse animated prototype">
-        <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/66d54dd09af28bdc54463cb5_Copy%20FPulse-2%20%281%29.png" alt="FamilyPulse interface detail">
-        <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/67b6447a349689167ae5caec_ezgif.com-webp-maker%20%282%29.webp" alt="FamilyPulse workflow visual">
-        <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/67b65ccf37cc3b057c744d4f_CopyFPulse-331-ezgif.com-optipng.png" alt="FamilyPulse feature showcase visual">
+        <figure class="visual-card primary">
+          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/66fa13c3e82c283b404b3734_66d54d8780378e00e01a4ea7_Copy%20FPulse-1.png" alt="FamilyPulse overview visual">
+          <figcaption>Unified dashboard overview combining budgeting, transactions, and shared household goals into one decision surface.</figcaption>
+        </figure>
+        <figure class="visual-card secondary">
+          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/67b63f29305c712e4dfe0f2a_FamilyPulsegif-ezgif.com-optimize.gif" alt="FamilyPulse animated prototype">
+          <figcaption>Interactive prototype walkthrough showing real-time navigation and quick transitions across planning modules.</figcaption>
+        </figure>
+        <figure class="visual-card tertiary">
+          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/66d54dd09af28bdc54463cb5_Copy%20FPulse-2%20%281%29.png" alt="FamilyPulse interface detail">
+          <figcaption>Interface detail focused on account visibility and summary cards for immediate financial status checks.</figcaption>
+        </figure>
+        <figure class="visual-card tertiary">
+          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/67b6447a349689167ae5caec_ezgif.com-webp-maker%20%282%29.webp" alt="FamilyPulse workflow visual">
+          <figcaption>Workflow view demonstrating collaborative family planning with role-aware participation and shared actions.</figcaption>
+        </figure>
+        <figure class="visual-card tertiary">
+          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/67b65ccf37cc3b057c744d4f_CopyFPulse-331-ezgif.com-optipng.png" alt="FamilyPulse feature showcase visual">
+          <figcaption>Feature showcase highlighting predictive insights and category-level guidance for forward-looking decisions.</figcaption>
+        </figure>
       </div>
       <p style="margin-top:1rem;">
         Additional information architecture reference:
