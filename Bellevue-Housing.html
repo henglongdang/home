@@ -17,29 +17,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="unified-subpage-theme.css" />
   <style>
-    .hero-card { padding: clamp(1.4rem, 4vw, 2.2rem); margin-bottom: 1rem; }
+    .page-stack { display: grid; gap: clamp(1rem, 2vw, 1.4rem); }
+    .hero-card { padding: clamp(1.6rem, 5vw, 3rem); margin-bottom: 0; overflow: hidden; position: relative; }
+    .hero-card::after { content: ""; position: absolute; inset: auto -12% -35% 48%; height: 18rem; background: radial-gradient(circle, rgba(214,177,121,.18), transparent 68%); pointer-events: none; }
     .eyebrow { color: var(--accent); font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: .7rem; }
-    .hero-card h1 { font-size: clamp(2.2rem, 7vw, 4.9rem); max-width: 12ch; margin: 0 0 .9rem; }
-    .lead { font-size: clamp(1.02rem, 2vw, 1.22rem); max-width: 68ch; }
-    .grid { display: grid; gap: 1rem; }
-    .two-col { grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr); align-items: stretch; }
+    .hero-card h1 { font-size: clamp(2.5rem, 8vw, 5.35rem); max-width: 13ch; margin: 0 0 1rem; text-wrap: balance; }
+    .lead { font-size: clamp(1.02rem, 2vw, 1.22rem); max-width: 72ch; }
+    .grid { display: grid; gap: clamp(1rem, 2vw, 1.25rem); }
+    .two-col { grid-template-columns: minmax(0, 1.1fr) minmax(300px, .8fr); align-items: stretch; }
     .three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .card { padding: 1.25rem; margin-bottom: 1rem; }
+    .card { padding: clamp(1.2rem, 3vw, 1.8rem); margin-bottom: 0; }
+    .section-heading, .stat-grid, .stack, .abstract-intro, .abstract-copy, .btn-row { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .section-heading h2 { margin: 0; }
+    .section-kicker { color: var(--text-muted); font-size: .9rem; max-width: 42ch; margin: 0; }
     .card h2, .card h3 { margin: 0 0 .75rem; }
     .card p { margin-top: 0; }
-    .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-top: 1rem; }
-    .metric strong { font-family: "Fraunces", Georgia, serif; font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1; margin-bottom: .35rem; }
-    .system-map { display: grid; gap: .7rem; margin-top: .9rem; }
-    .node { border: 1px solid rgba(190,160,111,.34); background: rgba(127,106,73,.12); padding: .8rem .9rem; }
-    .node strong { color: var(--text); display: block; }
-    .stack { display: grid; gap: .55rem; margin-top: 1rem; }
-    .bar { --w: 50%; border: 1px solid rgba(190,160,111,.34); background: linear-gradient(90deg, rgba(214,177,121,.34) var(--w), rgba(29,26,23,.32) var(--w)); padding: .62rem .75rem; display: flex; justify-content: space-between; gap: 1rem; color: var(--text-muted); }
-    .abstract p { max-width: 92ch; }
-    .participation-list { display: grid; gap: .7rem; padding-left: 1.1rem; }
-    .participation-list li { padding-left: .2rem; }
-    .btn-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
+    .card p:last-child { margin-bottom: 0; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .85rem; margin-top: clamp(1.1rem, 3vw, 1.6rem); }
+    .metric { display: flex; flex-direction: column; gap: .45rem; padding: 1rem; min-height: 100%; }
+    .metric strong { display: block; font-family: "Fraunces", Georgia, serif; font-size: clamp(1.25rem, 3vw, 2rem); line-height: 1.05; color: var(--text); }
+    .system-map { display: grid; gap: .7rem; margin-top: 1rem; }
+    .node { border: 1px solid rgba(190,160,111,.34); background: rgba(127,106,73,.12); padding: .85rem .95rem; }
+    .node strong { color: var(--text); display: block; margin-bottom: .2rem; }
+    .stack { display: grid; gap: .7rem; margin-top: 1rem; }
+    .bar { --w: 50%; border: 1px solid rgba(190,160,111,.34); background: linear-gradient(90deg, rgba(214,177,121,.34) var(--w), rgba(29,26,23,.32) var(--w)); padding: .72rem .85rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--text-muted); }
+    .bar span, .bar strong { position: relative; z-index: 1; }
+    .abstract { display: grid; grid-template-columns: minmax(220px, .36fr) minmax(0, 1fr); gap: clamp(1.2rem, 4vw, 2rem); }
+    .abstract-intro { position: sticky; top: 5.5rem; align-self: start; }
+    .abstract-copy { columns: 2 26rem; column-gap: 2rem; }
+    .abstract-copy p { max-width: 68ch; break-inside: avoid; margin-bottom: 1rem; }
+    .participation-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; padding: 0; margin: 0; list-style: none; }
+    .participation-list li { border: 1px solid rgba(190,160,111,.28); background: rgba(127,106,73,.1); padding: .95rem; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.15rem; }
     .back { display: inline-block; margin-bottom: 1rem; text-decoration: none; font-weight: 600; }
-    @media (max-width: 900px) { .two-col, .three-col, .stat-grid { grid-template-columns: 1fr; } .hero-card h1 { max-width: 100%; } }
+    @media (max-width: 900px) { .two-col, .three-col, .stat-grid, .abstract, .participation-list { grid-template-columns: 1fr; } .hero-card h1 { max-width: 100%; } .section-heading { display: block; } .abstract-intro { position: static; } .abstract-copy { columns: 1; } }
+    @media (max-width: 560px) { .bar { align-items: flex-start; flex-direction: column; gap: .3rem; } }
   </style>
 </head>
 <body>
@@ -62,7 +75,8 @@
   <main class="container">
     <a class="back" href="index.html#research">← Back to Research & Projects</a>
 
-    <section class="card hero-card">
+    <div class="page-stack">
+      <section class="card hero-card">
       <div class="eyebrow">Bellevue housing research exhibit</div>
       <h1>Housing Friction Index</h1>
       <p class="lead">The Housing Friction Index is a research-driven project on Bellevue housing affordability. It uses the city’s 0.5% local Real Estate Excise Tax as a concrete entry point, then expands into a systems model of how taxes, zoning, parking, permitting, mortgage rates, land scarcity, and behavioral responses accumulate into affordability pressure.</p>
@@ -76,9 +90,9 @@
         <div class="metric"><strong>7</strong>Real estate professionals interviewed.</div>
         <div class="metric"><strong>30+</strong>Hours of policy and source review.</div>
       </div>
-    </section>
+      </section>
 
-    <div class="grid two-col">
+      <div class="grid two-col">
       <section class="card">
         <h2>Project overview</h2>
         <p>The project argues that affordability should not be explained through a single price, tax, or policy line. Instead, it frames housing affordability as the cumulative outcome of interacting market frictions: direct closing costs, regulatory constraints, development delays, financing pressure, constrained supply, and the behavioral choices that emerge when households are already near their affordability thresholds.</p>
@@ -95,10 +109,13 @@
           <div class="node"><strong>Mobility</strong>Households delay, reprice, concede, or stay put.</div>
         </div>
       </aside>
-    </div>
+      </div>
 
-    <section class="card">
-      <h2>Relevant visuals from the model</h2>
+      <section class="card">
+      <div class="section-heading">
+        <h2>Relevant visuals from the model</h2>
+        <p class="section-kicker">A cleaner pressure-stack view keeps the model scannable before readers enter the full abstract.</p>
+      </div>
       <p>The source exhibit visualizes affordability as a pressure stack rather than a single variable. The simplified visual below preserves that UX pattern for this portfolio page: each channel is meaningful alone, but the research focus is the combined resistance created when channels overlap.</p>
       <div class="stack" aria-label="Affordability pressure stack">
         <div class="bar" style="--w: 92%"><span>Housing cost base</span><strong>baseline</strong></div>
@@ -111,9 +128,13 @@
     </section>
 
     <section class="card abstract">
-      <div class="eyebrow">Full abstract</div>
-      <h2>Housing affordability is shaped by cumulative friction</h2>
-      <p>Housing affordability is frequently discussed through the lens of home prices, interest rates, and housing supply. Far less attention is given to the cumulative effect of transaction frictions: the taxes, fees, regulations, procedural requirements, and market barriers that influence the cost and ease of housing mobility.</p>
+      <div class="abstract-intro">
+        <div class="eyebrow">Full abstract</div>
+        <h2>Housing affordability is shaped by cumulative friction</h2>
+        <p class="section-kicker">The full abstract is preserved, but arranged into readable columns with a fixed orientation panel on larger screens.</p>
+      </div>
+      <div class="abstract-copy">
+        <p>Housing affordability is frequently discussed through the lens of home prices, interest rates, and housing supply. Far less attention is given to the cumulative effect of transaction frictions: the taxes, fees, regulations, procedural requirements, and market barriers that influence the cost and ease of housing mobility.</p>
       <p>This study investigates whether seemingly modest transaction-related costs can collectively shape housing affordability, market participation, and residential mobility in high-cost urban environments.</p>
       <p>The research originated from a practical observation during the sale of a residential property in Bellevue, Washington. While reviewing closing documents, a municipal Real Estate Excise Tax (REET) of 0.5% emerged as a notable transaction cost. Although relatively small when viewed independently, the tax raised a broader question: at what point do accumulated housing-market frictions begin to influence homeowner behavior, transaction decisions, and overall housing affordability?</p>
       <p>To address this question, the study expands beyond the Bellevue REET itself and develops a broader analytical framework termed the Housing Friction Model. This framework conceptualizes housing affordability as the product of interacting constraints rather than a single market variable.</p>
@@ -126,26 +147,34 @@
       <p>As a result, affordability outcomes may emerge not from any single regulation, tax, or market condition, but from the collective weight of multiple overlapping constraints.</p>
       <p>The central thesis of this project is that housing affordability should be understood as a systems problem rather than a single-policy problem. Effective housing policy requires evaluating the cumulative impact of housing-market frictions and recognizing how small costs can interact with larger structural forces. The Bellevue REET serves as a representative case through which broader questions of housing mobility, market efficiency, and affordability can be examined.</p>
       <p>Ultimately, this study argues that policymakers should move beyond evaluating individual housing policies in isolation and instead adopt a friction-based framework that measures the combined effects of taxes, regulations, procedural requirements, and market barriers. Such an approach may provide a more accurate understanding of affordability challenges and support the development of policies that preserve public objectives while minimizing unintended obstacles to housing access and mobility.</p>
-    </section>
+      </div>
+      </section>
 
-    <section class="card">
-      <h2>My participation and motivation</h2>
+      <section class="card">
+      <div class="section-heading">
+        <h2>My participation and motivation</h2>
+        <p class="section-kicker">Cards separate each contribution so the section reads as a role summary instead of a dense list.</p>
+      </div>
       <ul class="participation-list">
         <li><strong>Motivation:</strong> I began with a direct seller-side observation in Bellevue: a local REET line item that was small in percentage terms but concrete at seven-figure transaction values.</li>
         <li><strong>Research design:</strong> I widened the initial tax question into the Housing Friction Model so the work would evaluate interacting constraints instead of overstating one policy variable.</li>
         <li><strong>Evidence building:</strong> I combined policy review, public records, field observations, interviews with real estate professionals, comparative research, and exploratory modeling to make the argument traceable.</li>
         <li><strong>Human-centered lens:</strong> My contribution was to keep the project focused on how households actually experience policy stacks at decision moments: whether to list, buy, downsize, negotiate, delay, or remain in place.</li>
       </ul>
-    </section>
+      </section>
 
-    <section class="card">
-      <h2>Findings and policy implication</h2>
+      <section class="card">
+      <div class="section-heading">
+        <h2>Findings and policy implication</h2>
+        <p class="section-kicker">The final takeaways are grouped for quick scanning on desktop and mobile.</p>
+      </div>
       <div class="grid three-col">
         <div class="metric"><strong>REET is not the whole story</strong>Larger forces such as supply constraints, rates, population growth, and land scarcity carry greater explanatory weight.</div>
         <div class="metric"><strong>Small costs still matter</strong>Transaction costs can affect mobility when they arrive inside an already constrained and expensive market.</div>
         <div class="metric"><strong>Evaluate the stack</strong>The practical recommendation is not simple repeal; it is clearer guidance, market-cycle analysis, and policy alternatives that preserve public objectives while reducing friction.</div>
       </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">
