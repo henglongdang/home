@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bellevue Housing Friction Index | Henglong Dang</title>
+  <meta name="description" content="A portfolio overview of Henglong Dang's Bellevue Housing Friction Index project, including the full abstract, visuals, methodology, findings, and participation notes." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Henglong Dang" />
+  <meta property="og:title" content="Bellevue Housing Friction Index | Henglong Dang" />
+  <meta property="og:description" content="A systems-oriented housing affordability project using Bellevue's local REET as a motivating case for cumulative housing-market friction." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./public/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="unified-subpage-theme.css" />
+  <style>
+    .hero-card { padding: clamp(1.4rem, 4vw, 2.2rem); margin-bottom: 1rem; }
+    .eyebrow { color: var(--accent); font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: .7rem; }
+    .hero-card h1 { font-size: clamp(2.2rem, 7vw, 4.9rem); max-width: 12ch; margin: 0 0 .9rem; }
+    .lead { font-size: clamp(1.02rem, 2vw, 1.22rem); max-width: 68ch; }
+    .grid { display: grid; gap: 1rem; }
+    .two-col { grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr); align-items: stretch; }
+    .three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card { padding: 1.25rem; margin-bottom: 1rem; }
+    .card h2, .card h3 { margin: 0 0 .75rem; }
+    .card p { margin-top: 0; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; margin-top: 1rem; }
+    .metric strong { font-family: "Fraunces", Georgia, serif; font-size: clamp(1.35rem, 3vw, 2rem); line-height: 1; margin-bottom: .35rem; }
+    .system-map { display: grid; gap: .7rem; margin-top: .9rem; }
+    .node { border: 1px solid rgba(190,160,111,.34); background: rgba(127,106,73,.12); padding: .8rem .9rem; }
+    .node strong { color: var(--text); display: block; }
+    .stack { display: grid; gap: .55rem; margin-top: 1rem; }
+    .bar { --w: 50%; border: 1px solid rgba(190,160,111,.34); background: linear-gradient(90deg, rgba(214,177,121,.34) var(--w), rgba(29,26,23,.32) var(--w)); padding: .62rem .75rem; display: flex; justify-content: space-between; gap: 1rem; color: var(--text-muted); }
+    .abstract p { max-width: 92ch; }
+    .participation-list { display: grid; gap: .7rem; padding-left: 1.1rem; }
+    .participation-list li { padding-left: .2rem; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1rem; }
+    .back { display: inline-block; margin-bottom: 1rem; text-decoration: none; font-weight: 600; }
+    @media (max-width: 900px) { .two-col, .three-col, .stat-grid { grid-template-columns: 1fr; } .hero-card h1 { max-width: 100%; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-shell">
+      <nav class="site-nav" aria-label="Primary">
+        <a class="brand" href="index.html">Henglong Dang</a>
+        <div class="nav-links">
+          <a href="index.html#about">About</a>
+          <a href="index.html#research">Research</a>
+          <a href="index.html#writing">Writing</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#background">Background</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <a class="back" href="index.html#research">← Back to Research & Projects</a>
+
+    <section class="card hero-card">
+      <div class="eyebrow">Bellevue housing research exhibit</div>
+      <h1>Housing Friction Index</h1>
+      <p class="lead">The Housing Friction Index is a research-driven project on Bellevue housing affordability. It uses the city’s 0.5% local Real Estate Excise Tax as a concrete entry point, then expands into a systems model of how taxes, zoning, parking, permitting, mortgage rates, land scarcity, and behavioral responses accumulate into affordability pressure.</p>
+      <div class="btn-row">
+        <a class="btn" href="https://henglongdang.github.io/Bellevue-Housing/" target="_blank" rel="noopener noreferrer">Open the live project</a>
+        <a class="btn" href="https://henglongdang.github.io/Bellevue-Housing/abstract.html" target="_blank" rel="noopener noreferrer">Read source abstract</a>
+      </div>
+      <div class="stat-grid" aria-label="Project metrics">
+        <div class="metric"><strong>0.5%</strong>Bellevue local REET used as the motivating case.</div>
+        <div class="metric"><strong>$7,000</strong>Local REET on a $1.4 million Bellevue sale.</div>
+        <div class="metric"><strong>7</strong>Real estate professionals interviewed.</div>
+        <div class="metric"><strong>30+</strong>Hours of policy and source review.</div>
+      </div>
+    </section>
+
+    <div class="grid two-col">
+      <section class="card">
+        <h2>Project overview</h2>
+        <p>The project argues that affordability should not be explained through a single price, tax, or policy line. Instead, it frames housing affordability as the cumulative outcome of interacting market frictions: direct closing costs, regulatory constraints, development delays, financing pressure, constrained supply, and the behavioral choices that emerge when households are already near their affordability thresholds.</p>
+        <p>Using Bellevue as a case study keeps the work grounded. At Bellevue price levels, even a percentage that looks small can become visible as cash at closing, especially when it appears beside commissions, escrow, title, repairs, concessions, moving costs, and high monthly-payment pressure.</p>
+      </section>
+
+      <aside class="card">
+        <h2>Motivating question</h2>
+        <p class="lead">At what point do accumulated housing-market frictions begin to influence homeowner behavior, transaction decisions, and overall housing affordability?</p>
+        <div class="system-map" aria-label="Affordability flow visual">
+          <div class="node"><strong>Financing</strong>Mortgage-rate pressure changes payment thresholds.</div>
+          <div class="node"><strong>Regulation</strong>Zoning and permitting shape supply and timing.</div>
+          <div class="node"><strong>Costs</strong>REET and closing cash add transaction friction.</div>
+          <div class="node"><strong>Mobility</strong>Households delay, reprice, concede, or stay put.</div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="card">
+      <h2>Relevant visuals from the model</h2>
+      <p>The source exhibit visualizes affordability as a pressure stack rather than a single variable. The simplified visual below preserves that UX pattern for this portfolio page: each channel is meaningful alone, but the research focus is the combined resistance created when channels overlap.</p>
+      <div class="stack" aria-label="Affordability pressure stack">
+        <div class="bar" style="--w: 92%"><span>Housing cost base</span><strong>baseline</strong></div>
+        <div class="bar" style="--w: 74%"><span>Mortgage-rate exposure</span><strong>74</strong></div>
+        <div class="bar" style="--w: 61%"><span>Zoning constraints</span><strong>61</strong></div>
+        <div class="bar" style="--w: 42%"><span>Parking requirements</span><strong>42</strong></div>
+        <div class="bar" style="--w: 31%"><span>Transaction taxes</span><strong>31</strong></div>
+        <div class="bar" style="--w: 21%"><span>Permit delays</span><strong>21</strong></div>
+      </div>
+    </section>
+
+    <section class="card abstract">
+      <div class="eyebrow">Full abstract</div>
+      <h2>Housing affordability is shaped by cumulative friction</h2>
+      <p>Housing affordability is frequently discussed through the lens of home prices, interest rates, and housing supply. Far less attention is given to the cumulative effect of transaction frictions: the taxes, fees, regulations, procedural requirements, and market barriers that influence the cost and ease of housing mobility.</p>
+      <p>This study investigates whether seemingly modest transaction-related costs can collectively shape housing affordability, market participation, and residential mobility in high-cost urban environments.</p>
+      <p>The research originated from a practical observation during the sale of a residential property in Bellevue, Washington. While reviewing closing documents, a municipal Real Estate Excise Tax (REET) of 0.5% emerged as a notable transaction cost. Although relatively small when viewed independently, the tax raised a broader question: at what point do accumulated housing-market frictions begin to influence homeowner behavior, transaction decisions, and overall housing affordability?</p>
+      <p>To address this question, the study expands beyond the Bellevue REET itself and develops a broader analytical framework termed the Housing Friction Model. This framework conceptualizes housing affordability as the product of interacting constraints rather than a single market variable.</p>
+      <p>Under this model, transaction taxes represent only one component within a larger ecosystem that includes zoning restrictions, parking requirements, permitting processes, mortgage rates, land-use regulations, development costs, and behavioral responses by buyers and sellers.</p>
+      <p>Using Bellevue as a case study, the project combines policy analysis, municipal financial data, housing-market indicators, public records, stakeholder interviews, open-house observations, and comparative research from peer municipalities. The investigation evaluates how transaction costs influence market outcomes and explores whether these costs operate independently or amplify the effects of other affordability pressures.</p>
+      <p>Particular attention is given to the distinction between direct financial burdens and indirect behavioral consequences, including reduced mobility, delayed transactions, pricing adjustments, and diminished market flexibility.</p>
+      <p>The analysis finds that the Bellevue REET is unlikely to be a primary driver of housing unaffordability when considered in isolation. Larger structural forces, including regional housing supply constraints, population growth, mortgage interest rates, and land scarcity, exert substantially greater influence on overall housing costs.</p>
+      <p>However, the study suggests that transaction-related costs remain relevant because housing markets are shaped by the accumulation of numerous frictions rather than a single dominant factor. In this context, even relatively modest transaction costs may contribute to broader patterns of reduced mobility and increased barriers to market participation when combined with other existing constraints.</p>
+      <p>The research further demonstrates that housing policy is often evaluated through isolated interventions despite operating within highly interconnected systems. Policies intended to generate municipal revenue, regulate development, improve infrastructure, or preserve neighborhood character frequently interact in ways that create unintended cumulative burdens.</p>
+      <p>As a result, affordability outcomes may emerge not from any single regulation, tax, or market condition, but from the collective weight of multiple overlapping constraints.</p>
+      <p>The central thesis of this project is that housing affordability should be understood as a systems problem rather than a single-policy problem. Effective housing policy requires evaluating the cumulative impact of housing-market frictions and recognizing how small costs can interact with larger structural forces. The Bellevue REET serves as a representative case through which broader questions of housing mobility, market efficiency, and affordability can be examined.</p>
+      <p>Ultimately, this study argues that policymakers should move beyond evaluating individual housing policies in isolation and instead adopt a friction-based framework that measures the combined effects of taxes, regulations, procedural requirements, and market barriers. Such an approach may provide a more accurate understanding of affordability challenges and support the development of policies that preserve public objectives while minimizing unintended obstacles to housing access and mobility.</p>
+    </section>
+
+    <section class="card">
+      <h2>My participation and motivation</h2>
+      <ul class="participation-list">
+        <li><strong>Motivation:</strong> I began with a direct seller-side observation in Bellevue: a local REET line item that was small in percentage terms but concrete at seven-figure transaction values.</li>
+        <li><strong>Research design:</strong> I widened the initial tax question into the Housing Friction Model so the work would evaluate interacting constraints instead of overstating one policy variable.</li>
+        <li><strong>Evidence building:</strong> I combined policy review, public records, field observations, interviews with real estate professionals, comparative research, and exploratory modeling to make the argument traceable.</li>
+        <li><strong>Human-centered lens:</strong> My contribution was to keep the project focused on how households actually experience policy stacks at decision moments: whether to list, buy, downsize, negotiate, delay, or remain in place.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Findings and policy implication</h2>
+      <div class="grid three-col">
+        <div class="metric"><strong>REET is not the whole story</strong>Larger forces such as supply constraints, rates, population growth, and land scarcity carry greater explanatory weight.</div>
+        <div class="metric"><strong>Small costs still matter</strong>Transaction costs can affect mobility when they arrive inside an already constrained and expensive market.</div>
+        <div class="metric"><strong>Evaluate the stack</strong>The practical recommendation is not simple repeal; it is clearer guidance, market-cycle analysis, and policy alternatives that preserve public objectives while reducing friction.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-shell">
+      <p>© Henglong Dang — Research, Systems, and Human-Centered AI.</p>
+    </div>
+  </footer>
+</body>
+</html>
