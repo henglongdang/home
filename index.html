@@ -154,10 +154,13 @@
       transition: transform .25s ease, background .25s ease;
     }
     .project:hover { transform: translateY(-4px); background: rgba(38, 33, 27, .75); }
+    a.project { color: inherit; text-decoration: none; }
+    a.project:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     .project:nth-child(1) { grid-column: span 8; }
     .project:nth-child(2) { grid-column: span 4; }
     .project:nth-child(3) { grid-column: span 5; }
     .project:nth-child(4) { grid-column: span 7; }
+    .project:nth-child(5) { grid-column: span 12; }
 
     .project h3 {
       font-size: clamp(1.04rem, 1.8vw, 1.28rem);
@@ -296,6 +299,11 @@
             <h3><a href="aaai.html" style="color:inherit;text-decoration:none;">AAAI Research Activity: Ethics, Alignment, and Human-Centered Evaluation in Contemporary AI Systems</a></h3>
             <p>My membership at the Association for the Advancement of Artificial Intelligence (AAAI) supports my broader research and practice by helping me stay engaged with frontier debates in safety, alignment, and evaluation, then translate those insights into grounded criteria for designing and assessing human-centered AI in high-stakes settings.</p>
           </article>
+          <a class="project" href="Bellevue-Housing.html" aria-label="Open the Bellevue Housing Friction Index project page">
+            <h3>Housing Friction Index: Bellevue Housing Affordability Research</h3>
+            <small class="project-meta">Bellevue REET case study · Housing Friction Model</small>
+            <p>In this Bellevue housing project, I use the city’s 0.5% local Real Estate Excise Tax as a concrete entry point for studying how affordability barriers accumulate across transaction costs, zoning, parking, permitting, mortgage rates, and supply constraints. I combine policy review, public records, field observations, interviews, and exploratory modeling to show why housing affordability should be evaluated as a systems problem rather than a single-policy problem. The work highlights my motivation to translate a practical seller-side observation into a human-centered framework for understanding mobility, market participation, and policy design.</p>
+          </a>
         </div>
       </div>
     </section>
