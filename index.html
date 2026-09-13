@@ -203,6 +203,43 @@
 
     footer { padding: 3.2rem 0 4.8rem; color: var(--text-muted); }
 
+    .page-meta {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 40;
+      display: grid;
+      justify-items: end;
+      gap: .35rem;
+    }
+    .last-updated {
+      margin: 0;
+      color: #1b1916;
+      font-size: .68rem;
+      letter-spacing: .03em;
+    }
+    .back-to-top {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.5rem;
+      min-height: 2.5rem;
+      padding: .45rem .7rem;
+      border: 1px solid rgba(239, 236, 230, .18);
+      border-radius: 999px;
+      background: rgba(29, 26, 23, .88);
+      color: var(--text-muted);
+      font-size: .78rem;
+      text-decoration: none;
+      transition: color .25s ease, border-color .25s ease, transform .25s ease;
+    }
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(16px);
@@ -217,7 +254,7 @@
     }
   </style>
 </head>
-<body>
+<body id="top">
   <div class="ambient" aria-hidden="true"><span></span><span></span><span></span></div>
 
   <header>
@@ -228,8 +265,7 @@
           <a href="#about">About</a>
           <a href="#research">Research</a>
           <a href="#experience">Experience</a>
-          <a href="#writing">Writing</a>
-          <a href="#activities">Leadership</a>
+          <a href="#writing">Publications</a>
           <a href="#background">Background</a>
           <a href="#contact">Contact</a>
         </div>
@@ -348,7 +384,7 @@
         </div>
         <div>
           <p><strong>Education:</strong> University of California, Los Angeles (UCLA), B.S. in Statistics and Data Science.</p>
-          <p><strong>Professional certifications:</strong> Stanford University Machine Learning Specialization Certificate; IBM Artificial Intelligence Fundamentals Certificate.</p>
+          <p><strong>Professional certifications:</strong> Stanford University Machine Learning Specialization Certificate; IBM Artificial Intelligence Fundamentals Certificate; Google Advanced Data Analytics.</p>
         </div>
       </div>
     </section>
@@ -371,10 +407,15 @@
 
   <footer class="container">
     <div class="links" style="margin-bottom:.8rem;">
-      <a href="#about">About</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#writing">Writing</a><a href="#activities">Leadership</a><a href="#background">Background</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#writing">Publications</a><a href="#background">Background</a><a href="#contact">Contact</a>
     </div>
     <small>© 2026 Henglong Dang · Research, writing, and human-centered systems.</small>
   </footer>
+
+  <div class="page-meta">
+    <p class="last-updated">Last updated 9/13/2026</p>
+    <a class="back-to-top" href="#top" aria-label="Back to top">Top ↑</a>
+  </div>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
