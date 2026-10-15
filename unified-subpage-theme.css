@@ -21,7 +21,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background-im
 .nav-links{display:flex;gap:1.1rem;flex-wrap:wrap}
 .nav-links a{color:var(--text-muted)!important;text-decoration:none;font-size:.9rem;transition:color .25s ease}
 .nav-links a:hover,.nav-links a:focus-visible{color:var(--accent)!important;outline:none}
-.container{width:min(100% - 3rem,var(--max))!important;max-width:none!important;padding:2.5rem 0 4rem!important}
+.container{width:min(100% - 3rem,var(--max))!important;max-width:none!important;margin-inline:auto!important;padding:2.5rem 0 4rem!important}
 .card,.profile-card,article,section>div,.content-card{background:rgba(29,26,23,.52)!important;border:1px solid var(--line)!important;border-radius:0!important;box-shadow:none!important}
 h1,h2,h3{font-family:"Fraunces",Georgia,serif!important;color:var(--text)!important;line-height:1.1}
 h2{letter-spacing:.01em}
