@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 150" role="img" aria-labelledby="title desc">
+  <title id="title">UCLA Anderson School of Management</title>
+  <desc id="desc">UCLA Anderson School of Management wordmark</desc>
+  <rect width="640" height="150" rx="8" fill="#0b2d5c"/>
+  <rect x="22" y="22" width="106" height="106" fill="#f5c242"/>
+  <text x="75" y="90" text-anchor="middle" fill="#0b2d5c" font-family="Arial, sans-serif" font-size="58" font-weight="700">UCLA</text>
+  <text x="156" y="68" fill="#fff" font-family="Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="2">ANDERSON</text>
+  <text x="156" y="100" fill="#f5c242" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">SCHOOL OF MANAGEMENT</text>
+</svg>
