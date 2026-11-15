@@ -1,3 +1,7 @@
+# Note: crawlers only read robots.txt at the domain root (henglongdang.github.io/robots.txt),
+# so this file is advisory for a project site. Submit the sitemap in Google Search Console.
 User-agent: *
 Allow: /
-Sitemap: https://yourdomain.com/sitemap.xml
+Disallow: /home/ORIGINAL%20index.html
+Disallow: /home/docs/
+Sitemap: https://henglongdang.github.io/home/sitemap.xml

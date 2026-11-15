@@ -1,437 +1,482 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Henglong Dang — Research, Systems, and Human-Centered AI</title>
-  <meta name="description" content="Henglong Dang is an AI/HCI researcher, systems thinker, and builder focused on human-centered intelligence, design strategy, and data-driven frameworks." />
-  <meta name="robots" content="index,follow" />
-  <meta name="author" content="Henglong Dang" />
-  <meta property="og:title" content="Henglong Dang — Research, Systems, and Human-Centered AI" />
-  <meta property="og:description" content="Editorial portfolio exploring research, writing, and systems for human-centered AI and product thinking." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="./public/og-image.svg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Henglong Dang — Research, Systems, and Human-Centered AI" />
-  <meta name="twitter:description" content="Researcher, builder, writer. Exploring AI/HCI through systems thinking and editorial narratives." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #11100f;
-      --bg-soft: #171513;
-      --bg-elevated: #1d1a17;
-      --text: #efece6;
-      --text-muted: #b6aea1;
-      --accent: #d6b179;
-      --line: rgba(239, 236, 230, 0.12);
-      --glow: rgba(214, 177, 121, 0.18);
-      --max: 1160px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at 12% 12%, #282119 0%, transparent 40%),
-                  radial-gradient(circle at 82% 20%, #221d18 0%, transparent 44%),
-                  linear-gradient(180deg, #0f0e0d 0%, #12110f 100%);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image: radial-gradient(rgba(255,255,255,0.035) 0.6px, transparent 0.6px);
-      background-size: 2px 2px;
-      opacity: .5;
-      mix-blend-mode: soft-light;
-    }
-
-    .ambient {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      transform: translate3d(0,0,0);
-    }
-    .ambient span {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(58px);
-      opacity: 0.22;
-      animation: drift 20s ease-in-out infinite alternate;
-      background: var(--glow);
-    }
-    .ambient span:nth-child(1) { width: 260px; height: 260px; top: 8%; left: 4%; }
-    .ambient span:nth-child(2) { width: 180px; height: 180px; top: 58%; right: 10%; animation-duration: 26s; }
-    .ambient span:nth-child(3) { width: 220px; height: 220px; bottom: 12%; left: 34%; animation-duration: 31s; }
-
-    @keyframes drift {
-      from { transform: translateY(0) translateX(0) scale(1); }
-      to { transform: translateY(-32px) translateX(16px) scale(1.08); }
-    }
-
-    .container { width: min(100% - 3rem, var(--max)); margin-inline: auto; }
-
-    header {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(8px);
-      background: rgba(17, 16, 15, 0.66);
-      border-bottom: 1px solid var(--line);
-      z-index: 50;
-    }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: .85rem 0; }
-    .brand { font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text); font-size: .82rem; }
-    .nav-links { display: flex; gap: 1.1rem; flex-wrap: wrap; }
-    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: .9rem; transition: color .25s ease; }
-    .nav-links a:hover { color: var(--accent); }
-
-    .hero {
-      min-height: 90vh;
-      display: grid;
-      place-items: center;
-      padding: 5.5rem 0 4rem;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .9fr;
-      gap: 2.6rem;
-      align-items: end;
-    }
-    .kicker { text-transform: uppercase; letter-spacing: .2em; color: var(--accent); font-size: .76rem; }
-    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 700; line-height: 1.06; margin: 0; }
-    h1 { font-size: clamp(2.2rem, 6vw, 5.3rem); margin: .9rem 0 1.2rem; }
-    .lede { color: var(--text-muted); font-size: clamp(1rem, 2vw, 1.22rem); max-width: 52ch; }
-    .hero-meta { display: flex; gap: 1.4rem; margin-top: 2rem; flex-wrap: wrap; }
-    .hero-meta span { border-top: 1px solid var(--line); padding-top: .7rem; color: var(--text-muted); font-size: .92rem; }
-
-    .portrait {
-      background: linear-gradient(160deg, #1f1b17 0%, #141210 80%);
-      border: 1px solid var(--line);
-      padding: 1rem;
-      transform: translateY(20px);
-    }
-    .portrait img { width: 100%; display: block; filter: saturate(.92) contrast(1.02); }
-
-    section { padding: 6rem 0; border-top: 1px solid var(--line); }
-    .section-title { font-size: clamp(2rem, 5vw, 4.2rem); margin-bottom: 1.5rem; }
-    .section-kicker { text-transform: uppercase; letter-spacing: .18em; color: var(--accent); font-size: .72rem; margin-bottom: .8rem; }
-
-    .split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 2rem; }
-    p { margin: 0 0 1rem; color: var(--text-muted); }
-
-    .timeline { display: grid; gap: 1.4rem; }
-    .timeline article {
-      padding: 1.2rem 1.1rem;
-      border-left: 2px solid var(--accent);
-      background: linear-gradient(100deg, rgba(214,177,121,.08), rgba(214,177,121,0));
-      transition: transform .35s ease, border-color .35s ease;
-    }
-    .timeline article:hover { transform: translateX(6px); border-color: #f1c98b; }
-    .timeline h3 { font-size: 1.27rem; margin-bottom: .2rem; }
-    .timeline small { color: #9f9588; }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1rem;
-    }
-    .project {
-      border: 1px solid var(--line);
-      padding: 1.2rem;
-      background: rgba(29, 26, 23, 0.52);
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      gap: .55rem;
-      transition: transform .25s ease, background .25s ease;
-    }
-    .project:hover { transform: translateY(-4px); background: rgba(38, 33, 27, .75); }
-    a.project { color: inherit; text-decoration: none; }
-    a.project:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-    .project:nth-child(1) { grid-column: span 8; }
-    .project:nth-child(2) { grid-column: span 4; }
-    .project:nth-child(3) { grid-column: span 5; }
-    .project:nth-child(4) { grid-column: span 7; }
-    .project:nth-child(5) { grid-column: span 12; }
-
-    .project h3 {
-      font-size: clamp(1.04rem, 1.8vw, 1.28rem);
-      line-height: 1.25;
-      margin-bottom: .4rem;
-    }
-    .project-meta {
-      color: #9f9588;
-      font-size: .8rem;
-      letter-spacing: .02em;
-      margin-bottom: .7rem;
-      display: block;
-    }
-    .timeline ul {
-      margin: .8rem 0 0 1rem;
-      padding: 0;
-      color: var(--text-muted);
-      display: grid;
-      gap: .5rem;
-    }
-    .timeline li {
-      line-height: 1.55;
-    }
-
-    .big-quote {
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      line-height: 1.2;
-      color: #ddd6ca;
-      max-width: 22ch;
-    }
-
-    .links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
-    .links a {
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid #7f6a49;
-      padding-bottom: .15rem;
-    }
-
-    footer { padding: 3.2rem 0 4.8rem; color: var(--text-muted); }
-
-    .page-meta {
-      position: fixed;
-      right: 1.25rem;
-      bottom: 1.25rem;
-      z-index: 40;
-      display: grid;
-      justify-items: end;
-      gap: .35rem;
-    }
-    .last-updated {
-      margin: 0;
-      color: #1b1916;
-      font-size: .68rem;
-      letter-spacing: .03em;
-    }
-    .back-to-top {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 2.5rem;
-      min-height: 2.5rem;
-      padding: .45rem .7rem;
-      border: 1px solid rgba(239, 236, 230, .18);
-      border-radius: 999px;
-      background: rgba(29, 26, 23, .88);
-      color: var(--text-muted);
-      font-size: .78rem;
-      text-decoration: none;
-      transition: color .25s ease, border-color .25s ease, transform .25s ease;
-    }
-    .back-to-top:hover,
-    .back-to-top:focus-visible {
-      color: var(--accent);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (max-width: 900px) {
-      .hero-grid, .split { grid-template-columns: 1fr; }
-      .project:nth-child(n) { grid-column: span 12; }
-      .nav-links { gap: .75rem; }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Henglong Dang — Research, writing, and operations</title>
+  <meta name="description" content="Henglong Dang studies how people make decisions inside software, markets, and institutions. HCII 2025 paper on household finance, the Housing Friction Index, two books on AI and judgment, and operations work at DFDraw Lab and UCLA Anderson.">
+  <link rel="canonical" href="https://henglongdang.github.io/home/">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Henglong Dang">
+  <meta property="og:title" content="Henglong Dang — Research, writing, and operations">
+  <meta property="og:description" content="How people make decisions inside software, markets, and institutions: research, books, and operations work.">
+  <meta property="og:url" content="https://henglongdang.github.io/home/">
+  <meta property="og:image" content="https://henglongdang.github.io/home/assets/images/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Henglong Dang — research, writing, and operations">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- @head -->
+  <meta name="theme-color" content="#12110f">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="assets/js/site.js" defer></script>
+  <!-- /@head -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Henglong Dang",
+    "url": "https://henglongdang.github.io/home/",
+    "image": "https://henglongdang.github.io/home/assets/images/portrait.jpg",
+    "jobTitle": "Technology Consultant",
+    "worksFor": { "@type": "Organization", "name": "UCLA Anderson School of Management" },
+    "knowsLanguage": ["en", "zh", "es"],
+    "knowsAbout": ["Human-computer interaction", "Statistics", "Data science", "Housing policy", "AI and human judgment"],
+    "sameAs": [
+      "https://www.linkedin.com/in/henglongdang/",
+      "https://scholar.google.com/citations?user=D06-T50AAAAJ",
+      "https://orcid.org/0009-0002-5215-9534",
+      "https://medium.com/@henglongdang",
+      "https://www.crunchbase.com/person/henglong-dang"
+    ]
+  }
+  </script>
 </head>
-<body id="top">
-  <div class="ambient" aria-hidden="true"><span></span><span></span><span></span></div>
-
-  <header>
-    <div class="container">
-      <nav>
-        <div class="brand">Henglong Dang</div>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#research">Research</a>
-          <a href="#experience">Experience</a>
-          <a href="#writing">Publications</a>
-          <a href="#background">Background</a>
-          <a href="#contact">Contact</a>
-        </div>
+<body id="top" data-nav="home">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html">Henglong Dang</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle__bars" aria-hidden="true"></span>Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="publications.html">Writing</a></li>
+          <li><a href="profile.html">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
     </div>
   </header>
+  <!-- /@header -->
 
-  <main>
-    <section class="hero container">
-      <div class="hero-grid">
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-name">
+      <div class="wrap hero__grid">
         <div>
-          <div class="kicker reveal">Systems Thinker · Innovator · Strategic Futurist</div>
-          <h1 class="reveal">Building human-centered intelligence through systems, research, and narrative.</h1>
-          <p class="lede reveal">I work across AI, HCI, and data science, turning complex sociotechnical problems into practical frameworks, resilient products, and writing that helps people make better decisions.</p>
-          <div class="hero-meta reveal">
-            <span>AI/HCI + Data Science</span>
-            <span>Product & Research Strategy</span>
-            <span>Independent Vision</span>
+          <h1 id="hero-name"><span class="given">Henglong</span> <span class="family">Dang</span></h1>
+          <p class="hero__intro">I study how people make decisions inside systems&mdash;household finance apps, housing markets, AI tools&mdash;and I work on the operations that turn that kind of thinking into finished work.</p>
+          <p>Trained in statistics and data science at UCLA. First author of an HCII&nbsp;2025 paper on household finance software, author of two books on judgment and generative AI, founder of the Synaperge community, and currently a technology consultant at UCLA Anderson.</p>
+          <div class="button-row">
+            <a class="button button--solid" href="#work">Selected work</a>
+            <a class="button" href="profile.html">About me</a>
+            <a class="button" href="#contact">Contact</a>
           </div>
         </div>
-        <figure class="portrait reveal">
-          <img src="./Profile Picture.jpg" alt="Portrait of Henglong Dang" loading="eager" />
+        <figure class="hero__portrait">
+          <img src="assets/images/portrait.jpg" width="800" height="800" alt="Portrait of Henglong Dang in a dark jacket against a dark background." fetchpriority="high">
         </figure>
       </div>
     </section>
 
-    <section id="about">
-      <div class="container split reveal">
-        <div>
-          <div class="section-kicker">Philosophy</div>
-          <h2 class="section-title">A practice of thoughtful construction.</h2>
-        </div>
-        <div>
-          <p>I see technology as both infrastructure and culture. My work centers on how AI systems influence behavior, trust, and decision-making in everyday life.</p>
-          <p>I care about clarity: clear questions, clear interfaces, and outcomes people can actually use. The goal is work that stays useful long after the initial excitement fades.</p>
-          <div class="links">
-            <a href="profile.html">Profile</a>
-            <a href="https://www.linkedin.com/in/henglongdang/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://scholar.google.com/citations?user=D06-T50AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-            <a href="https://www.crunchbase.com/person/henglong-dang" target="_blank" rel="noopener">Crunchbase</a>
+    <!-- Currently -->
+    <div class="wrap">
+      <div class="now-strip">
+        <dl>
+          <div>
+            <dt>Currently</dt>
+            <dd>Technology Consultant, UCLA Anderson <span>Computing and Information Services &middot; since Oct 2026</span></dd>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="research">
-      <div class="container">
-        <div class="section-kicker reveal">Research & Projects</div>
-        <h2 class="section-title reveal">Research & publications.</h2>
-        <div class="projects reveal">
-          <article class="project">
-            <h3><a href="research-finance.html" style="color:inherit;text-decoration:none;">Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management</a></h3>
-            <small class="project-meta">DOI: https://doi.org/10.1007/978-3-032-13164-5_2</small>
-            <p>In this first-author HCII 2025 study, I examine how fragmented consumer finance ecosystems push people to juggle unstable mental models across budgeting, investing, and payment tools. I build a user-centered systems framework through comparative interface analysis and propose integrated design principles that support clearer long-horizon financial decisions.</p>
-          </article>
-          <article class="project">
-            <h3><a href="research-outsourcing.html" style="color:inherit;text-decoration:none;">Human-Centered, Sustainable, and Socially Responsible Innovation: Strategic Leadership in the Age of AI and Global Outsourcing</a></h3>
-            <small class="project-meta">ISBN: 979-8248682874</small>
-            <p>In this 257-page book, I map what I call the Great Outsourcing: a structural shift where organizations externalize not only execution, but also judgment and institutional memory to automated systems and distributed partners. I offer a decision architecture that helps leaders align productivity, social responsibility, and strategic resilience under accelerated technological change.</p>
-          </article>
-          <article class="project">
-            <h3><a href="research-echoes.html" style="color:inherit;text-decoration:none;">Echoes in the Machine: Information Warfare and Reality Collapse in the Post-Truth Age</a></h3>
-            <small class="project-meta">ISBN: 979-8296185310</small>
-            <p>In this research monograph, I investigate how algorithmic amplification, generative content loops, and adversarial narrative engineering can destabilize the shared epistemic baseline of digital publics. I introduce relevance gravity and synthetic consensus as analytical tools to study governance risk, civic trust, and information integrity.</p>
-          </article>
-          <article class="project">
-            <h3><a href="aaai.html" style="color:inherit;text-decoration:none;">AAAI Research Activity: Ethics, Alignment, and Human-Centered Evaluation in Contemporary AI Systems</a></h3>
-            <p>My membership at the Association for the Advancement of Artificial Intelligence (AAAI) supports my broader research and practice by helping me stay engaged with frontier debates in safety, alignment, and evaluation, then translate those insights into grounded criteria for designing and assessing human-centered AI in high-stakes settings.</p>
-          </article>
-          <a class="project" href="Bellevue-Housing.html" aria-label="Open the Bellevue Housing Friction Index project page">
-            <h3>Housing Friction Index: Bellevue Housing Affordability Research</h3>
-            <small class="project-meta">Bellevue REET case study · Housing Friction Model</small>
-            <p>In this Bellevue housing project, I use the city’s 0.5% local Real Estate Excise Tax as a concrete entry point for studying how affordability barriers accumulate across transaction costs, zoning, parking, permitting, mortgage rates, and supply constraints. I combine policy review, public records, field observations, interviews, and exploratory modeling to show why housing affordability should be evaluated as a systems problem rather than a single-policy problem. The work highlights my motivation to translate a practical seller-side observation into a human-centered framework for understanding mobility, market participation, and policy design.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="container">
-        <div class="section-kicker reveal">Experience</div>
-        <h2 class="section-title reveal">Professional experience.</h2>
-        <div class="timeline reveal">
-          <article><h3><a href="experience-dfdraw.html" style="color:inherit;text-decoration:none;">Strategic Operations Lead · DFDraw Lab</a></h3><small>2024 — Present · Multinational design & strategy operations</small><ul><li>I help transform ambitious ideas into dependable execution across teams and time zones, shaping the operating rhythms, decision habits, and cross-functional coordination that keep international design and strategy work moving with clarity.</li></ul></article>
-          <article><h3><a href="FTTC.html" style="color:inherit;text-decoration:none;">Technology Consultant · UCLA Anderson</a></h3><small>10/2026 — Present · Computing and Information Services</small><ul><li>I provide frontend support and resolve cross-layer issues across endpoints, networks, peripherals, connectivity, and Anderson-specific services while translating solutions for non-technical users.</li></ul></article>
-          <article><h3><a href="synaperge.html" style="color:inherit;text-decoration:none;">Founder and President · Synaperge</a></h3><small>2023 — 09/2026 · Interdisciplinary innovation community</small><ul><li>I founded Synaperge to bring builders, researchers, and students into one collaborative space where strong ideas can be challenged, refined, and turned into initiatives that are intellectually serious and practically useful.</li></ul></article>
-          <article><h3><a href="leadership-bellevue.html" style="color:inherit;text-decoration:none;">Representative · Bellevue School District Coalition</a></h3><small>2024 — 2025 · Strategic planning and policy input</small><ul><li>I served as a bridge between community voices and district leadership, helping translate local concerns into strategic conversations about educational quality, long-term priorities, and accountable policy choices.</li></ul></article>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="writing">
-      <div class="container split reveal">
-        <div>
-          <div class="section-kicker">Writing & Publications</div>
-          <h2 class="section-title">Essays, frameworks, and critical notes.</h2>
-        </div>
-        <div>
-          <p class="big-quote">“The best interface is legible, deliberate, and ethically intelligible.”</p>
-          <p>My writing explores AI cognition, interface philosophy, and the way data systems shape behavior. I use each essay to test ideas that can feed back into real design, policy, and governance decisions.</p>
-          <div class="links">
-            <a href="research-echoes.html">Echoes in the Machine</a>
-            <a href="research-outsourcing.html">Human-Centered Innovation</a>
-            <a href="profile.html">Full Biography</a>
-            <a href="https://medium.com/@henglongdang" target="_blank" rel="noopener">Medium</a>
+          <div>
+            <dt>Also</dt>
+            <dd>Strategic Operations Lead, DFDraw Lab <span>Design studio, US and China markets &middot; since 2024</span></dd>
           </div>
+          <div>
+            <dt>Latest research</dt>
+            <dd><a href="Bellevue-Housing.html">Housing Friction Index</a> <span>Independent study, Bellevue, Jan&ndash;Jun 2026</span></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <!-- 01 Profile -->
+    <section class="section" id="profile" aria-labelledby="profile-h">
+      <span id="about" class="anchor-alias"></span>
+      <div class="wrap">
+        <header class="section-head">
+          <p class="section-no"><span>01</span>Profile</p>
+          <h2 id="profile-h">Practical problems, examined as systems</h2>
+        </header>
+        <div class="snapshot">
+          <div class="snapshot__text">
+            <p>Most of my work starts with a practical problem that turns out to have several layers underneath it.</p>
+            <p>A family moving money between five apps. A 0.5% tax line on a closing statement. A laptop that will not join the network an hour before class. In each case the visible issue sits on top of interacting parts&mdash;software, policy, habits, institutions. I use statistics, interviews, and close observation to find those parts, then build something people can use: an interface, a framework, a support routine, an organization.</p>
+            <p>Alongside that, I write about what happens to human judgment when software suggests, ranks, and decides: two books so far, and an ongoing series of essays.</p>
+            <a class="more-link" href="profile.html">Full profile</a>
+          </div>
+          <dl class="facts">
+            <div><dt>Education</dt><dd>B.S., Statistics and Data Science, UCLA</dd></div>
+            <div><dt>Research</dt><dd>Human&ndash;computer interaction, household finance, housing policy, AI and judgment</dd></div>
+            <div><dt>Published</dt><dd>1 peer-reviewed paper (Springer LNCS) &middot; 2 books &middot; essays on Medium</dd></div>
+            <div><dt>Operations</dt><dd>Studio operations, community building, technology support</dd></div>
+            <div><dt>Languages</dt><dd>English and Chinese (fluent), Spanish (conversational)</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
-    <section id="background">
-      <div class="container split reveal">
-        <div>
-          <div class="section-kicker">Background</div>
-          <h2 class="section-title">Academic background and education.</h2>
+    <!-- 02 Selected work -->
+    <section class="section" id="work" aria-labelledby="work-h">
+      <span id="research" class="anchor-alias"></span>
+      <div class="wrap">
+        <header class="section-head">
+          <p class="section-no"><span>02</span>Selected work</p>
+          <h2 id="work-h">Research and projects</h2>
+          <p class="section-dek">The two projects with the most evidence behind them, then two organizations I have helped run.</p>
+        </header>
+
+        <article class="feature feature--paper">
+          <div>
+            <p class="label feature__kind">Peer-reviewed paper &middot; Human&ndash;computer interaction</p>
+            <h3><a href="research-finance.html">Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management</a></h3>
+            <p class="venue">Dang, H. &amp; Ding, F. &middot; <em>HCI International 2025 &ndash; Late Breaking Papers</em>, LNCS 16342, pp.&nbsp;22&ndash;40 &middot; Springer, 2026</p>
+            <p>Households track budgets, bills, accounts, and forecasts in separate apps. We surveyed 342 people and interviewed 35, found low satisfaction with existing tools, and iterated a single platform with shared family planning. In usability testing the prototype received a mean satisfaction score of 84.2 out of 100.</p>
+            <a class="more-link" href="research-finance.html">Read the project</a>
+          </div>
+          <figure class="feature__visual">
+            <svg class="diagram" viewBox="0 0 480 270" role="img" aria-labelledby="mini-frag-t mini-frag-d">
+              <title id="mini-frag-t">Separate apps compared with one integrated platform</title>
+              <desc id="mini-frag-d">On the left, a household connects separately to five apps: budgeting, bills, accounts, forecasts, and family sharing. On the right, the household connects once to a single platform that holds all five.</desc>
+              <g>
+                <line class="ln" x1="36" y1="132" x2="104" y2="35"/>
+                <line class="ln" x1="36" y1="132" x2="134" y2="85"/>
+                <line class="ln" x1="36" y1="132" x2="96" y2="135"/>
+                <line class="ln" x1="36" y1="132" x2="134" y2="185"/>
+                <line class="ln" x1="36" y1="132" x2="104" y2="235"/>
+                <circle class="dot-gold" cx="30" cy="132" r="6"/>
+                <rect class="box" x="104" y="22" width="88" height="26"/><text x="148" y="39" text-anchor="middle">Budgeting</text>
+                <rect class="box" x="134" y="72" width="70" height="26"/><text x="169" y="89" text-anchor="middle">Bills</text>
+                <rect class="box" x="96" y="122" width="84" height="26"/><text x="138" y="139" text-anchor="middle">Accounts</text>
+                <rect class="box" x="134" y="172" width="84" height="26"/><text x="176" y="189" text-anchor="middle">Forecasts</text>
+                <rect class="box" x="104" y="222" width="96" height="26"/><text x="152" y="239" text-anchor="middle">Family plans</text>
+              </g>
+              <line class="ln-dash" x1="240" y1="20" x2="240" y2="250"/>
+              <g>
+                <line class="ln-gold" x1="270" y1="132" x2="306" y2="132"/>
+                <circle class="dot-gold" cx="266" cy="132" r="6"/>
+                <rect class="box-gold" x="306" y="34" width="160" height="196"/>
+                <text class="t-strong" x="386" y="62" text-anchor="middle">One platform</text>
+                <text x="386" y="94" text-anchor="middle">Budgeting</text>
+                <text x="386" y="120" text-anchor="middle">Bills</text>
+                <text x="386" y="146" text-anchor="middle">Accounts</text>
+                <text x="386" y="172" text-anchor="middle">Forecasts</text>
+                <text x="386" y="198" text-anchor="middle">Family plans</text>
+              </g>
+              <text class="t-faint" x="120" y="266" text-anchor="middle">Today: one login per task</text>
+              <text class="t-faint" x="386" y="266" text-anchor="middle">Proposed: one shared surface</text>
+            </svg>
+            <figcaption>Conceptual diagram of the problem the paper addresses. The full page has an interactive version.</figcaption>
+          </figure>
+        </article>
+
+        <article class="feature feature--model">
+          <div>
+            <p class="label feature__kind">Independent research &middot; Housing policy &middot; Jan&ndash;Jun 2026</p>
+            <h3><a href="Bellevue-Housing.html">Housing Friction Index</a></h3>
+            <p class="venue">Bellevue, Washington &middot; policy review, seven practitioner interviews, open-house fieldwork</p>
+            <p>Bellevue&rsquo;s 0.5% local real estate excise tax adds $7,000 to a $1.4 million sale. I used that line item as an entry point to model how taxes, zoning, parking, permitting, mortgage rates, and supply accumulate into affordability pressure&mdash;and found that, on its own, the tax is one of the smaller forces.</p>
+            <a class="more-link" href="Bellevue-Housing.html">Explore the model</a>
+          </div>
+          <figure class="feature__visual chart-wrap">
+            <p class="label" id="home-concern-h">What agents worried about most</p>
+            <svg class="chart" viewBox="0 0 530 204" role="group" aria-labelledby="home-concern-h home-concern-c">
+              <line class="grid" x1="140" y1="26" x2="140" y2="200"/>
+              <text class="axis-label" x="140" y="20" text-anchor="middle">0</text>
+              <line class="grid" x1="206" y1="26" x2="206" y2="200"/>
+              <text class="axis-label" x="206" y="20" text-anchor="middle">1</text>
+              <line class="grid" x1="272" y1="26" x2="272" y2="200"/>
+              <text class="axis-label" x="272" y="20" text-anchor="middle">2</text>
+              <line class="grid" x1="338" y1="26" x2="338" y2="200"/>
+              <text class="axis-label" x="338" y="20" text-anchor="middle">3</text>
+              <line class="grid" x1="404" y1="26" x2="404" y2="200"/>
+              <text class="axis-label" x="404" y="20" text-anchor="middle">4</text>
+              <line class="grid" x1="470" y1="26" x2="470" y2="200"/>
+              <text class="axis-label" x="470" y="20" text-anchor="middle">5</text>
+              <line class="baseline" x1="140" y1="26" x2="140" y2="200"/>
+              <g class="mark" data-tip="Mortgage rates: mean concern 4.9 of 5">
+                <rect class="hit" x="0" y="30" width="530" height="34"/>
+                <text x="130" y="51" text-anchor="end">Mortgage rates</text>
+                <path class="bar" d="M140 40h319.4a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-319.4z"/>
+                <text class="value-label" x="471.4" y="51">4.9</text>
+              </g>
+              <g class="mark" data-tip="Net proceeds: mean concern 4.4 of 5">
+                <rect class="hit" x="0" y="64" width="530" height="34"/>
+                <text x="130" y="85" text-anchor="end">Net proceeds</text>
+                <path class="bar" d="M140 74h286.4a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-286.4z"/>
+                <text class="value-label" x="438.4" y="85">4.4</text>
+              </g>
+              <g class="mark" data-tip="Concessions: mean concern 3.8 of 5">
+                <rect class="hit" x="0" y="98" width="530" height="34"/>
+                <text x="130" y="119" text-anchor="end">Concessions</text>
+                <path class="bar" d="M140 108h246.8a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-246.8z"/>
+                <text class="value-label" x="398.8" y="119">3.8</text>
+              </g>
+              <g class="mark" data-tip="Inventory: mean concern 3.6 of 5">
+                <rect class="hit" x="0" y="132" width="530" height="34"/>
+                <text x="130" y="153" text-anchor="end">Inventory</text>
+                <path class="bar" d="M140 142h233.6a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-233.6z"/>
+                <text class="value-label" x="385.6" y="153">3.6</text>
+              </g>
+              <g class="mark" data-tip="Local REET: mean concern 3.1 of 5">
+                <rect class="hit" x="0" y="166" width="530" height="34"/>
+                <text x="130" y="187" text-anchor="end">Local REET</text>
+                <path class="bar bar--alt" d="M140 176h200.6a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-200.6z"/>
+                <text class="value-label" x="352.6" y="187">3.1</text>
+              </g>
+            </svg>
+            <figcaption id="home-concern-c">Mean concern intensity (1 = peripheral, 5 = central), coded from seven interviews with Eastside real estate professionals. The local tax (blue) ranked lowest. Small qualitative sample; not a survey. Source: Housing Friction Index, participation study.</figcaption>
+          </figure>
+        </article>
+
+        <div class="pair">
+          <article>
+            <p class="label">Organization &middot; Founder and president &middot; 2023&ndash;2026</p>
+            <h3><a href="synaperge.html">Synaperge</a></h3>
+            <p>An interdisciplinary community I founded in August 2023: seminars built around open discussion, a Problem Lab where mixed teams take on real problems, a free introductory AI course on Canvas, and showcases of member projects.</p>
+            <p class="meta-line">Grew to over 60 active members by early 2025.</p>
+          </article>
+          <article>
+            <p class="label">Employment &middot; Strategic operations &middot; 2024&ndash;present</p>
+            <h3><a href="experience-dfdraw.html">DFDraw Lab</a></h3>
+            <p>Planning, internal coordination, and process design for an independent design studio that works across the United States and China, so coordination has to hold up across a large time difference.</p>
+            <p class="meta-line">Case study with an operating-model diagram.</p>
+          </article>
         </div>
-        <div>
-          <p><strong>Education:</strong> University of California, Los Angeles (UCLA), B.S. in Statistics and Data Science.</p>
-          <p><strong>Professional certifications:</strong> Stanford University Machine Learning Specialization Certificate; IBM Artificial Intelligence Fundamentals Certificate; Google Advanced Data Analytics.</p>
-        </div>
+
+        <a class="more-link" href="work.html">All work, filterable by type</a>
       </div>
     </section>
 
-    <section id="contact">
-      <div class="container split reveal">
-        <div>
-          <div class="section-kicker">Contact</div>
-          <h2 class="section-title">Let’s build thoughtful systems.</h2>
+    <!-- 03 Experience -->
+    <section class="section section--raised" id="experience" aria-labelledby="exp-h">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="section-no"><span>03</span>Experience</p>
+          <h2 id="exp-h">Roles since 2023</h2>
+          <p class="section-dek">Employment, leadership, and civic work. Several overlapped; the chart shows how.</p>
+        </header>
+
+        <figure class="figure">
+          <ul class="legend" aria-label="Legend">
+            <li><span class="swatch swatch--1" aria-hidden="true"></span>Employment</li>
+            <li><span class="swatch swatch--2" aria-hidden="true"></span>Leadership and civic</li>
+          </ul>
+          <div class="figure-scroll chart-wrap">
+            <svg class="chart gantt gantt--wide" viewBox="0 0 960 244" role="group" aria-labelledby="gantt-t">
+              <title id="gantt-t">Timeline of roles, January 2023 to November 2026</title>
+              <line class="grid" x1="270" y1="34" x2="270" y2="214"/>
+              <line class="grid" x1="437.5" y1="34" x2="437.5" y2="214"/>
+              <line class="grid" x1="605" y1="34" x2="605" y2="214"/>
+              <line class="grid" x1="772.5" y1="34" x2="772.5" y2="214"/>
+              <line class="grid" x1="940" y1="34" x2="940" y2="214"/>
+              <text class="tick" x="353.8" y="24" text-anchor="middle">2023</text>
+              <text class="tick" x="521.3" y="24" text-anchor="middle">2024</text>
+              <text class="tick" x="688.8" y="24" text-anchor="middle">2025</text>
+              <text class="tick" x="856.3" y="24" text-anchor="middle">2026</text>
+
+              <g class="mark" tabindex="0" role="img" aria-label="Synaperge, founder and president, August 2023 to September 2026" data-tip="Synaperge · Aug 2023 – Sep 2026">
+                <rect class="hit" x="0" y="40" width="960" height="44"/>
+                <text class="lane-label" x="0" y="58">Founder and President</text>
+                <text class="lane-org" x="0" y="75">Synaperge</text>
+                <rect class="span span--civic" x="367.7" y="55" width="530.4" height="14" rx="3"/>
+              </g>
+              <g class="mark" tabindex="0" role="img" aria-label="DFDraw Lab, strategic operations lead, 2024 to present" data-tip="DFDraw Lab · 2024 – present">
+                <rect class="hit" x="0" y="84" width="960" height="44"/>
+                <text class="lane-label" x="0" y="102">Strategic Operations Lead</text>
+                <text class="lane-org" x="0" y="119">DFDraw Lab</text>
+                <rect class="span" x="437.5" y="99" width="481.6" height="14" rx="3"/>
+              </g>
+              <g class="mark" tabindex="0" role="img" aria-label="Bellevue School District Strategic Plan Coalition, representative, 2024 to 2025" data-tip="BSD Strategic Plan Coalition · 2024 – 2025">
+                <rect class="hit" x="0" y="128" width="960" height="44"/>
+                <text class="lane-label" x="0" y="146">Coalition Representative</text>
+                <text class="lane-org" x="0" y="163">Bellevue School District</text>
+                <rect class="span span--civic" x="437.5" y="143" width="335" height="14" rx="3"/>
+              </g>
+              <g class="mark" tabindex="0" role="img" aria-label="UCLA Anderson, technology consultant, October 2026 to present" data-tip="UCLA Anderson · Oct 2026 – present">
+                <rect class="hit" x="0" y="172" width="960" height="44"/>
+                <text class="lane-label" x="0" y="190">Technology Consultant</text>
+                <text class="lane-org" x="0" y="207">UCLA Anderson</text>
+                <rect class="span" x="898.1" y="187" width="21" height="14" rx="3"/>
+              </g>
+              <line class="now" x1="919.1" y1="34" x2="919.1" y2="222"/>
+              <text class="now-label" x="919.1" y="238" text-anchor="middle">Nov 2026</text>
+            </svg>
+          </div>
+          <figcaption><span class="fig-no">Figure 1.</span>Roles by start and end date. Bars are drawn at the precision of the dates on record: month where known, otherwise the full year. Open-ended roles run to the gold line (today).</figcaption>
+        </figure>
+
+        <ol class="ledger">
+          <li>
+            <div class="ledger__row">
+              <p class="ledger__when">Oct 2026 &ndash; now</p>
+              <div>
+                <h3 class="ledger__title"><a href="FTTC.html">Technology Consultant</a></h3>
+                <p class="ledger__org">UCLA Anderson School of Management &middot; Computing and Information Services</p>
+                <p class="ledger__body">Front-line technology support for the Anderson community: accounts, devices, peripherals, networking, and school-specific services, explained in plain language.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="ledger__row">
+              <p class="ledger__when">2024 &ndash; now</p>
+              <div>
+                <h3 class="ledger__title"><a href="experience-dfdraw.html">Strategic Operations Lead</a></h3>
+                <p class="ledger__org">DFDraw Lab &middot; independent design studio, US and China</p>
+                <p class="ledger__body">Structural planning, internal governance, and cross-team coordination. Facilitated collaboration across three projects and started the studio&rsquo;s Medium publishing effort.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="ledger__row">
+              <p class="ledger__when">2024 &ndash; 2025</p>
+              <div>
+                <h3 class="ledger__title"><a href="leadership-bellevue.html">Representative, Strategic Plan Coalition</a></h3>
+                <p class="ledger__org">Bellevue School District &middot; 2024&ndash;2029 strategic plan</p>
+                <p class="ledger__body">One of the community members advising district leaders on the five-year plan, with a focus on student voice and qualitative measures of progress.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="ledger__row">
+              <p class="ledger__when">Aug 2023 &ndash; Sep 2026</p>
+              <div>
+                <h3 class="ledger__title"><a href="synaperge.html">Founder and President</a></h3>
+                <p class="ledger__org">Synaperge &middot; interdisciplinary community</p>
+                <p class="ledger__body">Started the organization, ran its seminar program, led the planning of its introductory AI ethics course, and guided three member projects.</p>
+              </div>
+            </div>
+          </li>
+        </ol>
+        <a class="more-link" href="experience.html">Experience and affiliations in full</a>
+      </div>
+    </section>
+
+    <!-- 04 Writing -->
+    <section class="section" id="writing" aria-labelledby="writing-h">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="section-no"><span>04</span>Writing</p>
+          <h2 id="writing-h">Publications</h2>
+          <p class="section-dek">One peer-reviewed paper, two books, and a running series of essays on judgment and automated systems.</p>
+        </header>
+
+        <div class="shelf">
+          <article class="shelf__item">
+            <a href="research-finance.html" class="shelf__paper" aria-hidden="true" tabindex="-1">
+              <span class="series">Lecture Notes in Computer Science &middot; 16342</span>
+              <span class="title">Revolutionizing Household Finance</span>
+              <span class="doi">doi:10.1007/978-3-032-13164-5_2</span>
+            </a>
+            <p class="label">Paper &middot; 2026</p>
+            <h3><a href="research-finance.html">Revolutionizing Household Finance</a></h3>
+            <p class="venue">HCI International 2025 &ndash; Late Breaking Papers, Springer</p>
+            <p>A mixed-methods study of fragmented financial tools and a prototype that unifies them.</p>
+          </article>
+          <article class="shelf__item">
+            <a href="research-echoes.html" aria-hidden="true" tabindex="-1"><img src="assets/images/cover-echoes.jpg" width="334" height="500" alt="" loading="lazy"></a>
+            <p class="label">Book &middot; 2025 &middot; 175 pp.</p>
+            <h3><a href="research-echoes.html">Echoes in the Machine: Relevance Gravity of Generative AI</a></h3>
+            <p>How ranking and generative systems pull attention toward what is most engaging and easiest to consume, and what that does to learning and shared meaning.</p>
+          </article>
+          <article class="shelf__item">
+            <a href="research-outsourcing.html" aria-hidden="true" tabindex="-1"><img src="assets/images/cover-human-centered-innovation.jpg" width="334" height="500" alt="" loading="lazy"></a>
+            <p class="label">Book &middot; 2026 &middot; 257 pp.</p>
+            <h3><a href="research-outsourcing.html">Human-Centered, Sustainable, and Socially-Responsible Innovation</a></h3>
+            <p>On what happens to judgment when software suggests, ranks, and sets defaults&mdash;and why a person &ldquo;in the loop&rdquo; is not automatically the one deciding.</p>
+          </article>
         </div>
-        <div>
-          <p>I welcome conversations across ideas, disciplines, and stages of the journey—if you’re building, questioning, exploring, or imagining what comes next, I’d be delighted to connect and create something meaningful together.</p>
-          <div class="links">
-            <a href="https://www.linkedin.com/in/henglongdang/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+
+        <h3 class="label subhead">Recent essays</h3>
+        <ul class="essay-list">
+          <li><time datetime="2026-09-17">Sep 2026</time><a href="https://henglongdang.medium.com/choosing-slower-wiser-decisions-when-efficiency-should-be-resisted-eb09ecc8ee43" rel="noopener" data-external>Choosing Slower, Wiser Decisions: When Efficiency Should Be Resisted</a></li>
+          <li><time datetime="2026-08-27">Aug 2026</time><a href="https://medium.com/design-bootcamp/toward-more-human-centered-decision-systems-46d7190f0b0e" rel="noopener" data-external>Toward More Human-Centered Decision Systems</a></li>
+          <li><time datetime="2026-08-06">Aug 2026</time><a href="https://medium.com/design-bootcamp/human-centered-engineering-beyond-interfaces-308e32499e8f" rel="noopener" data-external>Human-Centered Engineering Beyond Interfaces</a></li>
+          <li><time datetime="2026-07-15">Jul 2026</time><a href="https://medium.com/design-bootcamp/decision-making-as-a-human-skill-judgment-as-a-practice-not-a-trait-ef730cc255eb" rel="noopener" data-external>Decision-Making as a Human Skill: Judgment as a Practice, Not a Trait</a></li>
+        </ul>
+        <a class="more-link" href="publications.html">Full publication list</a>
+      </div>
+    </section>
+
+    <!-- 05 Background -->
+    <section class="section section--raised" id="background" aria-labelledby="bg-h">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="section-no"><span>05</span>Background</p>
+          <h2 id="bg-h">Education and training</h2>
+        </header>
+        <div class="edu">
+          <div>
+            <h3>University of California, Los Angeles</h3>
+            <p>B.S., Statistics and Data Science</p>
+            <h3 class="edu__next">Bellevue College</h3>
+            <p>Coursework in statistical modeling, software development, calculus, marketing, and chemistry</p>
+          </div>
+          <div>
+            <ul>
+              <li><strong>Machine Learning Specialization</strong>Stanford University (online certificate)</li>
+              <li><strong>Advanced Data Analytics</strong>Google (professional certificate)</li>
+              <li><strong>Artificial Intelligence Fundamentals</strong>IBM (certificate)</li>
+              <li><strong>Member, Association for the Advancement of Artificial Intelligence</strong>Since 2025 &middot; <a href="aaai.html">what this involves</a></li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="container">
-    <div class="links" style="margin-bottom:.8rem;">
-      <a href="#about">About</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#writing">Publications</a><a href="#background">Background</a><a href="#contact">Contact</a>
+  <!-- @footer -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <p class="label">Contact</p>
+          <h2>Write to me directly.</h2>
+          <p>I am glad to hear about research collaborations, roles in data, product, or technology operations, and questions about anything on this site.</p>
+          <div class="email-line">
+            <a href="mailto:danghenglong@gmail.com">danghenglong@gmail.com</a>
+            <button class="copy-button" type="button" data-copy="danghenglong@gmail.com" data-status="copy-status">Copy address</button>
+            <span id="copy-status" class="copy-status" role="status"></span>
+          </div>
+        </div>
+        <div>
+          <p class="label">Elsewhere</p>
+          <ul class="elsewhere">
+            <li><a href="https://www.linkedin.com/in/henglongdang/" rel="noopener" data-external>LinkedIn</a></li>
+            <li><a href="https://scholar.google.com/citations?user=D06-T50AAAAJ&amp;hl=en" rel="noopener" data-external>Google Scholar</a></li>
+            <li><a href="https://orcid.org/0009-0002-5215-9534" rel="noopener" data-external>ORCID</a></li>
+            <li><a href="https://medium.com/@henglongdang" rel="noopener" data-external>Medium</a></li>
+            <li><a href="https://www.crunchbase.com/person/henglong-dang" rel="noopener" data-external>Crunchbase</a></li>
+            <li><a href="https://www.f6s.com/henglongdang" rel="noopener" data-external>F6S</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="colophon">
+        <p>&copy; 2026 Henglong Dang</p>
+        <p>Set in Fraunces and Inter. A static site on GitHub Pages &middot; <a href="https://github.com/henglongdang/home" rel="noopener">source</a></p>
+        <p><a href="#top">Back to top</a></p>
+      </div>
     </div>
-    <small>© 2026 Henglong Dang · Research, writing, and human-centered systems.</small>
   </footer>
-
-  <div class="page-meta">
-    <p class="last-updated">Last updated 9/13/2026</p>
-    <a class="back-to-top" href="#top" aria-label="Back to top">Top ↑</a>
-  </div>
-
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-
-    window.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 6;
-      const y = (e.clientY / window.innerHeight - 0.5) * 6;
-      document.querySelector('.ambient').style.transform = `translate(${x}px, ${y}px)`;
-    });
-  </script>
+  <a class="to-top" href="#top" aria-label="Back to top"><span aria-hidden="true">&uarr;</span></a>
+  <!-- /@footer -->
 </body>
 </html>
