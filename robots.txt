@@ -2,6 +2,5 @@
 # so this file is advisory for a project site. Submit the sitemap in Google Search Console.
 User-agent: *
 Allow: /
-Disallow: /home/ORIGINAL%20index.html
 Disallow: /home/docs/
 Sitemap: https://henglongdang.github.io/home/sitemap.xml
