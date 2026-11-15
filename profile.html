@@ -18,7 +18,7 @@
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;family=Inter:wght@400;500;600&amp;display=swap">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -54,6 +54,7 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <ul>
           <li><a href="work.html">Work</a></li>
+          <li><a href="methods.html">Methods</a></li>
           <li><a href="experience.html">Experience</a></li>
           <li><a href="publications.html">Writing</a></li>
           <li><a href="profile.html" aria-current="page">About</a></li>
@@ -69,12 +70,13 @@
       <div class="wrap page-head__grid page-head__grid--media">
         <div>
           <p class="label kind">About</p>
-          <h1>Henglong Dang</h1>
-          <p class="dek">Statistics and data science by training. Research, writing, and operations by practice. Most interested in how people make decisions inside systems they did not design.</p>
+          <h1 class="name">Henglong Dang</h1>
+          <p class="dek">Statistics and data science student at UCLA. I use survey analytics, inferential statistics, and modeling to study how people make decisions inside systems they did not design.</p>
           <dl class="meta">
-            <div><dt>Education</dt><dd>B.S., Statistics and Data Science, UCLA</dd></div>
+            <div><dt>Study</dt><dd>Statistics and Data Science, UCLA</dd></div>
+            <div><dt>Focus</dt><dd>Statistical analysis, data science, business analytics</dd></div>
             <div><dt>Currently</dt><dd>Technology Consultant, UCLA Anderson; Strategic Operations Lead, DFDraw Lab</dd></div>
-            <div><dt>Languages</dt><dd>English, Chinese; conversational Spanish</dd></div>
+            <div><dt>Languages</dt><dd>English, Chinese, Spanish</dd></div>
           </dl>
         </div>
         <div class="page-head__media">
@@ -99,8 +101,8 @@
           <section id="story" aria-labelledby="story-h">
             <h2 id="story-h">In brief</h2>
             <div class="prose">
-              <p>I studied statistics and data science at UCLA, after earlier coursework at Bellevue College in statistical modeling, software development, calculus, marketing, and chemistry. Statistics left me with a lasting suspicion of single numbers. A satisfaction score, a tax rate, a member count: each means something only next to its scale, its sample, and what it leaves out.</p>
-              <p>My work since has moved between three settings that turn out to have a lot in common. In research, I have studied how households manage money across fragmented apps and how small housing costs stack into large ones. In writing, I have spent two books on what happens to human judgment once software starts to suggest, rank, and decide. In operations, I have built a community organization from nothing, coordinated a design studio across the Pacific, and now help people at UCLA Anderson when their technology stops cooperating.</p>
+              <p>I study statistics and data science at UCLA. Statistics has left me with a lasting suspicion of single numbers. A satisfaction score, a tax rate, a member count: each means something only next to its scale, its sample, and what it leaves out.</p>
+              <p>My work moves between three settings that turn out to have a lot in common. In research, I have used a 342-person survey, ANOVA, correlation, and factor analysis to study how households manage money across fragmented apps, and built a weighted cost index to study how small housing costs stack into large ones. In writing, I have spent two books on what happens to human judgment once software starts to suggest, rank, and decide. In operations, I have built a community organization from nothing, coordinated a design studio across the Pacific, and now help people at UCLA Anderson when their technology stops cooperating.</p>
               <p>The common thread is that the visible problem is rarely the whole problem.</p>
             </div>
           </section>
@@ -109,8 +111,16 @@
             <h2 id="threads-h">What I work on</h2>
             <div class="cols-2">
               <div>
+                <h3>Statistics and data science</h3>
+                <p>Survey design, descriptive and inferential statistics, factor analysis, composite indices, and cost modeling, applied to real questions and reported with their limits. The <a href="methods.html">methods page</a> lists each method with the result it produced.</p>
+              </div>
+              <div>
+                <h3>Business analytics</h3>
+                <p>Turning data into decisions: feature priorities set from user ratings and a business model for the FamilyPulse product concept; municipal revenue weighed against market effects in the housing study; goals tied to budget targets on the school district coalition.</p>
+              </div>
+              <div>
                 <h3>Decisions inside software</h3>
-                <p>How interface structure shapes what people can understand and do. My <a href="research-finance.html">HCII 2025 paper</a> combined a 342-person survey and 35 interviews to show how fragmented finance tools load work onto households, and tested a unified alternative.</p>
+                <p>How interface structure shapes what people can understand and do. My <a href="research-finance.html">HCII 2025 paper</a> showed that the number of finance tools people juggle correlates with cognitive fatigue (r = 0.58) and tested a unified alternative with 16 users.</p>
               </div>
               <div>
                 <h3>Systems problems in civic life</h3>
@@ -120,10 +130,6 @@
                 <h3>Judgment and AI</h3>
                 <p>Two books&mdash;<a href="research-echoes.html"><em>Echoes in the Machine</em></a> on knowledge and <a href="research-outsourcing.html"><em>Human-Centered, Sustainable, and Socially-Responsible Innovation</em></a> on decisions&mdash;and an ongoing series of <a href="publications.html#essays">essays</a>.</p>
               </div>
-              <div>
-                <h3>Product and ventures</h3>
-                <p>Where research becomes something people use. FamilyPulse started as a research question and ended as a product concept with a business model; I am interested in that path, and in early-stage ventures generally.</p>
-              </div>
             </div>
           </section>
 
@@ -132,7 +138,7 @@
             <ol class="steps">
               <li><h3>Start from a concrete observation</h3><p>A tax line on my own closing statement started the housing project; the everyday experience of juggling separate finance apps started the household finance paper. Abstract questions come later.</p></li>
               <li><h3>Find the layers underneath</h3><p>Ask what the visible issue sits on. In technology support that is account, device, network, service; in housing it is tax, zoning, financing, supply.</p></li>
-              <li><h3>Use more than one kind of evidence</h3><p>Surveys with interviews; policy documents with fieldwork. Each covers what the other cannot.</p></li>
+              <li><h3>Measure, then test</h3><p>Describe the data first, then test the claim: an ANOVA for group differences, a correlation for association, a factor analysis to find structure. Pair numbers with interviews or fieldwork, because each covers what the other cannot.</p></li>
               <li><h3>Say what the evidence cannot show</h3><p>A modeled correlation is not a finding; seven interviews are not a population. I would rather state the limit than have a reader discover it.</p></li>
               <li><h3>Make the result usable</h3><p>A prototype, a calculator, a course, a clear explanation at a help desk. Analysis that nobody can act on is unfinished.</p></li>
             </ol>
@@ -152,9 +158,7 @@
             <div class="edu">
               <div>
                 <h3>University of California, Los Angeles</h3>
-                <p>B.S., Statistics and Data Science</p>
-                <h3 class="edu__next">Bellevue College</h3>
-                <p>Coursework in statistical modeling, software development, calculus, marketing, and chemistry</p>
+                <p>Statistics and Data Science (B.S.)</p>
               </div>
               <div>
                 <ul>
@@ -192,8 +196,8 @@
           <h2>Write to me directly.</h2>
           <p>I am glad to hear about research collaborations, roles in data, product, or technology operations, and questions about anything on this site.</p>
           <div class="email-line">
-            <a href="mailto:danghenglong@gmail.com">danghenglong@gmail.com</a>
-            <button class="copy-button" type="button" data-copy="danghenglong@gmail.com" data-status="copy-status">Copy address</button>
+            <span class="email-text">hldang[at]ucla[dot]edu</span>
+            <button class="copy-button" type="button" data-copy-user="hldang" data-copy-domain="ucla.edu" data-status="copy-status">Copy address</button>
             <span id="copy-status" class="copy-status" role="status"></span>
           </div>
         </div>

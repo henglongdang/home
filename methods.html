@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data and methods — Henglong Dang</title>
+  <meta name="description" content="The statistical and analytical methods behind Henglong Dang's research: survey design, descriptive and inferential statistics (ANOVA, correlation, exploratory factor analysis), usability metrics, qualitative coding, composite indices, cost modeling, and measurement design.">
+  <link rel="canonical" href="https://henglongdang.github.io/home/methods.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Henglong Dang">
+  <meta property="og:title" content="Data and methods — Henglong Dang">
+  <meta property="og:description" content="Survey analytics, inferential statistics, factor analysis, composite indices, and cost modeling, with the results each produced.">
+  <meta property="og:url" content="https://henglongdang.github.io/home/methods.html">
+  <meta property="og:image" content="https://henglongdang.github.io/home/assets/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- @head -->
+  <meta name="theme-color" content="#12110f">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="assets/js/site.js" defer></script>
+  <!-- /@head -->
+</head>
+<body id="top" data-nav="methods" data-current="page">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html">Henglong Dang</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle__bars" aria-hidden="true"></span>Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="methods.html" aria-current="page">Methods</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="publications.html">Writing</a></li>
+          <li><a href="profile.html">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- /@header -->
+
+  <main id="main">
+    <header class="page-head">
+      <div class="wrap">
+        <p class="label kind">Statistics, data science, and analytics</p>
+        <h1>Data and methods</h1>
+        <p class="dek">The quantitative and analytical methods behind my research, where I used each one, what it showed, and where its limits are. Every figure links back to its project.</p>
+        <dl class="meta">
+          <div><dt>Study</dt><dd>Statistics and Data Science, UCLA</dd></div>
+          <div><dt>Certificates</dt><dd>Google Advanced Data Analytics; Machine Learning Specialization (Stanford, online); IBM AI Fundamentals</dd></div>
+          <div><dt>Instruments and tools</dt><dd>Survey design in Typeform; prototyping in Figma; SVG data visualization</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="section section--tight" aria-labelledby="matrix-h">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="section-no"><span>01</span>Overview</p>
+          <h2 id="matrix-h">Methods by project</h2>
+          <p class="section-dek">A filled mark means the method was applied and produced reported results; an open mark means it was designed or used in an exploratory way only.</p>
+        </header>
+        <div class="table-scroll">
+          <table class="data-table matrix">
+            <caption>Methods used across three projects</caption>
+            <thead>
+              <tr>
+                <th scope="col">Method</th>
+                <th scope="col"><a href="research-finance.html">Household finance paper</a></th>
+                <th scope="col"><a href="Bellevue-Housing.html">Housing Friction Index</a></th>
+                <th scope="col"><a href="leadership-bellevue.html">BSD goals and measures</a></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Survey and instrument design</th><td><span class="dot-full" aria-hidden="true">&#9679;</span> 28-item survey, N = 342</td><td><span class="dot-full" aria-hidden="true">&#9679;</span> 7-question interview protocol</td><td><span class="dot-full" aria-hidden="true">&#9679;</span> Measure design</td></tr>
+              <tr><th scope="row">Descriptive statistics</th><td><span class="dot-full" aria-hidden="true">&#9679;</span> Satisfaction M = 2.7</td><td><span class="dot-full" aria-hidden="true">&#9679;</span> Concern means, topic counts</td><td></td></tr>
+              <tr><th scope="row">One-way ANOVA</th><td><span class="dot-full" aria-hidden="true">&#9679;</span> F(2, 328) = 5.84</td><td></td><td></td></tr>
+              <tr><th scope="row">Correlation</th><td><span class="dot-full" aria-hidden="true">&#9679;</span> r = 0.58</td><td><span class="dot-open" aria-hidden="true">&#9675;</span><span class="visually-hidden">Exploratory or designed: </span> Modeled r = 0.39</td><td></td></tr>
+              <tr><th scope="row">Exploratory factor analysis</th><td><span class="dot-full" aria-hidden="true">&#9679;</span> 3 factors, 71.2%</td><td></td><td></td></tr>
+              <tr><th scope="row">Usability metrics</th><td><span class="dot-full" aria-hidden="true">&#9679;</span> SUS 84.2</td><td></td><td></td></tr>
+              <tr><th scope="row">Qualitative coding</th><td><span class="dot-full" aria-hidden="true">&#9679;</span> 35 interviews</td><td><span class="dot-full" aria-hidden="true">&#9679;</span> 7 interviews, 101 mentions</td><td><span class="dot-open" aria-hidden="true">&#9675;</span><span class="visually-hidden">Exploratory or designed: </span> Qualitative measures</td></tr>
+              <tr><th scope="row">Composite index</th><td></td><td><span class="dot-full" aria-hidden="true">&#9679;</span> Friction Score</td><td></td></tr>
+              <tr><th scope="row">Cost and scenario modeling</th><td></td><td><span class="dot-full" aria-hidden="true">&#9679;</span> REET by price band</td><td></td></tr>
+              <tr><th scope="row">Causal research design</th><td></td><td><span class="dot-open" aria-hidden="true">&#9675;</span><span class="visually-hidden">Exploratory or designed: </span> Matched control ZIP</td><td></td></tr>
+              <tr><th scope="row">Business analytics</th><td><span class="dot-full" aria-hidden="true">&#9679;</span> Feature priorities, business model</td><td><span class="dot-full" aria-hidden="true">&#9679;</span> Revenue vs. market effect</td><td><span class="dot-open" aria-hidden="true">&#9675;</span><span class="visually-hidden">Exploratory or designed: </span> Budget-linked goals</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--raised" aria-labelledby="detail-h">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="section-no"><span>02</span>In detail</p>
+          <h2 id="detail-h">What each method showed</h2>
+          <p class="section-dek">Select a method.</p>
+        </header>
+        <div class="explorer" data-explorer data-default="anova">
+          <ul class="explorer__keys" aria-label="Methods">
+            <li><button type="button" data-key="survey">Survey design</button></li>
+            <li><button type="button" data-key="desc">Descriptive statistics</button></li>
+            <li><button type="button" data-key="anova">ANOVA</button></li>
+            <li><button type="button" data-key="corr">Correlation</button></li>
+            <li><button type="button" data-key="efa">Factor analysis</button></li>
+            <li><button type="button" data-key="sus">Usability metrics</button></li>
+            <li><button type="button" data-key="qual">Qualitative coding</button></li>
+            <li><button type="button" data-key="index">Composite index</button></li>
+            <li><button type="button" data-key="cost">Cost modeling</button></li>
+            <li><button type="button" data-key="causal">Causal design</button></li>
+            <li><button type="button" data-key="biz">Business analytics</button></li>
+            <li><button type="button" data-key="measure">Measurement design</button></li>
+          </ul>
+          <div class="explorer__panels" aria-live="polite">
+            <div class="explorer__panel" data-panel="survey">
+              <p class="label">Household finance paper</p>
+              <h3>Survey design and sampling</h3>
+              <p>A 28-item questionnaire in four domains (demographics, current tools, limitations, desired features) with 5-point Likert satisfaction items, piloted and revised for scale format and item order, then fielded for three weeks. Voluntary non-probability sampling with three inclusion criteria; 342 responses, 331 after cleaning (96.8%).</p>
+              <p><strong>Limit:</strong> a voluntary online sample skews toward digitally literate users, so results describe that population rather than all households.</p>
+            </div>
+            <div class="explorer__panel" data-panel="desc">
+              <p class="label">Household finance paper &middot; Housing Friction Index</p>
+              <h3>Descriptive statistics</h3>
+              <p>Finance: mean satisfaction 2.7 of 5 (SD 1.1), lowest for freelancers (2.3) and co-managing couples (2.4); 64.3% use two or more tools and 34.5% three or more. Housing: mean concern intensity across seven interviews, from 4.9 for mortgage rates to 3.1 for the local tax; 101 coded open-house topic mentions led by monthly payment (26) and rates (23).</p>
+              <p><strong>Limit:</strong> the housing figures come from small, deliberately local samples and describe patterns, not populations.</p>
+            </div>
+            <div class="explorer__panel" data-panel="anova">
+              <p class="label">Household finance paper</p>
+              <h3>One-way ANOVA</h3>
+              <p>Tested whether satisfaction with current finance tools differs across income groups. It does: <strong>F(2, 328) = 5.84, p &lt; .01</strong>. Combined with the group means, the reading is that volatile income makes inadequate tools feel worse.</p>
+              <p><strong>Limit:</strong> ANOVA shows that group means differ, not which pairs differ or why; group sizes were not reported.</p>
+            </div>
+            <div class="explorer__panel" data-panel="corr">
+              <p class="label">Household finance paper &middot; Housing Friction Index</p>
+              <h3>Correlation</h3>
+              <p>Finance: the number of tools used correlates with reported cognitive fatigue, <strong>r = 0.58, p &lt; .001</strong>&mdash;the study&rsquo;s central quantitative support for the fragmentation hypothesis. Housing: a <em>modeled</em> association of 0.39 between REET exposure and days on market, used only to decide what to test next.</p>
+              <p><strong>Limit:</strong> correlation is not causation; the housing value is not an observed estimate at all, which is why the project specifies a control-group design.</p>
+            </div>
+            <div class="explorer__panel" data-panel="efa">
+              <p class="label">Household finance paper</p>
+              <h3>Exploratory factor analysis</h3>
+              <p>Fourteen pain-point items, principal axis factoring with Promax rotation. Sampling adequacy KMO = 0.84; Bartlett&rsquo;s test &chi;&sup2;(91) = 973.24, p &lt; .001. Three factors explained 71.2% of variance: integration friction, forecasting insufficiency, and collaboration difficulty&mdash;which became the three design priorities.</p>
+              <p><strong>Limit:</strong> an exploratory structure from one sample; confirming it would need a confirmatory analysis on new data.</p>
+            </div>
+            <div class="explorer__panel" data-panel="sus">
+              <p class="label">Household finance paper</p>
+              <h3>Usability metrics</h3>
+              <p>Sixteen participants, five counterbalanced tasks. Task completion 94%; mean time on task 3.4 minutes (SD 1.1); 0.47 errors per task, mostly in permission settings; System Usability Scale 84.2 (SD 7.9).</p>
+              <p><strong>Limit:</strong> a remote session with simulated data measures usability, not whether the tool changes financial behaviour over time.</p>
+            </div>
+            <div class="explorer__panel" data-panel="qual">
+              <p class="label">All three projects</p>
+              <h3>Qualitative coding</h3>
+              <p>Finance: 35 semi-structured interviews and screen-shared task observation, synthesized into requirements. Housing: seven practitioner interviews coded by topic, concern intensity (1&ndash;5), and agreement level; open-house conversations coded once per visitor group. BSD: qualitative and experiential measures designed to sit alongside every numerical target.</p>
+            </div>
+            <div class="explorer__panel" data-panel="index">
+              <p class="label">Housing Friction Index</p>
+              <h3>Composite index construction</h3>
+              <p>Six components normalized to a 0&ndash;100 scale and weighted: REET burden 25%, zoning 20%, parking 15%, permit delay 15%, mortgage-rate exposure 15%, street-width walkability 10%. Interpretation bands: above 70, several channels active; 40&ndash;70, mixed; below 40, lower exposure.</p>
+              <p><strong>Limit:</strong> the weights are stated assumptions, published so they can be challenged; the index is for comparison, not forecasting.</p>
+            </div>
+            <div class="explorer__panel" data-panel="cost">
+              <p class="label">Housing Friction Index</p>
+              <h3>Cost and scenario modeling</h3>
+              <p>Transaction-cost arithmetic across sale-price bands: Washington&rsquo;s graduated state excise tax plus Bellevue&rsquo;s 0.5% local rate, compared with a no-local-tax scenario. At $1.4 million the local share is $7,000. <a href="Bellevue-Housing.html#calculator">Try the calculator</a>.</p>
+            </div>
+            <div class="explorer__panel" data-panel="causal">
+              <p class="label">Housing Friction Index</p>
+              <h3>Causal research design</h3>
+              <p>To test whether the local tax itself lengthens listings, the study specifies a matched comparison: Bellevue against a high-income ZIP code in a municipality without local REET, same months, controlling for property type, price band, rate period, and season, with days on market, price reductions, and list-to-sale ratio as outcomes.</p>
+              <p><strong>Status:</strong> designed, not yet run; until then, results are exploratory.</p>
+            </div>
+            <div class="explorer__panel" data-panel="biz">
+              <p class="label">Household finance &middot; Housing &middot; BSD</p>
+              <h3>Business analytics</h3>
+              <p>Finance: feature ratings (simulation 4.64, permissions 4.42, dashboard 4.37) set build priorities, and the product concept was paired with a business model of partner and affiliate revenue. Housing: municipal revenue purpose weighed against market effects, with policy alternatives&mdash;thresholds, exemptions, credits&mdash;framed as trade-offs. BSD: goals tied to budget decisions, including a fund-balance target from &minus;$5 million to at least &minus;$3 million.</p>
+            </div>
+            <div class="explorer__panel" data-panel="measure">
+              <p class="label">BSD goals and measures &middot; Household finance</p>
+              <h3>Measurement design</h3>
+              <p>Choosing what to measure before measuring it. The district plan pairs every quantitative target with qualitative and experiential evidence and disaggregates results by student group. The finance survey was built in four domains so that satisfaction, behaviour, and unmet needs could be analysed separately.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="principles-h">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="section-no"><span>03</span>Practice</p>
+          <h2 id="principles-h">How I report numbers</h2>
+        </header>
+        <ol class="steps steps--row">
+          <li><h3>State the scale</h3><p>2.7 out of 5 and 84.2 out of 100 come from different instruments. I never put them on one axis.</p></li>
+          <li><h3>Separate kinds of evidence</h3><p>Observed, coded, modeled, and assumed figures are labeled differently on every chart.</p></li>
+          <li><h3>Show the spread</h3><p>Means are shown with standard deviations where the source reports them.</p></li>
+          <li><h3>Name the limit</h3><p>Every project page ends with what the analysis cannot show.</p></li>
+        </ol>
+        <nav class="pager" aria-label="Projects">
+          <a href="research-finance.html"><span class="label">Most statistical depth</span><span class="title">Revolutionizing Household Finance</span></a>
+          <a class="next" href="Bellevue-Housing.html"><span class="label">Index and modeling</span><span class="title">Housing Friction Index</span></a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <!-- @footer -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <p class="label">Contact</p>
+          <h2>Write to me directly.</h2>
+          <p>I am glad to hear about research collaborations, roles in data, product, or technology operations, and questions about anything on this site.</p>
+          <div class="email-line">
+            <span class="email-text">hldang[at]ucla[dot]edu</span>
+            <button class="copy-button" type="button" data-copy-user="hldang" data-copy-domain="ucla.edu" data-status="copy-status">Copy address</button>
+            <span id="copy-status" class="copy-status" role="status"></span>
+          </div>
+        </div>
+        <div>
+          <p class="label">Elsewhere</p>
+          <ul class="elsewhere">
+            <li><a href="https://www.linkedin.com/in/henglongdang/" rel="noopener" data-external>LinkedIn</a></li>
+            <li><a href="https://scholar.google.com/citations?user=D06-T50AAAAJ&amp;hl=en" rel="noopener" data-external>Google Scholar</a></li>
+            <li><a href="https://orcid.org/0009-0002-5215-9534" rel="noopener" data-external>ORCID</a></li>
+            <li><a href="https://medium.com/@henglongdang" rel="noopener" data-external>Medium</a></li>
+            <li><a href="https://www.crunchbase.com/person/henglong-dang" rel="noopener" data-external>Crunchbase</a></li>
+            <li><a href="https://www.f6s.com/henglongdang" rel="noopener" data-external>F6S</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="colophon">
+        <p>&copy; 2026 Henglong Dang</p>
+        <p>Set in Fraunces and Inter. A static site on GitHub Pages &middot; <a href="https://github.com/henglongdang/home" rel="noopener">source</a></p>
+        <p><a href="#top">Back to top</a></p>
+      </div>
+    </div>
+  </footer>
+  <a class="to-top" href="#top" aria-label="Back to top"><span aria-hidden="true">&uarr;</span></a>
+  <!-- /@footer -->
+</body>
+</html>

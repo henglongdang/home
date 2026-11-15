@@ -27,7 +27,7 @@ facts rather than invented.
   - Generic hero label ("Systems Thinker · Innovator · Strategic Futurist") and slogan-style headline.
   - Decorative effects the brief rules out: blurred floating orbs (`.ambient`) animated forever, mouse-parallax listener, grain overlay, radial-gradient background.
   - Book subtitles contradict the book pages and ORCID (see §3).
-  - *Echoes* card introduces concepts ("synthetic consensus", "information warfare") that do not appear in the book's published description.
+  - *Echoes* card mentions "information warfare", which is not in the book. ("Synthetic consensus" *is* one of the book's glossary concepts, introduced in Chapter 4 — confirmed from the manuscript in revision 2.)
   - AAAI membership presented inside "Research & publications" as if it were a research output.
   - Invented-sounding pull quote ("The best interface is legible, deliberate, and ethically intelligible.") with no source.
   - No email or direct contact; only LinkedIn.
@@ -50,7 +50,7 @@ facts rather than invented.
   - "View detailed report" (`dfdrawlab.com/ux/ux-familypulse`) returns **HTTP 403 / S3 AccessDenied** — broken.
   - Feature list claims "measured improvement… reduced management friction" — the abstract reports satisfaction scores, not a measured reduction in friction.
   - Abstract gives N = 342 survey and N = 35 interviews; the older résumé (`ORIGINAL index.html`) says "24 usability interviews". These may describe different study phases — **unresolved**.
-  - Older résumé says the comparative analysis covered eight existing apps — not stated in the abstract.
+  - Older résumé says the comparative analysis covered eight existing apps. The camera-ready paper reports a heuristic evaluation of four (Mint, PocketSmith, Spendee, YNAB); the paper is used.
   - All images hot-linked to a third-party CDN; a 3 MB GIF loads on the page.
 - **Decision:** publication-style page; keep abstract verbatim; add research questions (transcribed from the original project slide), methodology process diagram, fragmented-vs-integrated interactive diagram (labeled conceptual), reported-figures table that keeps the two satisfaction measures on their own scales, full citation with copy button. Images stored locally.
 
@@ -123,9 +123,9 @@ facts rather than invented.
 
 1. UCLA degree status and expected/actual graduation year (the site shows the degree without a year).
 2. The DFDraw title and start date (see table).
-3. Whether `danghenglong@gmail.com` (found in the repository file `111`) should be published on the contact section. The redesign includes it with a copy button; remove it if you prefer LinkedIn only.
-4. The "eight existing financial apps" comparative analysis (old résumé) — kept as a methodology step; confirm.
-5. The "$20M district budget deficit" context for the BSD coalition (old résumé) — kept, attributed as budget context; confirm.
+3. ~~Personal email on the site~~ — resolved in revision 2: the site shows `hldang[at]ucla[dot]edu` only, with no `mailto:` link; the copy button assembles the address in JavaScript. The personal email and a phone number were also redacted from the legacy backup and draft files.
+4. ~~"Eight existing apps"~~ — resolved: replaced with the paper's four-app heuristic evaluation.
+5. ~~"$20M district budget deficit"~~ — resolved: removed. The page now cites the approved 2025–26 annual plan (fund balance target from −$5M to at least −$3M; "budget constraints and staffing reductions").
 6. Whether the Synaperge seminar count (7, old résumé) is still current.
 7. Whether `ORIGINAL index.html` should be deleted. It is kept, marked `noindex`, and removed from the sitemap. Its `<head>` contains an injected school web-filter script ("LS Filter", which posts to a non-existent `/…/log_flag` path) captured when the page was saved — another reason to delete it.
 8. Whether the youth AI ethics course you planned is the Canvas course *Introduction to Artificial Intelligence and Innovative Reasoning*; the redesign presents them separately.
@@ -133,7 +133,31 @@ facts rather than invented.
 10. New prose written in your voice — profile sections, DFDraw operating-loop descriptions, UCLA Anderson workflow descriptions — describes your work in general terms and should be checked for accuracy and tone.
 11. The "seven seminars" figure (old résumé) is used on the Synaperge page.
 
-## 5. Content principles applied
+## 5. Revision 2 (author feedback and primary sources)
+
+Author requests: list UCLA as the only school; show only `hldang[at]ucla[dot]edu`; restore the previous
+name typography; list languages without proficiency labels; drop the "Published" and "Operations" quick facts;
+emphasize statistics, data science, and business analytics.
+
+New primary sources (read locally, not added to the repository):
+
+| Source | Used for |
+|---|---|
+| HCII camera-ready paper (PDF) and conference slides | Survey design (28 items, 331 complete), demographics, ANOVA, Pearson r, EFA, feature ratings, heuristic review, formative testing, 16-person evaluation (SUS, completion, time, errors), limitations; wireframe, high-fidelity, and user-flow figures |
+| BSD coalition slides, notes, goals-and-measures drafts, 2025–26 annual plan, coalition web page | Coalition charge, formation, composition (41), meeting timeline, root causes, measurement blend, focus goals; final targets taken from the *published* plan, not the drafts |
+| *Echoes* manuscript, outline, back-cover blurb | Table of contents with page numbers, preface quotation, 32-concept glossary with formal definitions, 62-source bibliography |
+
+Corrections made from these sources:
+
+- The HCII "84.2" is a System Usability Scale score (n = 16); "2.7/5" is a survey Likert mean (SD 1.1).
+- BSD role described as "coalition member" (October 2024 – May 2025), matching the district roster; the plan
+  period is 2024–2030 in the published version.
+- UCLA described in the present tense ("I study…"), with no graduation year.
+
+Remaining for the author to confirm: the HCII "My role" sentence that you led the data analysis (the paper lists two
+authors without a contribution statement), and the profile's "Business analytics" description.
+
+## 6. Content principles applied
 
 - **Separation of kinds of work.** Peer-reviewed research, books, independent research, employment, organizational leadership, civic participation, and memberships are labeled as such everywhere.
 - **Measured vs conceptual.** Every diagram states whether it is conceptual, a model definition, illustrative arithmetic, or documented data. Charts show only figures that appear in a cited source, with n, units, and source.

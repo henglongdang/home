@@ -1,5 +1,25 @@
 # Changelog
 
+## [Unreleased] — revision 2, November 2026
+
+### Added
+- `methods.html` (Data and methods): methods-by-project matrix and twelve-method explorer; nav item; homepage section.
+- HCII page: sample, statistical analysis (ANOVA, correlation, EFA, feature ratings), qualitative findings,
+  design mapping, evaluation; 11 new charts and figures; wireframe, high-fidelity, and user-flow images.
+- BSD page: coalition composition chart, meeting timeline, measurement-blend explorer, absenteeism targets chart.
+- *Echoes* page: page-structure chart, chapter explorer, concepts-by-chapter chart, filterable 32-term glossary.
+
+### Changed
+- Name typography restored to the previous site (Fraunces 700 for the name; uppercase Inter in the header).
+- Copy and facts rebalanced toward statistics, data science, and business analytics.
+- Contact shown as `hldang[at]ucla[dot]edu`; copy button assembles the address in script.
+- Languages listed without proficiency labels.
+- BSD role, dates, and plan period corrected from district documents.
+
+### Removed
+- The non-UCLA coursework entry; the personal email and a phone number (including in legacy files).
+- The unsupported "eight apps" and "$20M deficit" claims.
+
 ## [Unreleased] — `portfolio-redesign` branch, November 2026
 
 A full redesign and content rebuild. Preview only; not yet published.

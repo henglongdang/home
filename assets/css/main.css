@@ -310,10 +310,11 @@ a[data-external]:hover::after { color: currentColor; }
   min-height: var(--header-h);
 }
 .brand {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 500;
-  letter-spacing: -0.005em;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--ink);
   text-decoration: none;
   white-space: nowrap;
@@ -452,6 +453,7 @@ a[data-external]:hover::after { color: currentColor; }
   gap: var(--space-3) var(--space-4);
   margin-top: var(--space-5);
 }
+.email-line .email-text,
 .email-line a {
   font-family: var(--font-display);
   font-size: var(--text-lg);

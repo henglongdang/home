@@ -12,7 +12,7 @@ Each page declares its navigation section on <body>:
 
     <body id="top" data-nav="work" data-progress>
 
-    data-nav       work | experience | writing | about | home
+    data-nav       work | methods | experience | writing | about | home
     data-current   "page" when the page *is* the section index (adds
                    aria-current="page"); otherwise the link is marked as the
                    current section only.
@@ -38,7 +38,7 @@ HEAD = """<!-- @head -->
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;family=Inter:wght@400;500;600&amp;display=swap">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -47,6 +47,7 @@ HEAD = """<!-- @head -->
 
 NAV = [
     ("work", "work.html", "Work"),
+    ("methods", "methods.html", "Methods"),
     ("experience", "experience.html", "Experience"),
     ("writing", "publications.html", "Writing"),
     ("about", "profile.html", "About"),
@@ -61,8 +62,8 @@ FOOTER = """<!-- @footer -->
           <h2>Write to me directly.</h2>
           <p>I am glad to hear about research collaborations, roles in data, product, or technology operations, and questions about anything on this site.</p>
           <div class="email-line">
-            <a href="mailto:danghenglong@gmail.com">danghenglong@gmail.com</a>
-            <button class="copy-button" type="button" data-copy="danghenglong@gmail.com" data-status="copy-status">Copy address</button>
+            <span class="email-text">hldang[at]ucla[dot]edu</span>
+            <button class="copy-button" type="button" data-copy-user="hldang" data-copy-domain="ucla.edu" data-status="copy-status">Copy address</button>
             <span id="copy-status" class="copy-status" role="status"></span>
           </div>
         </div>

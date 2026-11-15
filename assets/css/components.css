@@ -430,7 +430,8 @@ html:not(.js) .copy-button { display: none; }
 
 /* 12. Charts ---------------------------------------------------------------- */
 .chart { width: 100%; height: auto; font-family: var(--font-body); overflow: visible; }
-.chart:not(.gantt) { max-width: 37rem; }
+.chart:not(.gantt):not(.chart--strip):not(.chart--narrow) { max-width: 37rem; }
+.chart--narrow { max-width: 28rem; }
 .chart text { fill: var(--ink-soft); font-size: 12.5px; }
 .chart .axis-label { fill: var(--ink-faint); font-size: 11.5px; }
 .chart .value-label { fill: var(--ink); font-size: 12.5px; font-variant-numeric: tabular-nums; }
@@ -443,6 +444,9 @@ html:not(.js) .copy-button { display: none; }
 .chart .mark:focus-visible { outline: none; }
 .chart .mark .hit { fill: transparent; }
 .chart .line { stroke: var(--viz-1); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.chart .dot { fill: var(--viz-1); stroke: var(--paper-raised); stroke-width: 2; }
+.chart .mark:hover .dot, .chart .mark:focus-visible .dot { fill: var(--gold-strong); }
+.chart--strip { max-width: none; }
 
 .chart-tip {
   position: absolute;
@@ -466,7 +470,12 @@ html:not(.js) .copy-button { display: none; }
 .data-table th { color: var(--ink-faint); font-weight: 500; }
 .data-table td { color: var(--ink-soft); }
 .data-table td.num, .data-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
-.table-scroll { overflow-x: auto; }
+.table-scroll { overflow-x: auto; position: relative; }
+.matrix { min-width: 40rem; }
+.matrix th[scope="row"] { color: var(--ink); font-weight: 500; }
+.matrix thead th a { color: var(--ink); }
+.matrix .dot-full { color: var(--gold); margin-right: 0.35em; }
+.matrix .dot-open { color: var(--ink-faint); margin-right: 0.35em; }
 
 /* 13. Gantt timeline (experience) ------------------------------------------ */
 .gantt .lane-label { fill: var(--ink); font-size: 13px; }
@@ -482,6 +491,16 @@ html:not(.js) .copy-button { display: none; }
 .legend .swatch { width: 14px; height: 8px; border-radius: 0 4px 4px 0; display: inline-block; }
 .legend .swatch--1 { background: var(--viz-1); }
 .legend .swatch--2 { background: var(--viz-2); }
+.legend .swatch--muted { background: var(--viz-muted); }
+
+/* Glossary (book page) */
+.glossary { margin: 0; border-top: 1px solid var(--rule-strong); }
+.glossary__item { display: grid; gap: 0.2rem var(--space-6); padding: var(--space-4) 0; border-bottom: 1px solid var(--rule); }
+.glossary__item[hidden] { display: none; }
+@media (min-width: 48rem) { .glossary__item { grid-template-columns: 13rem minmax(0, 1fr); } }
+.glossary dt { font-family: var(--font-display); font-size: var(--text-md); color: var(--ink); }
+.glossary dd { margin: 0; color: var(--ink-soft); max-width: var(--measure); }
+.glossary__loc { display: block; margin-top: 0.35rem; font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
 
 /* 14. Calculator ----------------------------------------------------------- */
 .calc {
@@ -555,9 +574,10 @@ html:not(.js) .calc-live { display: none; }
 .hero { padding-block: clamp(2.5rem, 1.5rem + 5vw, 6rem) clamp(3rem, 2rem + 4vw, 6rem); }
 .hero__grid { display: grid; gap: var(--space-7); align-items: end; }
 @media (min-width: 60rem) { .hero__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); column-gap: clamp(2rem, 5vw, 5rem); } }
-.hero h1 { font-size: var(--text-display); line-height: 0.98; letter-spacing: -0.03em; font-weight: 400; }
-.hero h1 .given { display: block; }
-.hero h1 .family { display: block; font-style: italic; color: var(--gold); }
+/* The name keeps the previous site's treatment: Fraunces bold, one colour. */
+.hero h1 { font-size: var(--text-display); line-height: 1; letter-spacing: -0.015em; font-weight: 700; }
+.hero h1 .given, .hero h1 .family { display: block; }
+.page-head h1.name { font-weight: 700; letter-spacing: -0.015em; }
 .hero__intro { margin-top: var(--space-6); font-size: var(--text-md); line-height: 1.55; max-width: 34rem; color: var(--ink); }
 .hero__intro + p { color: var(--ink-soft); max-width: 34rem; }
 .hero__portrait { position: relative; margin: 0; max-width: 24rem; }
@@ -621,6 +641,14 @@ html:not(.js) .calc-live { display: none; }
 
 .more-link { display: inline-flex; gap: 0.4rem; margin-top: var(--space-6); font-weight: 500; }
 .more-link::after { content: "\2192"; color: var(--gold); }
+
+/* Methods list (homepage) */
+.method-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule-strong); }
+.method-list li { display: grid; gap: 0.15rem var(--space-6); margin: 0; padding: var(--space-4) 0; border-bottom: 1px solid var(--rule); }
+@media (min-width: 48rem) { .method-list li { grid-template-columns: 15rem minmax(0, 1fr) 9rem; align-items: baseline; } }
+.method-list__name { font-family: var(--font-display); font-size: var(--text-md); color: var(--ink); }
+.method-list__result { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.method-list a { font-size: var(--text-sm); color: var(--ink-faint); }
 
 /* Shelf: books + paper on homepage and publications */
 .shelf { display: grid; gap: var(--space-7); }

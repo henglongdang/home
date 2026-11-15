@@ -60,11 +60,14 @@
 
   /* Copy to clipboard ---------------------------------------------------- */
   function initCopy() {
-    $all("[data-copy], [data-copy-target]").forEach(function (btn) {
+    $all("[data-copy], [data-copy-target], [data-copy-user]").forEach(function (btn) {
       var original = btn.textContent;
       btn.addEventListener("click", function () {
         var text = btn.getAttribute("data-copy");
-        if (!text) {
+        if (btn.hasAttribute("data-copy-user")) {
+          // Address is assembled here so it never appears whole in the HTML.
+          text = btn.getAttribute("data-copy-user") + "@" + btn.getAttribute("data-copy-domain");
+        } else if (!text) {
           var target = doc.querySelector(btn.getAttribute("data-copy-target"));
           text = target ? target.textContent.replace(/\s+/g, " ").trim() : "";
         }
@@ -212,7 +215,7 @@
       buttons.forEach(function (b) { b.addEventListener("click", function () { apply(b.getAttribute("data-filter-value"), true); }); });
       var initial = new URLSearchParams(window.location.search).get("type");
       var valid = buttons.some(function (b) { return b.getAttribute("data-filter-value") === initial; });
-      apply(valid ? initial : "all", false);
+      apply(valid ? initial : (box.getAttribute("data-default") || "all"), false);
     });
   }
 

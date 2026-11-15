@@ -18,7 +18,7 @@
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&amp;family=Inter:wght@400;500;600&amp;display=swap">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -35,6 +35,7 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <ul>
           <li><a href="work.html" aria-current="page">Work</a></li>
+          <li><a href="methods.html">Methods</a></li>
           <li><a href="experience.html">Experience</a></li>
           <li><a href="publications.html">Writing</a></li>
           <li><a href="profile.html">About</a></li>
@@ -59,8 +60,8 @@
         <h2 id="index-h" class="visually-hidden">All work</h2>
         <ul class="filter-bar" aria-label="Filter by type">
           <li><button type="button" data-filter-value="all" aria-pressed="true">All</button></li>
+          <li><button type="button" data-filter-value="data" aria-pressed="false">Data science and analytics</button></li>
           <li><button type="button" data-filter-value="research" aria-pressed="false">Research</button></li>
-          <li><button type="button" data-filter-value="data" aria-pressed="false">Data and analysis</button></li>
           <li><button type="button" data-filter-value="product" aria-pressed="false">Product and systems</button></li>
           <li><button type="button" data-filter-value="writing" aria-pressed="false">Writing</button></li>
           <li><button type="button" data-filter-value="leadership" aria-pressed="false">Leadership and civic</button></li>
@@ -74,7 +75,7 @@
               <span class="work-item__year">2026</span>
               <span>
                 <span class="work-item__title" role="heading" aria-level="3">Housing Friction Index<span class="work-item__arrow" aria-hidden="true">&rarr;</span></span>
-                <span class="work-item__desc">How Bellevue&rsquo;s 0.5% local excise tax fits into a wider stack of housing costs. Policy review, seven practitioner interviews, open-house fieldwork, an interactive model and cost calculator.</span>
+                <span class="work-item__desc">A weighted composite index and transaction-cost model of how Bellevue&rsquo;s 0.5% local excise tax fits into a wider stack of housing costs, built from policy data, seven coded interviews, and open-house fieldwork.</span>
               </span>
               <span class="work-item__type"><span>Independent research</span><span>Housing policy</span></span>
             </a>
@@ -84,7 +85,7 @@
               <span class="work-item__year">2024&ndash;26</span>
               <span>
                 <span class="work-item__title" role="heading" aria-level="3">Revolutionizing Household Finance<span class="work-item__arrow" aria-hidden="true">&rarr;</span></span>
-                <span class="work-item__desc">Survey (N = 342) and interviews (N = 35) on fragmented finance tools, and an integrated prototype for shared household planning. Published in Springer LNCS, 2026.</span>
+                <span class="work-item__desc">Survey of 342 people analysed with ANOVA, correlation, and exploratory factor analysis; 35 interviews; an integrated prototype tested with 16 users (SUS 84.2). Springer LNCS, 2026.</span>
               </span>
               <span class="work-item__type"><span>Peer-reviewed paper</span><span>First author, HCII 2025</span></span>
             </a>
@@ -139,14 +140,14 @@
               <span class="work-item__type"><span>Employment</span><span>Strategic Operations Lead</span></span>
             </a>
           </li>
-          <li class="work-item" data-tags="leadership">
+          <li class="work-item" data-tags="leadership data">
             <a class="work-item__link" href="leadership-bellevue.html">
               <span class="work-item__year">2024&ndash;25</span>
               <span>
                 <span class="work-item__title" role="heading" aria-level="3">Bellevue School District Strategic Plan Coalition<span class="work-item__arrow" aria-hidden="true">&rarr;</span></span>
-                <span class="work-item__desc">Community representative advising on the district&rsquo;s 2024&ndash;2029 plan, focused on student voice and qualitative measures.</span>
+                <span class="work-item__desc">One of 41 members who developed the five-year goals, measures, and targets for the district&rsquo;s 2024&ndash;2030 plan, using a blend of quantitative, qualitative, and experiential measures.</span>
               </span>
-              <span class="work-item__type"><span>Civic participation</span><span>Representative</span></span>
+              <span class="work-item__type"><span>Civic participation</span><span>Coalition member</span></span>
             </a>
           </li>
           <li class="work-item" data-tags="leadership">
@@ -174,8 +175,8 @@
           <h2>Write to me directly.</h2>
           <p>I am glad to hear about research collaborations, roles in data, product, or technology operations, and questions about anything on this site.</p>
           <div class="email-line">
-            <a href="mailto:danghenglong@gmail.com">danghenglong@gmail.com</a>
-            <button class="copy-button" type="button" data-copy="danghenglong@gmail.com" data-status="copy-status">Copy address</button>
+            <span class="email-text">hldang[at]ucla[dot]edu</span>
+            <button class="copy-button" type="button" data-copy-user="hldang" data-copy-domain="ucla.edu" data-status="copy-status">Copy address</button>
             <span id="copy-status" class="copy-status" role="status"></span>
           </div>
         </div>

@@ -6,8 +6,48 @@
 - **Branch:** `portfolio-redesign`
 - **Local preview:** <http://localhost:8000/home/> (served from the parent folder so the
   `/home/` path matches GitHub Pages; see "Running the preview" below)
-- **Screenshots:** `docs/preview/` — desktop (1440px) and mobile (390px) for all 14 pages.
+- **Screenshots:** `docs/preview/` — desktop (1440px) and mobile (390px) for all pages.
   Kept out of Git on purpose (8 MB, and the folder would otherwise be publicly served).
+
+## Revision 2 — changes from your feedback
+
+| Request | What changed |
+|---|---|
+| UCLA as the only school | The other coursework entry was removed from the homepage, About page, legacy backup, and docs. Education shows UCLA only. Certificates (Stanford ML Specialization, Google Advanced Data Analytics, IBM AI Fundamentals) are kept, listed as certificates rather than schools. |
+| Use `hldang[at]ucla[dot]edu`, never the personal email | Footer on every page shows `hldang[at]ucla[dot]edu` as text; no `mailto:` link; the copy button assembles the address in JavaScript so it never appears whole in the HTML. The personal email **and a phone number** were also removed from `ORIGINAL index.html` and the legacy draft. |
+| Name font | Restored your previous treatment: header name in uppercase tracked Inter; hero name in Fraunces Bold (700), one colour, no gold italic. |
+| Languages | "English, Chinese, Spanish". |
+| Remove the Published/Operations facts | Removed. |
+| Emphasize data science, statistics, business analytics | New hero and profile copy; facts list now shows Study, Focus, Methods; new **Data and methods** page and nav item; new homepage methods section; methods-first filter on Work. Synaperge and DFDraw kept, lower in the hierarchy. |
+| Use the HCII paper, BSD files, and *Echoes* manuscript | See below. |
+
+**Household finance paper** — rebuilt around the camera-ready paper: sample section (28-item survey, 342 → 331
+complete, demographics), statistical analysis (one-way ANOVA, Pearson r = 0.58, exploratory factor analysis with KMO
+and Bartlett, feature ratings with SDs, pain-point percentages, full statistics table), qualitative findings, the
+paper's research-to-design table, the real wireframes, high-fidelity screens, and prototype user flow, and the
+16-person evaluation (tasks, SUS 84.2, 94% completion, 3.4 min, 0.47 errors). Eleven new figures.
+
+**BSD coalition** — rebuilt from the district documents: charge and how members were selected, composition chart
+(41 members), interactive meeting timeline (Oct 2024 – Jun 2025), root causes, the published "measurement blend"
+explorer for the three 2025–26 focus goals, the 2030 absenteeism targets, and the coalition's measurement questions.
+Your role is now "coalition member", matching the district roster.
+
+**Echoes in the Machine** — rebuilt from the manuscript: verbatim preface quotation, a to-scale page-structure
+chart, a chapter explorer with real section titles, a concepts-by-chapter chart, and an interactive glossary of all
+32 concepts with the book's formal definitions, filterable by chapter.
+
+**New page: `methods.html`** — a methods-by-project matrix and an explorer covering twelve methods, each with where
+it was used, the result, and its limit.
+
+Source files were read locally; only three figures (wireframes, high-fidelity screens, user flow) were copied into
+`assets/images/`. No other content from your local folders was added to the repository.
+
+### Still to verify (revision 2)
+
+- The HCII "My role" paragraph says you designed the empirical study and **led the analysis of the survey and
+  interview data**. The paper has no contribution statement; please confirm.
+- The new **Business analytics** description on the About page.
+- The site now says "I study statistics and data science at UCLA" (present tense). Change it if you have graduated.
 
 ## Pages
 
@@ -124,11 +164,10 @@ These are listed in detail in `docs/CONTENT_AUDIT.md` §3–4.
    said "Director of Organizational Strategy"; the DFDraw page said "Apr 2025".
 2. **Synaperge membership and dates** — used "over 60 active members by early 2025"
    (Synaperge's own history) rather than 56; end date Sep 2026.
-3. **Publishing your email** (`danghenglong@gmail.com`) in the footer of every page. It was
-   not on the live site before. One line in `tools/partials.py` removes it everywhere.
+3. **Contact address** — resolved: only `hldang[at]ucla[dot]edu` appears, with no `mailto:` link.
 4. **UCLA degree status/year** — shown without a year.
-5. **"Eight existing apps"** in the HCII method (from your old résumé, not the abstract).
-6. **"$20 million budget deficit"** context on the BSD page (from your old résumé).
+5. **"Eight existing apps"** — resolved: replaced by the paper's four-app heuristic evaluation.
+6. **"$20 million budget deficit"** — resolved: removed; the page cites the approved 2025–26 annual plan instead.
 7. **REET brackets** — the calculator uses the 2023 Washington thresholds from your exhibit,
    with a caveat. Confirm they are still current.
 8. **Newly written prose in your voice** — the profile ("In brief", "Running things"), the

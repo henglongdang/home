@@ -176,7 +176,7 @@
       Focused on the intersection of cognition, technology, and systems design. Work spans research, organizational strategy, and original theory development, with an emphasis on how emerging tools reshape judgment and human agency.
     </p>
     <div class="cta">
-      <a class="btn primary" href="mailto:danghenglong@gmail.com">Contact</a>
+      <a class="btn primary" href="#contact">Contact</a>
       <a class="btn" href="https://www.linkedin.com/in/henglongdang/" target="_blank">LinkedIn</a>
     </div>
   </section>
@@ -244,7 +244,7 @@
   <section id="contact">
     <h2>Contact</h2>
     <div class="card">
-      <p>Email: danghenglong@gmail.com</p>
+      <p>Email: [redacted]</p>
       <p>LinkedIn: linkedin.com/in/henglongdang</p>
     </div>
   </section>

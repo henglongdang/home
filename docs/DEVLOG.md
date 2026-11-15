@@ -72,3 +72,15 @@ Accuracy decisions made while writing:
 ## 5. Testing
 
 See `PREVIEW_REPORT.md` for the full checklist and results.
+
+## 6. Revision 2
+
+- Read the HCII camera-ready PDF and slides, the BSD coalition documents, and the *Echoes* manuscript with PyMuPDF
+  in a throwaway virtual environment in the scratch folder (nothing installed into the project or global Python).
+- Charts were generated from the numbers in those sources by a small script, then injected into the pages as static
+  SVG. Figures from the paper were rendered from the PDF's figure regions at 330 dpi and saved as JPEG.
+- Glossary entries were parsed from the manuscript's Appendix A, preserving the book's wording.
+- Draft BSD goals (April 2025) were read but not published; targets come from the published plan and the approved
+  2025–26 annual plan.
+- Found and removed a phone number in `ORIGINAL index.html`'s contact links, alongside the personal email.
+- The partials tool now inserts the UCLA address as text and the nav gains a Methods item.
