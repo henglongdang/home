@@ -239,6 +239,7 @@ a[data-external]:hover::after { color: currentColor; }
 /* Two-column: narrow aside + main, used for prose with a margin column */
 .split {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
 }
 @media (min-width: 60rem) {

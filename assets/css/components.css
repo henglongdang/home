@@ -5,6 +5,14 @@
    filtering. Page-specific compositions are at the end, scoped by class.
    ========================================================================== */
 
+/* 0. Grid baseline: single-column grids must not grow to fit wide,
+      horizontally scrollable children (SVG figures, tables). Declared first so
+      every multi-column media query below overrides it. */
+.page-head__grid, .article-layout, .explorer, .cols-2, .edu, .shelf, .pair,
+.snapshot, .hero__grid, .feature, .calc, .pub-entry, .ledger__row, .work-item__link, .steps {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 /* 1. Page head (all subpages) ---------------------------------------------- */
 .page-head {
   padding-block: clamp(2.5rem, 2rem + 4vw, 5.5rem) var(--space-7);
