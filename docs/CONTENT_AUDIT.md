@@ -127,7 +127,11 @@ facts rather than invented.
 4. The "eight existing financial apps" comparative analysis (old résumé) — kept as a methodology step; confirm.
 5. The "$20M district budget deficit" context for the BSD coalition (old résumé) — kept, attributed as budget context; confirm.
 6. Whether the Synaperge seminar count (7, old résumé) is still current.
-7. Whether `ORIGINAL index.html` should be deleted. It is kept, marked `noindex`, and removed from the sitemap.
+7. Whether `ORIGINAL index.html` should be deleted. It is kept, marked `noindex`, and removed from the sitemap. Its `<head>` contains an injected school web-filter script ("LS Filter", which posts to a non-existent `/…/log_flag` path) captured when the page was saved — another reason to delete it.
+8. Whether the youth AI ethics course you planned is the Canvas course *Introduction to Artificial Intelligence and Innovative Reasoning*; the redesign presents them separately.
+9. The REET calculator uses the Washington state brackets from your exhibit (in effect from January 2023). Confirm they are current.
+10. New prose written in your voice — profile sections, DFDraw operating-loop descriptions, UCLA Anderson workflow descriptions — describes your work in general terms and should be checked for accuracy and tone.
+11. The "seven seminars" figure (old résumé) is used on the Synaperge page.
 
 ## 5. Content principles applied
 
