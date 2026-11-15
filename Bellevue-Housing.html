@@ -1,186 +1,607 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bellevue Housing Friction Index | Henglong Dang</title>
-  <meta name="description" content="A portfolio overview of Henglong Dang's Bellevue Housing Friction Index project, including the full abstract, visuals, methodology, findings, and participation notes." />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Henglong Dang" />
-  <meta property="og:title" content="Bellevue Housing Friction Index | Henglong Dang" />
-  <meta property="og:description" content="A systems-oriented housing affordability project using Bellevue's local REET as a motivating case for cumulative housing-market friction." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="./public/og-image.svg" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="unified-subpage-theme.css" />
-  <style>
-    .page-stack { display: grid; gap: clamp(1rem, 2vw, 1.4rem); }
-    .hero-card { padding: clamp(1.6rem, 5vw, 3rem); margin-bottom: 0; overflow: hidden; position: relative; }
-    .hero-card::after { content: ""; position: absolute; inset: auto -12% -35% 48%; height: 18rem; background: radial-gradient(circle, rgba(214,177,121,.18), transparent 68%); pointer-events: none; }
-    .eyebrow { color: var(--accent); font-size: .76rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: .7rem; }
-    .hero-card h1 { font-size: clamp(2.5rem, 8vw, 5.35rem); max-width: 13ch; margin: 0 0 1rem; text-wrap: balance; }
-    .lead { font-size: clamp(1.02rem, 2vw, 1.22rem); max-width: 72ch; }
-    .grid { display: grid; gap: clamp(1rem, 2vw, 1.25rem); }
-    .two-col { grid-template-columns: minmax(0, 1.1fr) minmax(300px, .8fr); align-items: stretch; }
-    .three-col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .card { padding: clamp(1.2rem, 3vw, 1.8rem); margin-bottom: 0; }
-    .section-heading, .stat-grid, .stack, .abstract-intro, .abstract-copy, .btn-row { background: transparent !important; border: 0 !important; box-shadow: none !important; }
-    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
-    .section-heading h2 { margin: 0; }
-    .section-kicker { color: var(--text-muted); font-size: .9rem; max-width: 42ch; margin: 0; }
-    .card h2, .card h3 { margin: 0 0 .75rem; }
-    .card p { margin-top: 0; }
-    .card p:last-child { margin-bottom: 0; }
-    .stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .85rem; margin-top: clamp(1.1rem, 3vw, 1.6rem); }
-    .metric { display: flex; flex-direction: column; gap: .45rem; padding: 1rem; min-height: 100%; }
-    .metric strong { display: block; font-family: "Fraunces", Georgia, serif; font-size: clamp(1.25rem, 3vw, 2rem); line-height: 1.05; color: var(--text); }
-    .system-map { display: grid; gap: .7rem; margin-top: 1rem; }
-    .node { border: 1px solid rgba(190,160,111,.34); background: rgba(127,106,73,.12); padding: .85rem .95rem; }
-    .node strong { color: var(--text); display: block; margin-bottom: .2rem; }
-    .stack { display: grid; gap: .7rem; margin-top: 1rem; }
-    .bar { --w: 50%; border: 1px solid rgba(190,160,111,.34); background: linear-gradient(90deg, rgba(214,177,121,.34) var(--w), rgba(29,26,23,.32) var(--w)); padding: .72rem .85rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--text-muted); }
-    .bar span, .bar strong { position: relative; z-index: 1; }
-    .abstract { display: grid; grid-template-columns: minmax(220px, .36fr) minmax(0, 1fr); gap: clamp(1.2rem, 4vw, 2rem); }
-    .abstract-intro { position: sticky; top: 5.5rem; align-self: start; }
-    .abstract-copy { columns: 2 26rem; column-gap: 2rem; }
-    .abstract-copy p { max-width: 68ch; break-inside: avoid; margin-bottom: 1rem; }
-    .participation-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; padding: 0; margin: 0; list-style: none; }
-    .participation-list li { border: 1px solid rgba(190,160,111,.28); background: rgba(127,106,73,.1); padding: .95rem; }
-    .btn-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.15rem; }
-    .back { display: inline-block; margin-bottom: 1rem; text-decoration: none; font-weight: 600; }
-    @media (max-width: 900px) { .two-col, .three-col, .stat-grid, .abstract, .participation-list { grid-template-columns: 1fr; } .hero-card h1 { max-width: 100%; } .section-heading { display: block; } .abstract-intro { position: static; } .abstract-copy { columns: 1; } }
-    @media (max-width: 560px) { .bar { align-items: flex-start; flex-direction: column; gap: .3rem; } }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Housing Friction Index — Bellevue housing research — Henglong Dang</title>
+  <meta name="description" content="An independent study (Jan–Jun 2026) that uses Bellevue's 0.5% local real estate excise tax as an entry point to model how taxes, zoning, parking, permitting, mortgage rates, and supply accumulate into housing affordability pressure.">
+  <link rel="canonical" href="https://henglongdang.github.io/home/Bellevue-Housing.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Henglong Dang">
+  <meta property="og:title" content="Housing Friction Index — Bellevue housing research">
+  <meta property="og:description" content="How a 0.5% local transfer tax led to a model of the costs that shape whether people can buy, sell, and move.">
+  <meta property="og:url" content="https://henglongdang.github.io/home/Bellevue-Housing.html">
+  <meta property="og:image" content="https://henglongdang.github.io/home/assets/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- @head -->
+  <meta name="theme-color" content="#12110f">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="assets/js/site.js" defer></script>
+  <!-- /@head -->
+  <script src="assets/js/reet.js" defer></script>
 </head>
-<body>
+<body id="top" data-nav="work" data-progress>
+  <!-- @header -->
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <div class="site-shell">
-      <nav class="site-nav" aria-label="Primary">
-        <a class="brand" href="index.html">Henglong Dang</a>
-        <div class="nav-links">
-          <a href="index.html#about">About</a>
-          <a href="index.html#research">Research</a>
-          <a href="index.html#writing">Writing</a>
-          <a href="index.html#experience">Experience</a>
-          <a href="index.html#background">Background</a>
-          <a href="index.html#contact">Contact</a>
-        </div>
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html">Henglong Dang</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle__bars" aria-hidden="true"></span>Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="work.html" class="is-section">Work</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="publications.html">Writing</a></li>
+          <li><a href="profile.html">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
     </div>
+    <div class="progress" aria-hidden="true"></div>
   </header>
+  <!-- /@header -->
 
-  <main class="container">
-    <a class="back centered-content" href="index.html#research">← Back to Research & Projects</a>
-
-    <div class="page-stack">
-      <section class="card hero-card">
-      <div class="eyebrow">Bellevue housing research exhibit</div>
-      <h1>Housing Friction Index</h1>
-      <p class="lead">The Housing Friction Index is a research-driven project on Bellevue housing affordability. It uses the city’s 0.5% local Real Estate Excise Tax as a concrete entry point, then expands into a systems model of how taxes, zoning, parking, permitting, mortgage rates, land scarcity, and behavioral responses accumulate into affordability pressure.</p>
-      <div class="btn-row">
-        <a class="btn" href="https://henglongdang.github.io/Bellevue-Housing/" target="_blank" rel="noopener noreferrer">Open the live project</a>
-        <a class="btn" href="https://henglongdang.github.io/Bellevue-Housing/abstract.html" target="_blank" rel="noopener noreferrer">Read source abstract</a>
-      </div>
-      <div class="stat-grid" aria-label="Project metrics">
-        <div class="metric"><strong>0.5%</strong>Bellevue local REET used as the motivating case.</div>
-        <div class="metric"><strong>$7,000</strong>Local REET on a $1.4 million Bellevue sale.</div>
-        <div class="metric"><strong>7</strong>Real estate professionals interviewed.</div>
-        <div class="metric"><strong>30+</strong>Hours of policy and source review.</div>
-      </div>
-      </section>
-
-      <div class="grid two-col">
-      <section class="card">
-        <h2>Project overview</h2>
-        <p>The project argues that affordability should not be explained through a single price, tax, or policy line. Instead, it frames housing affordability as the cumulative outcome of interacting market frictions: direct closing costs, regulatory constraints, development delays, financing pressure, constrained supply, and the behavioral choices that emerge when households are already near their affordability thresholds.</p>
-        <p>Using Bellevue as a case study keeps the work grounded. At Bellevue price levels, even a percentage that looks small can become visible as cash at closing, especially when it appears beside commissions, escrow, title, repairs, concessions, moving costs, and high monthly-payment pressure.</p>
-      </section>
-
-      <aside class="card">
-        <h2>Motivating question</h2>
-        <p class="lead">At what point do accumulated housing-market frictions begin to influence homeowner behavior, transaction decisions, and overall housing affordability?</p>
-        <div class="system-map" aria-label="Affordability flow visual">
-          <div class="node"><strong>Financing</strong>Mortgage-rate pressure changes payment thresholds.</div>
-          <div class="node"><strong>Regulation</strong>Zoning and permitting shape supply and timing.</div>
-          <div class="node"><strong>Costs</strong>REET and closing cash add transaction friction.</div>
-          <div class="node"><strong>Mobility</strong>Households delay, reprice, concede, or stay put.</div>
+  <main id="main">
+    <header class="page-head">
+      <div class="wrap">
+        <ol class="crumbs" aria-label="Breadcrumb">
+          <li><a href="work.html">Work</a></li>
+          <li><a href="work.html?type=data">Data and analysis</a></li>
+          <li aria-current="page">Housing Friction Index</li>
+        </ol>
+        <p class="label kind">Independent research &middot; Housing policy &middot; Bellevue, Washington</p>
+        <h1>Housing Friction Index</h1>
+        <p class="dek">How a 0.5% local transfer tax on my own closing statement became a model of the many small and large costs that shape whether people can buy, sell, and move.</p>
+        <dl class="meta">
+          <div><dt>Period</dt><dd>January&ndash;June 2026</dd></div>
+          <div><dt>Type</dt><dd>Independent research project and public exhibit</dd></div>
+          <div><dt>My role</dt><dd>Research design, interviews, fieldwork, analysis, exhibit</dd></div>
+          <div><dt>Evidence</dt><dd>Policy review, 7 practitioner interviews, open-house observation</dd></div>
+          <div><dt>Status</dt><dd>Exploratory; control-group comparison not yet done</dd></div>
+        </dl>
+        <div class="button-row">
+          <a class="button button--solid" href="https://henglongdang.github.io/Bellevue-Housing/" rel="noopener" data-external>Open the full exhibit</a>
+          <a class="button" href="#calculator">Try the cost calculator</a>
         </div>
-      </aside>
       </div>
+    </header>
 
-      <section class="card">
-      <div class="section-heading">
-        <h2>Relevant visuals from the model</h2>
-        <p class="section-kicker">A cleaner pressure-stack view keeps the model scannable before readers enter the full abstract.</p>
-      </div>
-      <p>The source exhibit visualizes affordability as a pressure stack rather than a single variable. The simplified visual below preserves that UX pattern for this portfolio page: each channel is meaningful alone, but the research focus is the combined resistance created when channels overlap.</p>
-      <div class="stack" aria-label="Affordability pressure stack">
-        <div class="bar" style="--w: 92%"><span>Housing cost base</span><strong>baseline</strong></div>
-        <div class="bar" style="--w: 74%"><span>Mortgage-rate exposure</span><strong>74</strong></div>
-        <div class="bar" style="--w: 61%"><span>Zoning constraints</span><strong>61</strong></div>
-        <div class="bar" style="--w: 42%"><span>Parking requirements</span><strong>42</strong></div>
-        <div class="bar" style="--w: 31%"><span>Transaction taxes</span><strong>31</strong></div>
-        <div class="bar" style="--w: 21%"><span>Permit delays</span><strong>21</strong></div>
-      </div>
-    </section>
+    <div class="article">
+      <div class="wrap article-layout">
+        <nav class="toc" aria-label="On this page">
+          <ol>
+            <li><a href="#origin">Origin</a></li>
+            <li><a href="#questions">Thesis and questions</a></li>
+            <li><a href="#model">The friction model</a></li>
+            <li><a href="#path">Where costs surface</a></li>
+            <li><a href="#score">The Friction Score</a></li>
+            <li><a href="#calculator">Calculator</a></li>
+            <li><a href="#evidence">Evidence</a></li>
+            <li><a href="#method">Method and timeline</a></li>
+            <li><a href="#findings">Findings</a></li>
+            <li><a href="#limits">Limits</a></li>
+            <li><a href="#sources">Abstract and sources</a></li>
+          </ol>
+        </nav>
 
-    <section class="card abstract">
-      <div class="abstract-intro">
-        <div class="eyebrow">Full abstract</div>
-        <h2>Housing affordability is shaped by cumulative friction</h2>
-        <p class="section-kicker">The full abstract is preserved, but arranged into readable columns with a fixed orientation panel on larger screens.</p>
-      </div>
-      <div class="abstract-copy">
-        <p>Housing affordability is frequently discussed through the lens of home prices, interest rates, and housing supply. Far less attention is given to the cumulative effect of transaction frictions: the taxes, fees, regulations, procedural requirements, and market barriers that influence the cost and ease of housing mobility.</p>
-      <p>This study investigates whether seemingly modest transaction-related costs can collectively shape housing affordability, market participation, and residential mobility in high-cost urban environments.</p>
-      <p>The research originated from a practical observation during the sale of a residential property in Bellevue, Washington. While reviewing closing documents, a municipal Real Estate Excise Tax (REET) of 0.5% emerged as a notable transaction cost. Although relatively small when viewed independently, the tax raised a broader question: at what point do accumulated housing-market frictions begin to influence homeowner behavior, transaction decisions, and overall housing affordability?</p>
-      <p>To address this question, the study expands beyond the Bellevue REET itself and develops a broader analytical framework termed the Housing Friction Model. This framework conceptualizes housing affordability as the product of interacting constraints rather than a single market variable.</p>
-      <p>Under this model, transaction taxes represent only one component within a larger ecosystem that includes zoning restrictions, parking requirements, permitting processes, mortgage rates, land-use regulations, development costs, and behavioral responses by buyers and sellers.</p>
-      <p>Using Bellevue as a case study, the project combines policy analysis, municipal financial data, housing-market indicators, public records, stakeholder interviews, open-house observations, and comparative research from peer municipalities. The investigation evaluates how transaction costs influence market outcomes and explores whether these costs operate independently or amplify the effects of other affordability pressures.</p>
-      <p>Particular attention is given to the distinction between direct financial burdens and indirect behavioral consequences, including reduced mobility, delayed transactions, pricing adjustments, and diminished market flexibility.</p>
-      <p>The analysis finds that the Bellevue REET is unlikely to be a primary driver of housing unaffordability when considered in isolation. Larger structural forces, including regional housing supply constraints, population growth, mortgage interest rates, and land scarcity, exert substantially greater influence on overall housing costs.</p>
-      <p>However, the study suggests that transaction-related costs remain relevant because housing markets are shaped by the accumulation of numerous frictions rather than a single dominant factor. In this context, even relatively modest transaction costs may contribute to broader patterns of reduced mobility and increased barriers to market participation when combined with other existing constraints.</p>
-      <p>The research further demonstrates that housing policy is often evaluated through isolated interventions despite operating within highly interconnected systems. Policies intended to generate municipal revenue, regulate development, improve infrastructure, or preserve neighborhood character frequently interact in ways that create unintended cumulative burdens.</p>
-      <p>As a result, affordability outcomes may emerge not from any single regulation, tax, or market condition, but from the collective weight of multiple overlapping constraints.</p>
-      <p>The central thesis of this project is that housing affordability should be understood as a systems problem rather than a single-policy problem. Effective housing policy requires evaluating the cumulative impact of housing-market frictions and recognizing how small costs can interact with larger structural forces. The Bellevue REET serves as a representative case through which broader questions of housing mobility, market efficiency, and affordability can be examined.</p>
-      <p>Ultimately, this study argues that policymakers should move beyond evaluating individual housing policies in isolation and instead adopt a friction-based framework that measures the combined effects of taxes, regulations, procedural requirements, and market barriers. Such an approach may provide a more accurate understanding of affordability challenges and support the development of policies that preserve public objectives while minimizing unintended obstacles to housing access and mobility.</p>
-      </div>
-      </section>
+        <div class="article-body">
+          <section id="origin" aria-labelledby="origin-h">
+            <h2 id="origin-h">From a closing estimate to a question</h2>
+            <div class="prose">
+              <p>In early 2026 I was preparing to sell a home in Bellevue, Washington, and read the seller&rsquo;s cost sheet more carefully than I ever had. Commissions, title, escrow, repairs, and concessions all cut into the proceeds. One line stood out because it depended on where the house was: a local real estate excise tax (REET) of 0.5% of the sale price.</p>
+              <p>Half a percent sounds negligible. At Bellevue prices it is not: on a $1.4 million sale it is $7,000, before anything else. That raised a broader question. At what point do accumulated housing-market costs&mdash;none decisive on its own&mdash;start to change what people do?</p>
+            </div>
+            <ul class="figures" aria-label="Project at a glance">
+              <li><span class="value">0.5%</span><span class="what">Bellevue&rsquo;s local REET, on top of the state tax</span></li>
+              <li><span class="value">$7,000</span><span class="what">local REET on a $1.4 million sale</span></li>
+              <li><span class="value">30+ hours</span><span class="what">of policy and source review</span></li>
+              <li><span class="value">7</span><span class="what">Eastside real estate professionals interviewed</span></li>
+            </ul>
+            <p class="note"><strong>Disclosure.</strong> The project began with my own transaction. I treat that as a disclosure, not as evidence: claims in the study rest on public sources, coded interviews, field observations, and transparent arithmetic.</p>
+          </section>
 
-      <section class="card">
-      <div class="section-heading">
-        <h2>My participation and motivation</h2>
-        <p class="section-kicker">Cards separate each contribution so the section reads as a role summary instead of a dense list.</p>
-      </div>
-      <ul class="participation-list">
-        <li><strong>Motivation:</strong> I began with a direct seller-side observation in Bellevue: a local REET line item that was small in percentage terms but concrete at seven-figure transaction values.</li>
-        <li><strong>Research design:</strong> I widened the initial tax question into the Housing Friction Model so the work would evaluate interacting constraints instead of overstating one policy variable.</li>
-        <li><strong>Evidence building:</strong> I combined policy review, public records, field observations, interviews with real estate professionals, comparative research, and exploratory modeling to make the argument traceable.</li>
-        <li><strong>Human-centered lens:</strong> My contribution was to keep the project focused on how households actually experience policy stacks at decision moments: whether to list, buy, downsize, negotiate, delay, or remain in place.</li>
-      </ul>
-      </section>
+          <section id="questions" aria-labelledby="questions-h">
+            <h2 id="questions-h">One thesis, five questions</h2>
+            <div class="prose">
+              <p><strong>Primary hypothesis.</strong> When prices and borrowing costs are already high, added transaction frictions can influence seller behaviour, buyer participation, and mobility, even when no single cost explains affordability by itself. The local REET is framed as one measurable friction&mdash;not as the cause of unaffordability.</p>
+            </div>
+            <ol class="questions">
+              <li><div><p>Does Bellevue&rsquo;s local REET create additional transaction friction?</p><span class="method">Method: calculate the local tax burden across sale-price bands and compare with a no-local-REET scenario.</span></div></li>
+              <li><div><p>Do sellers incorporate REET costs into listing prices?</p><span class="method">Method: code agent interviews for net-proceeds sensitivity, resistance to concessions, and pricing language.</span></div></li>
+              <li><div><p>Does that behaviour affect housing affordability?</p><span class="method">Method: compare buyer topic mentions, modeled payment pressure, and estimated cost pass-through.</span></div></li>
+              <li><div><p>How important is REET revenue for Bellevue&rsquo;s infrastructure?</p><span class="method">Method: review capital-facility and budget materials to separate the revenue&rsquo;s purpose from its market effect.</span></div></li>
+              <li><div><p>Could alternative structures raise similar revenue?</p><span class="method">Method: scenario assumptions for thresholds, exemptions, credits, and broader funding mixes.</span></div></li>
+            </ol>
+          </section>
 
-      <section class="card">
-      <div class="section-heading">
-        <h2>Findings and policy implication</h2>
-        <p class="section-kicker">The final takeaways are grouped for quick scanning on desktop and mobile.</p>
+          <section id="model" aria-labelledby="model-h">
+            <h2 id="model-h">The Housing Friction Model</h2>
+            <div class="prose">
+              <p>The model treats affordability as the combined result of several constraints rather than a single variable. Transaction taxes are one channel among six. Around all of them sit the behavioural responses that turn costs into outcomes: households delay, reprice, concede, or stay put. Select a channel to see what it covers and what evidence the project has for it.</p>
+            </div>
+            <figure class="figure">
+              <div class="explorer explorer--side" data-explorer data-dim data-default="taxes">
+                <div>
+                  <ul class="explorer__keys" aria-label="Friction channels">
+                    <li><button type="button" data-key="taxes">Taxes</button></li>
+                    <li><button type="button" data-key="zoning">Zoning</button></li>
+                    <li><button type="button" data-key="permits">Permitting</button></li>
+                    <li><button type="button" data-key="rates">Mortgage rates</button></li>
+                    <li><button type="button" data-key="parking">Parking</button></li>
+                    <li><button type="button" data-key="supply">Supply</button></li>
+                  </ul>
+                  <div class="figure__frame">
+                    <svg class="diagram" viewBox="128 4 464 462" aria-hidden="true">
+                      <circle class="ln-dash" cx="360" cy="225" r="212"/>
+                      <text class="t-gold" x="360" y="452" text-anchor="middle">Behavioural responses: delay &middot; reprice &middot; concede &middot; stay put</text>
+                      <line class="ln-gold" data-for="taxes" x1="360" y1="86" x2="360" y2="197"/>
+                      <line class="ln-gold" data-for="zoning" x1="498" y1="145" x2="435" y2="205"/>
+                      <line class="ln-gold" data-for="permits" x1="498" y1="305" x2="435" y2="245"/>
+                      <line class="ln-gold" data-for="rates" x1="360" y1="364" x2="360" y2="253"/>
+                      <line class="ln-gold" data-for="parking" x1="222" y1="305" x2="285" y2="245"/>
+                      <line class="ln-gold" data-for="supply" x1="222" y1="145" x2="285" y2="205"/>
+                      <rect class="box-gold" x="285" y="197" width="150" height="56"/>
+                      <text class="t-serif t-lg" x="360" y="223" text-anchor="middle">Affordability</text>
+                      <text class="t-faint" x="360" y="241" text-anchor="middle">cumulative outcome</text>
+                      <g data-key="taxes"><rect class="box" x="295" y="42" width="130" height="44"/><text x="360" y="62" text-anchor="middle" class="t-strong">Taxes</text><text class="t-faint" x="360" y="78" text-anchor="middle">REET, closing cost</text></g>
+                      <g data-key="zoning"><rect class="box" x="455" y="101" width="130" height="44"/><text x="520" y="121" text-anchor="middle" class="t-strong">Zoning</text><text class="t-faint" x="520" y="137" text-anchor="middle">land use, density</text></g>
+                      <g data-key="permits"><rect class="box" x="455" y="305" width="130" height="44"/><text x="520" y="325" text-anchor="middle" class="t-strong">Permitting</text><text class="t-faint" x="520" y="341" text-anchor="middle">delay, process</text></g>
+                      <g data-key="rates"><rect class="box" x="295" y="364" width="130" height="44"/><text x="360" y="384" text-anchor="middle" class="t-strong">Mortgage rates</text><text class="t-faint" x="360" y="400" text-anchor="middle">monthly payment</text></g>
+                      <g data-key="parking"><rect class="box" x="135" y="305" width="130" height="44"/><text x="200" y="325" text-anchor="middle" class="t-strong">Parking</text><text class="t-faint" x="200" y="341" text-anchor="middle">minimums, cost</text></g>
+                      <g data-key="supply"><rect class="box" x="135" y="101" width="130" height="44"/><text x="200" y="121" text-anchor="middle" class="t-strong">Supply</text><text class="t-faint" x="200" y="137" text-anchor="middle">growth, scarce land</text></g>
+                    </svg>
+                  </div>
+                </div>
+                <div class="explorer__panels" aria-live="polite">
+                  <div class="explorer__panel" data-panel="taxes">
+                    <p class="label">Channel &middot; Transaction cost</p>
+                    <h3>Taxes and closing costs</h3>
+                    <p>Washington levies a graduated state excise tax on home sales; Bellevue adds 0.5% locally. The tax is paid at closing, typically by the seller, which means it lands at the moment a household is trying to move, downsize, or settle an estate.</p>
+                    <p><strong>How it is felt:</strong> late, on the closing estimate, alongside commissions, title, escrow, repairs, and concessions. Agents said sellers rarely see it in isolation.</p>
+                    <p><strong>Evidence:</strong> transaction arithmetic (see the calculator); interviews, where REET awareness averaged 3.1 of 5&mdash;the lowest of the topics coded.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="zoning">
+                    <p class="label">Channel &middot; Supply constraint</p>
+                    <h3>Zoning and land use</h3>
+                    <p>Density limits and land-use rules determine how much housing can be built and where. Their effect is structural: fewer homes at a given price, over years rather than at a single closing.</p>
+                    <p><strong>Evidence:</strong> zoning concepts and housing-strategy records reviewed in the policy phase. Carries 20% of the Friction Score.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="permits">
+                    <p class="label">Channel &middot; Development risk</p>
+                    <h3>Permitting</h3>
+                    <p>Procedural requirements and approval time add delay and uncertainty to building, which raises the cost of new supply and slows its arrival.</p>
+                    <p><strong>Evidence:</strong> policy review. Carries 15% of the Friction Score.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="rates">
+                    <p class="label">Channel &middot; Financing pressure</p>
+                    <h3>Mortgage rates</h3>
+                    <p>The force buyers and agents talked about most. Rates set the monthly payment, which sets what a household can bid, which narrows the buyer pool a seller faces.</p>
+                    <p><strong>Evidence:</strong> the dominant interview concern (mean 4.9 of 5); monthly payment and rates were the two most frequent open-house topics. Treated as a control variable in the planned statistical model.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="parking">
+                    <p class="label">Channel &middot; Development and household cost</p>
+                    <h3>Parking and street design</h3>
+                    <p>Parking minimums and structured-parking costs raise the price of building. Street width and walkability shape how dependent a household is on cars, and so its transport costs.</p>
+                    <p><strong>Evidence:</strong> parking-cost assumptions from policy review; street-width and pedestrian-comfort observations during fieldwork. Parking carries 15% of the Friction Score; a street-width walkability penalty another 10%.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="supply">
+                    <p class="label">Channel &middot; Structural force</p>
+                    <h3>Regional supply</h3>
+                    <p>Population growth and scarce land in the region. Together with rates, these structural forces explain far more of Bellevue&rsquo;s housing costs than the local tax does&mdash;the study&rsquo;s first conclusion.</p>
+                    <p><strong>Evidence:</strong> housing-strategy records and market indicators from the policy phase.</p>
+                  </div>
+                </div>
+              </div>
+              <figcaption><span class="fig-no">Figure 1.</span>The six channels of the Housing Friction Model and the behavioural layer around them. <span class="fig-kind">Conceptual framework</span> &mdash; channel positions carry no meaning; weights appear in Figure 3.</figcaption>
+            </figure>
+          </section>
+
+          <section id="path" aria-labelledby="path-h">
+            <h2 id="path-h">Where costs surface in a sale</h2>
+            <div class="prose"><p>One reason small costs matter is timing. They appear at different points in a transaction, and several arrive together near the end, when a seller is comparing net proceeds against a target. The sequence below is a simplified, hypothetical sale.</p></div>
+            <figure class="figure">
+              <div class="figure__frame figure-scroll">
+                <svg class="diagram" viewBox="0 0 860 230" role="img" aria-labelledby="path-t path-d">
+                  <title id="path-t">Hypothetical home sale, from decision to next move</title>
+                  <desc id="path-d">Six stages: decide to sell, price and list, on the market, offer and negotiation, closing, and next move. Pressures noted under each: a net-proceeds target when pricing; rate-sensitive buyers and days on market while listed; concessions and rate buydown requests during negotiation; REET, commissions, title and escrow at closing; and finally whether to buy, downsize, or stay.</desc>
+                  <line class="ln" x1="40" y1="60" x2="820" y2="60"/>
+                  <g><circle class="dot-ink" cx="60" cy="60" r="6"/><text class="t-strong" x="60" y="36" text-anchor="middle">Decide</text><text class="t-faint" x="60" y="92" text-anchor="middle">to sell</text></g>
+                  <g><circle class="dot-ink" cx="205" cy="60" r="6"/><text class="t-strong" x="205" y="36" text-anchor="middle">Price and list</text><text class="t-faint" x="205" y="92" text-anchor="middle">net-proceeds target</text></g>
+                  <g><circle class="dot-ink" cx="355" cy="60" r="6"/><text class="t-strong" x="355" y="36" text-anchor="middle">On the market</text><text class="t-faint" x="355" y="92" text-anchor="middle">days on market</text><text class="t-faint" x="355" y="108" text-anchor="middle">rate-sensitive buyers</text></g>
+                  <g><circle class="dot-ink" cx="510" cy="60" r="6"/><text class="t-strong" x="510" y="36" text-anchor="middle">Offer</text><text class="t-faint" x="510" y="92" text-anchor="middle">concessions</text><text class="t-faint" x="510" y="108" text-anchor="middle">rate-buydown requests</text></g>
+                  <g><circle class="dot-gold" cx="660" cy="60" r="8"/><text class="t-strong" x="660" y="36" text-anchor="middle">Closing</text><text class="t-gold" x="660" y="92" text-anchor="middle">state + local REET</text><text class="t-faint" x="660" y="108" text-anchor="middle">commission, title, escrow</text></g>
+                  <g><circle class="dot-ink" cx="800" cy="60" r="6"/><text class="t-strong" x="800" y="36" text-anchor="middle">Next move</text><text class="t-faint" x="800" y="92" text-anchor="middle">buy, downsize,</text><text class="t-faint" x="800" y="108" text-anchor="middle">or stay put</text></g>
+                  <path class="ln-gold" d="M205 140 H660"/>
+                  <path class="ln-gold" d="M205 134 V146 M660 134 V146"/>
+                  <text class="t-faint" x="432" y="166" text-anchor="middle">The seller compares each new cost against the net-proceeds target set at listing.</text>
+                  <text class="t-faint" x="432" y="186" text-anchor="middle">Agents described some sellers delaying a listing when expected proceeds felt too low.</text>
+                </svg>
+              </div>
+              <figcaption><span class="fig-no">Figure 2.</span>A simplified seller&rsquo;s path. <span class="fig-kind">Hypothetical sequence, not observed data</span> &mdash; the pressures listed are those described in the interviews and fieldwork.</figcaption>
+            </figure>
+          </section>
+
+          <section id="score" aria-labelledby="score-h">
+            <h2 id="score-h">The Friction Score</h2>
+            <div class="prose">
+              <p>To compare unlike forces side by side, the project defines a composite index. Each component is normalized to a 0&ndash;100 scale, then weighted:</p>
+              <p class="citation citation--code">Friction Score = 0.25 &times; REET burden percentile + 0.20 &times; zoning constraint + 0.15 &times; parking cost + 0.15 &times; permit delay + 0.15 &times; mortgage-rate exposure + 0.10 &times; street-width walkability penalty</p>
+              <p>REET gets the largest single weight because it is where the project started, but no component can dominate the total. Scores above 70 indicate several channels active at once; 40&ndash;70, mixed friction; below 40, lower exposure. The index is meant to be read comparatively, not as a forecast.</p>
+            </div>
+            <figure class="figure">
+              <div class="figure__frame chart-wrap">
+                <svg class="chart" viewBox="0 0 575 238" role="group" aria-labelledby="weights-t">
+                  <title id="weights-t">Friction Score component weights, percent of total score</title>
+                  <line class="grid" x1="185.0" y1="26" x2="185.0" y2="234"/>
+                  <text class="axis-label" x="185.0" y="20" text-anchor="middle">0%</text>
+                  <line class="grid" x1="295.0" y1="26" x2="295.0" y2="234"/>
+                  <text class="axis-label" x="295.0" y="20" text-anchor="middle">10%</text>
+                  <line class="grid" x1="405.0" y1="26" x2="405.0" y2="234"/>
+                  <text class="axis-label" x="405.0" y="20" text-anchor="middle">20%</text>
+                  <line class="grid" x1="515.0" y1="26" x2="515.0" y2="234"/>
+                  <text class="axis-label" x="515.0" y="20" text-anchor="middle">30%</text>
+                  <line class="baseline" x1="185" y1="26" x2="185" y2="234"/>
+                  <g class="mark" tabindex="0" role="img" aria-label="REET burden: weight 25% of the Friction Score" data-tip="REET burden: weight 25% of the Friction Score">
+                    <rect class="hit" x="0" y="30.0" width="575" height="34"/>
+                    <text x="175" y="51.0" text-anchor="end">REET burden</text>
+                    <path class="bar" d="M185 40.0h271.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-271.0z"/>
+                    <text class="value-label" x="468.0" y="51.0">25%</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Zoning constraint: weight 20% of the Friction Score" data-tip="Zoning constraint: weight 20% of the Friction Score">
+                    <rect class="hit" x="0" y="64.0" width="575" height="34"/>
+                    <text x="175" y="85.0" text-anchor="end">Zoning constraint</text>
+                    <path class="bar" d="M185 74.0h216.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-216.0z"/>
+                    <text class="value-label" x="413.0" y="85.0">20%</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Parking cost: weight 15% of the Friction Score" data-tip="Parking cost: weight 15% of the Friction Score">
+                    <rect class="hit" x="0" y="98.0" width="575" height="34"/>
+                    <text x="175" y="119.0" text-anchor="end">Parking cost</text>
+                    <path class="bar" d="M185 108.0h161.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-161.0z"/>
+                    <text class="value-label" x="358.0" y="119.0">15%</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Permit delay: weight 15% of the Friction Score" data-tip="Permit delay: weight 15% of the Friction Score">
+                    <rect class="hit" x="0" y="132.0" width="575" height="34"/>
+                    <text x="175" y="153.0" text-anchor="end">Permit delay</text>
+                    <path class="bar" d="M185 142.0h161.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-161.0z"/>
+                    <text class="value-label" x="358.0" y="153.0">15%</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Mortgage-rate exposure: weight 15% of the Friction Score" data-tip="Mortgage-rate exposure: weight 15% of the Friction Score">
+                    <rect class="hit" x="0" y="166.0" width="575" height="34"/>
+                    <text x="175" y="187.0" text-anchor="end">Mortgage-rate exposure</text>
+                    <path class="bar" d="M185 176.0h161.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-161.0z"/>
+                    <text class="value-label" x="358.0" y="187.0">15%</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Street-width walkability: weight 10% of the Friction Score" data-tip="Street-width walkability: weight 10% of the Friction Score">
+                    <rect class="hit" x="0" y="200.0" width="575" height="34"/>
+                    <text x="175" y="221.0" text-anchor="end">Street-width walkability</text>
+                    <path class="bar" d="M185 210.0h106.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-106.0z"/>
+                    <text class="value-label" x="303.0" y="221.0">10%</text>
+                  </g>
+                </svg>
+              </div>
+              <figcaption><span class="fig-no">Figure 3.</span>Component weights in the Friction Score, as a percentage of the total. <span class="fig-kind">Model definition, not results</span> &mdash; these are design choices that make the model&rsquo;s assumptions visible and open to debate.</figcaption>
+            </figure>
+          </section>
+
+          <section id="calculator" aria-labelledby="calc-h">
+            <h2 id="calc-h">What 0.5% means at Bellevue prices</h2>
+            <div class="prose"><p>The local tax grows in a straight line with price; the state tax steps up through brackets. Enter a sale price to see both.</p></div>
+            <div class="calc" data-reet>
+              <div>
+                <label for="reet-price">Sale price (USD)</label>
+                <span class="price calc-live"><output id="reet-price-out" for="reet-price reet-range">$1,400,000</output></span>
+                <input id="reet-price" type="number" min="100000" max="10000000" step="5000" value="1400000" inputmode="numeric">
+                <div class="calc-live">
+                  <label for="reet-range" class="visually-hidden">Sale price slider</label>
+                  <input id="reet-range" type="range" min="300000" max="5000000" step="25000" value="1400000" aria-describedby="reet-scale">
+                  <div class="range-scale" id="reet-scale"><span>$300k</span><span>$5M</span></div>
+                </div>
+              </div>
+              <div>
+                <div class="calc-live" aria-live="polite">
+                  <dl class="calc-results">
+                    <div><dt>State REET (graduated)</dt><dd id="reet-state">$16,975</dd></div>
+                    <div class="local"><dt>Bellevue local REET (0.5%)</dt><dd id="reet-local">$7,000</dd></div>
+                    <div class="total"><dt>Total excise tax</dt><dd id="reet-total">$23,975</dd></div>
+                    <div><dt>Effective combined rate</dt><dd id="reet-rate">1.71%</dd></div>
+                  </dl>
+                  <div class="calc-bar" aria-hidden="true"><span class="state" id="reet-bar-state"></span><span class="local" id="reet-bar-local"></span></div>
+                  <ul class="legend"><li><span class="swatch swatch--2" aria-hidden="true"></span>State</li><li><span class="swatch swatch--1" aria-hidden="true"></span>Local</li></ul>
+                </div>
+                <noscript>
+                  <table class="data-table">
+                    <caption>Excise tax at four sale prices</caption>
+                    <thead><tr><th scope="col">Sale price</th><th scope="col" class="num">State</th><th scope="col" class="num">Local 0.5%</th><th scope="col" class="num">Total</th></tr></thead>
+                    <tbody>
+                      <tr><td>$900,000</td><td class="num">$10,575</td><td class="num">$4,500</td><td class="num">$15,075</td></tr>
+                      <tr><td>$1,400,000</td><td class="num">$16,975</td><td class="num">$7,000</td><td class="num">$23,975</td></tr>
+                      <tr><td>$2,000,000</td><td class="num">$31,638</td><td class="num">$10,000</td><td class="num">$41,638</td></tr>
+                      <tr><td>$3,500,000</td><td class="num">$74,075</td><td class="num">$17,500</td><td class="num">$91,575</td></tr>
+                    </tbody>
+                  </table>
+                </noscript>
+              </div>
+            </div>
+            <p class="note"><strong>Educational arithmetic only.</strong> State brackets are those used in the source exhibit (in effect from January 2023): 1.1% up to $525,000; 1.28% to $1,525,000; 2.75% to $3,025,000; 3.0% above. Washington adjusts these thresholds periodically, and exemptions and fees are not included. Confirm current rates with the Washington Department of Revenue or a closing agent before relying on any figure.</p>
+          </section>
+
+          <section id="evidence" aria-labelledby="evidence-h">
+            <h2 id="evidence-h">What practitioners and buyers said</h2>
+            <div class="prose">
+              <p>Two sources of first-hand evidence tested whether the tax shows up in real decisions. In structured interviews, seven Eastside real estate professionals&mdash;listing and buyer specialists, a broker, a new-construction specialist, an investor advisor, and a market analyst&mdash;were asked about transaction costs, buyer pressure, and seller behaviour. Each topic was coded for concern intensity on a 1&ndash;5 scale.</p>
+            </div>
+            <figure class="figure">
+              <div class="figure__frame chart-wrap">
+                <svg class="chart" viewBox="0 0 530 204" role="group" aria-labelledby="concern-t">
+                  <title id="concern-t">Mean concern intensity by topic, coded 1 to 5, seven interviews</title>
+                  <line class="grid" x1="140.0" y1="26" x2="140.0" y2="200"/>
+                  <text class="axis-label" x="140.0" y="20" text-anchor="middle">0</text>
+                  <line class="grid" x1="206.0" y1="26" x2="206.0" y2="200"/>
+                  <text class="axis-label" x="206.0" y="20" text-anchor="middle">1</text>
+                  <line class="grid" x1="272.0" y1="26" x2="272.0" y2="200"/>
+                  <text class="axis-label" x="272.0" y="20" text-anchor="middle">2</text>
+                  <line class="grid" x1="338.0" y1="26" x2="338.0" y2="200"/>
+                  <text class="axis-label" x="338.0" y="20" text-anchor="middle">3</text>
+                  <line class="grid" x1="404.0" y1="26" x2="404.0" y2="200"/>
+                  <text class="axis-label" x="404.0" y="20" text-anchor="middle">4</text>
+                  <line class="grid" x1="470.0" y1="26" x2="470.0" y2="200"/>
+                  <text class="axis-label" x="470.0" y="20" text-anchor="middle">5</text>
+                  <line class="baseline" x1="140" y1="26" x2="140" y2="200"/>
+                  <g class="mark" tabindex="0" role="img" aria-label="Mortgage rates: mean concern 4.9 of 5" data-tip="Mortgage rates: mean concern 4.9 of 5">
+                    <rect class="hit" x="0" y="30.0" width="530" height="34"/>
+                    <text x="130" y="51.0" text-anchor="end">Mortgage rates</text>
+                    <path class="bar" d="M140 40.0h319.4a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-319.4z"/>
+                    <text class="value-label" x="471.4" y="51.0">4.9</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Net proceeds: mean concern 4.4 of 5" data-tip="Net proceeds: mean concern 4.4 of 5">
+                    <rect class="hit" x="0" y="64.0" width="530" height="34"/>
+                    <text x="130" y="85.0" text-anchor="end">Net proceeds</text>
+                    <path class="bar" d="M140 74.0h286.4a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-286.4z"/>
+                    <text class="value-label" x="438.4" y="85.0">4.4</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Concessions: mean concern 3.8 of 5" data-tip="Concessions: mean concern 3.8 of 5">
+                    <rect class="hit" x="0" y="98.0" width="530" height="34"/>
+                    <text x="130" y="119.0" text-anchor="end">Concessions</text>
+                    <path class="bar" d="M140 108.0h246.8a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-246.8z"/>
+                    <text class="value-label" x="398.8" y="119.0">3.8</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Inventory: mean concern 3.6 of 5" data-tip="Inventory: mean concern 3.6 of 5">
+                    <rect class="hit" x="0" y="132.0" width="530" height="34"/>
+                    <text x="130" y="153.0" text-anchor="end">Inventory</text>
+                    <path class="bar" d="M140 142.0h233.6a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-233.6z"/>
+                    <text class="value-label" x="385.6" y="153.0">3.6</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Local REET: mean concern 3.1 of 5" data-tip="Local REET: mean concern 3.1 of 5">
+                    <rect class="hit" x="0" y="166.0" width="530" height="34"/>
+                    <text x="130" y="187.0" text-anchor="end">Local REET</text>
+                    <path class="bar bar--alt" d="M140 176.0h200.6a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-200.6z"/>
+                    <text class="value-label" x="352.6" y="187.0">3.1</text>
+                  </g>
+                </svg>
+              </div>
+              <figcaption><span class="fig-no">Figure 4.</span>Mean concern intensity by topic across seven interviews (1 = peripheral, 3 = affected some decisions, 5 = repeatedly described as central). Local REET is highlighted in blue. <span class="fig-kind">Coded qualitative data</span> &mdash; a small, deliberately local sample for building hypotheses, not a survey. Source: Housing Friction Index, participation study.</figcaption>
+            </figure>
+            <div class="prose prose--after">
+              <p>At an open house I hosted, I logged what visitor groups raised unprompted, counting each topic once per group. Buyers began with the monthly payment and rates, not the house.</p>
+            </div>
+            <figure class="figure">
+              <div class="figure__frame chart-wrap">
+                <svg class="chart" viewBox="0 0 540 238" role="group" aria-labelledby="topics-t">
+                  <title id="topics-t">Open-house topic mentions by category, 101 coded mentions</title>
+                  <line class="grid" x1="150.0" y1="26" x2="150.0" y2="234"/>
+                  <text class="axis-label" x="150.0" y="20" text-anchor="middle">0</text>
+                  <line class="grid" x1="260.0" y1="26" x2="260.0" y2="234"/>
+                  <text class="axis-label" x="260.0" y="20" text-anchor="middle">10</text>
+                  <line class="grid" x1="370.0" y1="26" x2="370.0" y2="234"/>
+                  <text class="axis-label" x="370.0" y="20" text-anchor="middle">20</text>
+                  <line class="grid" x1="480.0" y1="26" x2="480.0" y2="234"/>
+                  <text class="axis-label" x="480.0" y="20" text-anchor="middle">30</text>
+                  <line class="baseline" x1="150" y1="26" x2="150" y2="234"/>
+                  <g class="mark" tabindex="0" role="img" aria-label="Monthly payment: 26 mentions" data-tip="Monthly payment: 26 mentions">
+                    <rect class="hit" x="0" y="30.0" width="540" height="34"/>
+                    <text x="140" y="51.0" text-anchor="end">Monthly payment</text>
+                    <path class="bar" d="M150 40.0h282.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-282.0z"/>
+                    <text class="value-label" x="444.0" y="51.0">26</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Mortgage rates: 23 mentions" data-tip="Mortgage rates: 23 mentions">
+                    <rect class="hit" x="0" y="64.0" width="540" height="34"/>
+                    <text x="140" y="85.0" text-anchor="end">Mortgage rates</text>
+                    <path class="bar" d="M150 74.0h249.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-249.0z"/>
+                    <text class="value-label" x="411.0" y="85.0">23</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Price: 19 mentions" data-tip="Price: 19 mentions">
+                    <rect class="hit" x="0" y="98.0" width="540" height="34"/>
+                    <text x="140" y="119.0" text-anchor="end">Price</text>
+                    <path class="bar" d="M150 108.0h205.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-205.0z"/>
+                    <text class="value-label" x="367.0" y="119.0">19</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Schools: 14 mentions" data-tip="Schools: 14 mentions">
+                    <rect class="hit" x="0" y="132.0" width="540" height="34"/>
+                    <text x="140" y="153.0" text-anchor="end">Schools</text>
+                    <path class="bar" d="M150 142.0h150.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-150.0z"/>
+                    <text class="value-label" x="312.0" y="153.0">14</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Tax / closing cost: 11 mentions" data-tip="Tax / closing cost: 11 mentions">
+                    <rect class="hit" x="0" y="166.0" width="540" height="34"/>
+                    <text x="140" y="187.0" text-anchor="end">Tax / closing cost</text>
+                    <path class="bar bar--alt" d="M150 176.0h117.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-117.0z"/>
+                    <text class="value-label" x="279.0" y="187.0">11</text>
+                  </g>
+                  <g class="mark" tabindex="0" role="img" aria-label="Parking: 8 mentions" data-tip="Parking: 8 mentions">
+                    <rect class="hit" x="0" y="200.0" width="540" height="34"/>
+                    <text x="140" y="221.0" text-anchor="end">Parking</text>
+                    <path class="bar" d="M150 210.0h84.0a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-84.0z"/>
+                    <text class="value-label" x="246.0" y="221.0">8</text>
+                  </g>
+                </svg>
+              </div>
+              <figcaption><span class="fig-no">Figure 5.</span>Open-house topic mentions by category, 101 mentions in total. Tax and closing cost is highlighted in blue. <span class="fig-kind">Field observation</span> &mdash; counts reconstructed from redacted field notes; they show what buyers noticed, not what they decided. Source: Housing Friction Index, fieldwork study.</figcaption>
+            </figure>
+            <details class="disclosure">
+              <summary>Where the interviewees agreed</summary>
+              <div class="disclosure__body disclosure__body--wide table-scroll">
+                <table class="data-table">
+                  <caption>Agreement levels are qualitative summaries across the seven interviews.</caption>
+                  <thead><tr><th scope="col">Topic</th><th scope="col">Agreement</th><th scope="col">What it suggests for the research</th></tr></thead>
+                  <tbody>
+                    <tr><td>Interest rates</td><td>Very high</td><td>Rates must be a control variable in any model.</td></tr>
+                    <tr><td>Affordability pressure</td><td>High</td><td>Model the monthly payment, not only the sale price.</td></tr>
+                    <tr><td>Seller cost sensitivity</td><td>High</td><td>Seller pass-through of costs is plausible enough to test.</td></tr>
+                    <tr><td>Market slowdown</td><td>High</td><td>Liquidity matters for when any policy change takes effect.</td></tr>
+                    <tr><td>Tax awareness</td><td>Moderate</td><td>The tax becomes salient late, at the closing estimate.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+            <details class="disclosure">
+              <summary>Data tables for Figures 4 and 5</summary>
+              <div class="disclosure__body disclosure__body--wide cols-2">
+                <table class="data-table">
+                  <caption>Figure 4: mean concern, 1&ndash;5, n = 7</caption>
+                  <thead><tr><th scope="col">Topic</th><th scope="col" class="num">Mean</th></tr></thead>
+                  <tbody><tr><td>Mortgage rates</td><td class="num">4.9</td></tr><tr><td>Net proceeds</td><td class="num">4.4</td></tr><tr><td>Concessions</td><td class="num">3.8</td></tr><tr><td>Inventory</td><td class="num">3.6</td></tr><tr><td>Local REET</td><td class="num">3.1</td></tr></tbody>
+                </table>
+                <table class="data-table">
+                  <caption>Figure 5: topic mentions, total 101</caption>
+                  <thead><tr><th scope="col">Topic</th><th scope="col" class="num">Mentions</th></tr></thead>
+                  <tbody><tr><td>Monthly payment</td><td class="num">26</td></tr><tr><td>Mortgage rates</td><td class="num">23</td></tr><tr><td>Price</td><td class="num">19</td></tr><tr><td>Schools</td><td class="num">14</td></tr><tr><td>Tax / closing cost</td><td class="num">11</td></tr><tr><td>Parking</td><td class="num">8</td></tr></tbody>
+                </table>
+              </div>
+            </details>
+          </section>
+
+          <section id="method" aria-labelledby="method-h">
+            <h2 id="method-h">Method and timeline</h2>
+            <div class="prose"><p>The method was deliberately mixed: documents for legal structure, interviews for market behaviour, fieldwork for buyer language, and data review for economic context.</p></div>
+            <ol class="steps steps--row steps--5">
+              <li><h3>Documents</h3><p>State REET statutes, Bellevue budget and capital materials, zoning concepts, parking-cost assumptions, housing-strategy records.</p></li>
+              <li><h3>Interviews</h3><p>Seven Eastside professionals; names, offices, and client details removed; responses coded by topic and intensity.</p></li>
+              <li><h3>Fieldwork</h3><p>Open-house observation of buyer concerns, plus street-width and pedestrian-comfort notes.</p></li>
+              <li><h3>Policy analysis</h3><p>Revenue purpose compared with market pressure, housing-production incentives, and liquidity.</p></li>
+              <li><h3>Synthesis</h3><p>Public recommendations, a research exhibit, and a roadmap for statistical testing.</p></li>
+            </ol>
+            <ol class="ledger">
+              <li><div class="ledger__row"><p class="ledger__when">Jan 2026</p><p class="ledger__body">Home-sale preparation and closing-cost review.</p></div></li>
+              <li><div class="ledger__row"><p class="ledger__when">Feb 2026</p><p class="ledger__body">Local REET differential identified; first transaction-cost calculations.</p></div></li>
+              <li><div class="ledger__row"><p class="ledger__when">Apr 2026</p><p class="ledger__body">First agent interview, early document review, initial variable list for the index.</p></div></li>
+              <li><div class="ledger__row"><p class="ledger__when">Apr&ndash;May 2026</p><p class="ledger__body">Open-house observation and coding of visitor concerns.</p></div></li>
+              <li><div class="ledger__row"><p class="ledger__when">May 2026</p><p class="ledger__body">Interview series completed and coded into agreement categories.</p></div></li>
+              <li><div class="ledger__row"><p class="ledger__when">Jun 2026</p><p class="ledger__body">Policy synthesis, public exhibit, and recommendations drafted.</p></div></li>
+            </ol>
+          </section>
+
+          <section id="findings" aria-labelledby="findings-h">
+            <h2 id="findings-h">Findings</h2>
+            <div class="cols-2">
+              <div>
+                <h3>The tax is not the main driver</h3>
+                <p>Considered on its own, Bellevue&rsquo;s REET is unlikely to be a primary cause of unaffordability. Regional supply constraints, population growth, mortgage rates, and land scarcity carry far more weight.</p>
+              </div>
+              <div>
+                <h3>Small costs still matter in a stack</h3>
+                <p>Because housing markets are shaped by many frictions at once, modest transaction costs can still contribute to reduced mobility and higher barriers to participation when they combine with existing pressure.</p>
+              </div>
+              <div>
+                <h3>Policy is evaluated too narrowly</h3>
+                <p>Measures meant to raise revenue, regulate development, fund infrastructure, or protect neighbourhood character interact, and can create cumulative burdens no single measure was designed to impose.</p>
+              </div>
+              <div>
+                <h3>Reform, not repeal</h3>
+                <p>The practical recommendations: publish plain-language seller guidance with dollar examples; study how REET revenue behaves across market cycles; and model alternatives&mdash;thresholds, exemptions, credits, parking reform&mdash;against the capital plan.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="limits" aria-labelledby="limits-h">
+            <h2 id="limits-h">Limits, stated plainly</h2>
+            <div class="prose">
+              <ul>
+                <li><strong>No control group yet.</strong> A valid test would compare Bellevue with a matched high-income ZIP code in a municipality without a local REET, over the same months. Until that comparison exists, results are exploratory.</li>
+                <li><strong>Modeled, not measured, associations.</strong> The full exhibit includes a modeled correlation of 0.39 between REET exposure and days on market. It is a hypothesis map for future work, not evidence that the tax lengthens listings.</li>
+                <li><strong>Small samples.</strong> Seven interviews and one set of open houses can reveal recurring language; they cannot estimate how a population thinks.</li>
+                <li><strong>Confidence varies.</strong> Strongest for the transaction arithmetic and source documentation, moderate for interview patterns, low for predictions about future market outcomes.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="sources" aria-labelledby="sources-h">
+            <h2 id="sources-h">Abstract and sources</h2>
+            <details class="disclosure">
+              <summary>Full abstract</summary>
+              <div class="disclosure__body">
+                <p>Housing affordability is frequently discussed through the lens of home prices, interest rates, and housing supply. Far less attention is given to the cumulative effect of transaction frictions: the taxes, fees, regulations, procedural requirements, and market barriers that influence the cost and ease of housing mobility.</p>
+                <p>This study investigates whether seemingly modest transaction-related costs can collectively shape housing affordability, market participation, and residential mobility in high-cost urban environments.</p>
+                <p>The research originated from a practical observation during the sale of a residential property in Bellevue, Washington. While reviewing closing documents, a municipal Real Estate Excise Tax (REET) of 0.5% emerged as a notable transaction cost. Although relatively small when viewed independently, the tax raised a broader question: at what point do accumulated housing-market frictions begin to influence homeowner behavior, transaction decisions, and overall housing affordability?</p>
+                <p>To address this question, the study expands beyond the Bellevue REET itself and develops a broader analytical framework termed the Housing Friction Model. This framework conceptualizes housing affordability as the product of interacting constraints rather than a single market variable.</p>
+                <p>Under this model, transaction taxes represent only one component within a larger ecosystem that includes zoning restrictions, parking requirements, permitting processes, mortgage rates, land-use regulations, development costs, and behavioral responses by buyers and sellers.</p>
+                <p>Using Bellevue as a case study, the project combines policy analysis, municipal financial data, housing-market indicators, public records, stakeholder interviews, open-house observations, and comparative research from peer municipalities. The investigation evaluates how transaction costs influence market outcomes and explores whether these costs operate independently or amplify the effects of other affordability pressures.</p>
+                <p>Particular attention is given to the distinction between direct financial burdens and indirect behavioral consequences, including reduced mobility, delayed transactions, pricing adjustments, and diminished market flexibility.</p>
+                <p>The analysis finds that the Bellevue REET is unlikely to be a primary driver of housing unaffordability when considered in isolation. Larger structural forces, including regional housing supply constraints, population growth, mortgage interest rates, and land scarcity, exert substantially greater influence on overall housing costs.</p>
+                <p>However, the study suggests that transaction-related costs remain relevant because housing markets are shaped by the accumulation of numerous frictions rather than a single dominant factor. In this context, even relatively modest transaction costs may contribute to broader patterns of reduced mobility and increased barriers to market participation when combined with other existing constraints.</p>
+                <p>The research further demonstrates that housing policy is often evaluated through isolated interventions despite operating within highly interconnected systems. Policies intended to generate municipal revenue, regulate development, improve infrastructure, or preserve neighborhood character frequently interact in ways that create unintended cumulative burdens.</p>
+                <p>As a result, affordability outcomes may emerge not from any single regulation, tax, or market condition, but from the collective weight of multiple overlapping constraints.</p>
+                <p>The central thesis of this project is that housing affordability should be understood as a systems problem rather than a single-policy problem. Effective housing policy requires evaluating the cumulative impact of housing-market frictions and recognizing how small costs can interact with larger structural forces. The Bellevue REET serves as a representative case through which broader questions of housing mobility, market efficiency, and affordability can be examined.</p>
+                <p>Ultimately, this study argues that policymakers should move beyond evaluating individual housing policies in isolation and instead adopt a friction-based framework that measures the combined effects of taxes, regulations, procedural requirements, and market barriers. Such an approach may provide a more accurate understanding of affordability challenges and support the development of policies that preserve public objectives while minimizing unintended obstacles to housing access and mobility.</p>
+              </div>
+            </details>
+            <ul class="ref-list">
+              <li><a href="https://henglongdang.github.io/Bellevue-Housing/" rel="noopener" data-external>Housing Friction Index exhibit</a><span class="what">The full public research site</span></li>
+              <li><a href="https://henglongdang.github.io/Bellevue-Housing/investigation.html" rel="noopener" data-external>The investigation</a><span class="what">Questions, statistical approach, timeline</span></li>
+              <li><a href="https://henglongdang.github.io/Bellevue-Housing/participation.html" rel="noopener" data-external>Participation</a><span class="what">Interview program, coding, twenty summarized findings</span></li>
+              <li><a href="https://henglongdang.github.io/Bellevue-Housing/fieldwork.html" rel="noopener" data-external>Open-house fieldwork</a><span class="what">Observation method and log</span></li>
+              <li><a href="https://henglongdang.github.io/Bellevue-Housing/data-lab.html" rel="noopener" data-external>Data lab</a><span class="what">Dataset inventory, control-group design, future pipeline</span></li>
+              <li><a href="https://henglongdang.github.io/Bellevue-Housing/documents.html" rel="noopener" data-external>Policy documents</a><span class="what">Statutes, budget materials, and references</span></li>
+            </ul>
+            <nav class="pager" aria-label="More work">
+              <a href="research-finance.html"><span class="label">Previous project</span><span class="title">Revolutionizing Household Finance</span></a>
+              <a class="next" href="synaperge.html"><span class="label">Next</span><span class="title">Synaperge</span></a>
+            </nav>
+          </section>
+        </div>
       </div>
-      <div class="grid three-col">
-        <div class="metric"><strong>REET is not the whole story</strong>Larger forces such as supply constraints, rates, population growth, and land scarcity carry greater explanatory weight.</div>
-        <div class="metric"><strong>Small costs still matter</strong>Transaction costs can affect mobility when they arrive inside an already constrained and expensive market.</div>
-        <div class="metric"><strong>Evaluate the stack</strong>The practical recommendation is not simple repeal; it is clearer guidance, market-cycle analysis, and policy alternatives that preserve public objectives while reducing friction.</div>
-      </div>
-      </section>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-shell">
-      <p>© Henglong Dang — Research, Systems, and Human-Centered AI.</p>
+  <!-- @footer -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <p class="label">Contact</p>
+          <h2>Write to me directly.</h2>
+          <p>I am glad to hear about research collaborations, roles in data, product, or technology operations, and questions about anything on this site.</p>
+          <div class="email-line">
+            <a href="mailto:danghenglong@gmail.com">danghenglong@gmail.com</a>
+            <button class="copy-button" type="button" data-copy="danghenglong@gmail.com" data-status="copy-status">Copy address</button>
+            <span id="copy-status" class="copy-status" role="status"></span>
+          </div>
+        </div>
+        <div>
+          <p class="label">Elsewhere</p>
+          <ul class="elsewhere">
+            <li><a href="https://www.linkedin.com/in/henglongdang/" rel="noopener" data-external>LinkedIn</a></li>
+            <li><a href="https://scholar.google.com/citations?user=D06-T50AAAAJ&amp;hl=en" rel="noopener" data-external>Google Scholar</a></li>
+            <li><a href="https://orcid.org/0009-0002-5215-9534" rel="noopener" data-external>ORCID</a></li>
+            <li><a href="https://medium.com/@henglongdang" rel="noopener" data-external>Medium</a></li>
+            <li><a href="https://www.crunchbase.com/person/henglong-dang" rel="noopener" data-external>Crunchbase</a></li>
+            <li><a href="https://www.f6s.com/henglongdang" rel="noopener" data-external>F6S</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="colophon">
+        <p>&copy; 2026 Henglong Dang</p>
+        <p>Set in Fraunces and Inter. A static site on GitHub Pages &middot; <a href="https://github.com/henglongdang/home" rel="noopener">source</a></p>
+        <p><a href="#top">Back to top</a></p>
+      </div>
     </div>
   </footer>
+  <a class="to-top" href="#top" aria-label="Back to top"><span aria-hidden="true">&uarr;</span></a>
+  <!-- /@footer -->
 </body>
 </html>

@@ -1,346 +1,441 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management | Henglong Dang Portfolio</title>
-    <meta name="description" content="Explore Henglong Dang’s portfolio featuring UX strategy, AI ethics research, product design leadership, and human-centered innovation projects.">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Henglong Dang">
-    <link rel="canonical" href="https://yourdomain.com/research-finance.html">
-    <meta property="og:title" content="Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management | Henglong Dang Portfolio">
-    <meta property="og:description" content="Explore Henglong Dang’s portfolio featuring UX strategy, AI ethics research, product design leadership, and human-centered innovation projects.">
-    <meta property="og:image" content="https://yourdomain.com/og-image.svg">
-    <meta property="og:url" content="https://yourdomain.com/research-finance.html">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management | Henglong Dang Portfolio">
-    <meta name="twitter:description" content="Explore Henglong Dang’s portfolio featuring UX strategy, AI ethics research, product design leadership, and human-centered innovation projects.">
-    <meta name="twitter:image" content="https://yourdomain.com/og-image.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0f172a;
-      --secondary-color: #2563eb;
-      --bg-color: #f8fafc;
-      --surface-color: #ffffff;
-      --text-main: #334155;
-      --text-light: #64748b;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-    body { background: var(--bg-color); color: var(--text-main); line-height: 1.75; }
-    .container { max-width: 1024px; margin: 0 auto; padding: 2.25rem 1.25rem 4rem; }
-    .topbar { margin-bottom: 1.5rem; }
-    .back-link { color: var(--secondary-color); text-decoration: none; font-weight: 600; }
-    .card { background: var(--surface-color); border-radius: 16px; box-shadow: 0 10px 30px rgba(15,23,42,.08); padding: 2rem; margin-bottom: 1.25rem; }
-    h1 { font-size: 2rem; color: var(--primary-color); margin-bottom: .5rem; }
-    h2 { font-size: 1.3rem; color: var(--primary-color); margin-bottom: .85rem; }
-    .subtitle { color: var(--text-light); margin-bottom: 1rem; }
-    ul { padding-left: 1.25rem; }
-    li { margin-bottom: .55rem; }
-    .pill { display: inline-block; background: #dbeafe; color: #1d4ed8; font-size: .84rem; font-weight: 600; padding: .35rem .7rem; border-radius: 999px; margin-bottom: .9rem; }
-    .cta a { display: inline-block; margin-right: .7rem; margin-top: .7rem; text-decoration: none; font-weight: 600; color: var(--secondary-color); background: transparent; border: 1px solid var(--secondary-color); padding: .65rem 1rem; border-radius: 10px; }
-    .cta a.secondary { background: transparent; color: var(--secondary-color); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 1rem;
-    }
-    .visual-card {
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      border-radius: 12px;
-      overflow: hidden;
-      background: rgba(15, 23, 42, 0.45);
-      box-shadow: 0 6px 18px rgba(2, 6, 23, 0.2);
-    }
-    .visual-card.primary { grid-column: span 7; }
-    .visual-card.secondary { grid-column: span 5; }
-    .visual-card.tertiary { grid-column: span 4; }
-    .visual-card img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-      background: #020617;
-    }
-    .visual-card figcaption {
-      padding: 0.75rem 0.9rem 0.9rem;
-      font-size: 0.9rem;
-      color: var(--text-light);
-      line-height: 1.5;
-    }
-    @media (max-width: 900px) {
-      .visual-card.primary,
-      .visual-card.secondary,
-      .visual-card.tertiary { grid-column: span 6; }
-    }
-    @media (max-width: 640px) {
-      .grid { grid-template-columns: 1fr; }
-      .visual-card.primary,
-      .visual-card.secondary,
-      .visual-card.tertiary { grid-column: span 1; }
-    }
-    blockquote {
-      border-left: 4px solid #60a5fa;
-      background: #0f172a;
-      color: #f8fafc;
-      padding: 1rem 1rem 1rem 1.1rem;
-      border-radius: 8px;
-    }
-  
-
-        /* === Technical Dark Retheme Overrides === */
-        :root {
-            --primary-color: #f5f8ff;
-            --secondary-color: #3b82f6;
-            --bg-color: #0d0f14;
-            --surface-color: #131a22;
-            --text-main: #e8edf5;
-            --text-light: #cbd5e1;
-            --grid-color: rgba(88, 166, 199, 0.06);
-        }
-
-        * { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-        body {
-            background: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.7;
-            background-image:
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 30px 30px;
-            background-attachment: fixed;
-        }
-
-        nav {
-            background: rgba(13, 15, 20, 0.85) !important;
-            border-bottom: 1px solid rgba(88, 166, 199, 0.2);
-            box-shadow: 0 1px 0 rgba(88, 166, 199, 0.08);
-        }
-
-        .nav-logo, .hero-title, .section-title, .card-title { font-family: "Space Grotesk", Inter, system-ui, sans-serif; letter-spacing: 0.01em; }
-        .nav-links a {
-            position: relative;
-            color: var(--text-main);
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 1px;
-            background: var(--secondary-color);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.28s ease;
-        }
-        .nav-links a:hover::after,
-        .nav-links a:focus-visible::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .section-title {
-            border-left: 1px solid var(--secondary-color);
-            padding-left: 0.75rem;
-        }
-        .section-title::after { opacity: 0.65; }
-
-        .card {
-            background: rgba(19, 26, 34, 0.9);
-            border: 1px solid rgba(88, 166, 199, 0.16);
-            box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28);
-        }
-
-        .card-subtitle, .hero-subtitle, .details-link, a { color: var(--secondary-color); }
-        .hero-desc, .card-date { color: var(--text-light); }
-        p, li { color: var(--text-main); }
-
-        .badge, .card-date, .card-subtitle {
-            display: inline-block;
-            padding: 0.2rem 0.65rem;
-            border-radius: 999px;
-            border: 1px solid rgba(125, 211, 252, 0.45);
-            background: rgba(125, 211, 252, 0.18);
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-            font-size: 0.82rem;
-            letter-spacing: 0.02em;
-        }
-
-        .hero-cta {
-            box-shadow: 0 10px 24px rgba(36, 87, 112, 0.2);
-        }
-
-        #home { position: relative; overflow: hidden; }
-        #home::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: radial-gradient(circle at 15% 25%, rgba(88, 166, 199, 0.14), transparent 38%);
-        }
-
-
-        /* === Accessibility Contrast Overrides === */
-        .pill {
-            color: #1e3a8a !important;
-        }
-
-        .badge, .card-subtitle, .card-date {
-            color: var(--primary-color) !important;
-        }
-
-        .cta a.secondary, .actions a.secondary {
-            background: #334155;
-            color: #f8fafc;
-            border: 1px solid #64748b;
-        }
-
-        .cta a, .actions a, .hero-cta {
-            background: #0369a1;
-            border: 1px solid #0369a1;
-            color: #f8fafc !important;
-        }
-
-        .cta a:hover, .actions a:hover, .hero-cta:hover {
-            background: #075985;
-            border-color: #075985;
-        }
-
-        .cta a.secondary:hover, .actions a.secondary:hover {
-            background: #475569;
-            border-color: #475569;
-        }
-
-    </style>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="unified-subpage-theme.css">
+  <title>Revolutionizing Household Finance (HCII 2025) — Henglong Dang</title>
+  <meta name="description" content="First-author HCII 2025 paper: a mixed-methods study (survey N = 342, interviews N = 35) of fragmented household finance tools and an integrated prototype. Springer LNCS 16342, pp. 22–40, 2026.">
+  <link rel="canonical" href="https://henglongdang.github.io/home/research-finance.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Henglong Dang">
+  <meta property="og:title" content="Revolutionizing Household Finance — HCII 2025">
+  <meta property="og:description" content="A mixed-methods study of fragmented household finance tools and a prototype that unifies budgeting, bills, accounts, forecasting, and family planning.">
+  <meta property="og:url" content="https://henglongdang.github.io/home/research-finance.html">
+  <meta property="og:image" content="https://henglongdang.github.io/home/assets/images/og-default.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- @head -->
+  <meta name="theme-color" content="#12110f">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&amp;family=Inter:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="assets/js/site.js" defer></script>
+  <!-- /@head -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management",
+    "author": [
+      { "@type": "Person", "name": "Henglong Dang", "url": "https://henglongdang.github.io/home/" },
+      { "@type": "Person", "name": "Fang Ding" }
+    ],
+    "datePublished": "2026",
+    "pagination": "22-40",
+    "isPartOf": {
+      "@type": "Book",
+      "name": "HCI International 2025 – Late Breaking Papers",
+      "bookEdition": "Lecture Notes in Computer Science, vol. 16342",
+      "isbn": ["9783032131638", "9783032131645"],
+      "publisher": { "@type": "Organization", "name": "Springer Nature Switzerland" }
+    },
+    "sameAs": "https://doi.org/10.1007/978-3-032-13164-5_2"
+  }
+  </script>
 </head>
-<body>
+<body id="top" data-nav="work" data-progress>
+  <!-- @header -->
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <div class="site-shell">
-      <nav class="site-nav" aria-label="Primary">
-        <a class="brand" href="index.html">Henglong Dang</a>
-        <div class="nav-links">
-          <a href="index.html#about">About</a>
-          <a href="index.html#research">Research</a>
-          <a href="index.html#writing">Writing</a>
-          <a href="index.html#experience">Experience</a>
-          <a href="index.html#background">Background</a>
-          <a href="index.html#contact">Contact</a>
-        </div>
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html">Henglong Dang</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle__bars" aria-hidden="true"></span>Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="work.html" class="is-section">Work</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="publications.html">Writing</a></li>
+          <li><a href="profile.html">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
     </div>
+    <div class="progress" aria-hidden="true"></div>
   </header>
+  <!-- /@header -->
 
-  <main role="main" class="container">
-    <div class="topbar"><a class="back-link" href="index.html">← Back to portfolio</a></div>
-
-    <section class="card">
-      <span class="pill">Research Project</span>
-      <h1>Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management</h1>
-      <p class="subtitle">A user-centered platform for holistic financial management and family collaboration.</p>
-      <p>
-        This project addresses a major market problem: households juggle disconnected apps for budgeting, spending,
-        forecasting, and account oversight. The platform integrates these functions into one cohesive system and adds
-        predictive analytics and cooperative family governance tools to reduce cognitive load and improve long-term financial planning.
-      </p>
-      <div class="cta">
-        <a href="https://link.springer.com/chapter/10.1007/978-3-032-13164-5_2" target="_blank" rel="noopener noreferrer">Read full research paper</a>
-        <a class="secondary" href="https://www.figma.com/proto/lldnufkGqX014Z3f2aCebq/FamilyPulse-final-high-fi?page-id=0%3A1&node-id=1-1086&node-type=CANVAS&viewport=778%2C419%2C0.06&t=8iccCv43xd6C4Sh2-1&scaling=min-zoom&content-scaling=fixed" target="_blank" rel="noopener noreferrer">High-fidelity prototype</a>
-        <a class="secondary" href="https://www.dfdrawlab.com/ux/ux-familypulse" target="_blank" rel="noopener noreferrer">View detailed report</a>
-        <a class="secondary" href="https://2025.hci.international/proceedings.html" target="_blank" rel="noopener noreferrer">Conference Website</a>
-        <a class="secondary" href="https://books.google.com/books?hl=en&lr=&id=lIOlEQAAQBAJ&oi=fnd&pg=PA22&ots=gQ2QU8fH51&sig=tZpShkW1hjKQHWNxH28xYTLF9qI#v=onepage&q&f=false" target="_blank" rel="noopener noreferrer">Google Scholars listing</a>
+  <main id="main">
+    <header class="page-head">
+      <div class="wrap">
+        <ol class="crumbs" aria-label="Breadcrumb">
+          <li><a href="work.html">Work</a></li>
+          <li><a href="work.html?type=research">Research</a></li>
+          <li aria-current="page">Household finance</li>
+        </ol>
+        <p class="label kind">Peer-reviewed paper &middot; Human&ndash;computer interaction</p>
+        <h1 class="h1--long">Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management</h1>
+        <p class="dek">A mixed-methods study of why household money management is spread across disconnected apps, and a prototype that brings budgeting, bills, accounts, forecasting, and family planning into one place.</p>
+        <dl class="meta">
+          <div><dt>Authors</dt><dd>Henglong Dang (first, corresponding), Fang Ding</dd></div>
+          <div><dt>Published in</dt><dd><em>HCI International 2025 &ndash; Late Breaking Papers</em>, LNCS 16342, pp.&nbsp;22&ndash;40</dd></div>
+          <div><dt>Publisher &middot; Year</dt><dd>Springer Nature, 2026</dd></div>
+          <div><dt>Conference</dt><dd>27th International Conference on Human&ndash;Computer Interaction (HCII 2025)</dd></div>
+          <div><dt>DOI</dt><dd><a href="https://doi.org/10.1007/978-3-032-13164-5_2" rel="noopener">10.1007/978-3-032-13164-5_2</a></dd></div>
+        </dl>
+        <div class="button-row">
+          <a class="button button--solid" href="https://link.springer.com/chapter/10.1007/978-3-032-13164-5_2" rel="noopener" data-external>Read on Springer</a>
+          <a class="button" href="https://www.figma.com/proto/lldnufkGqX014Z3f2aCebq/FamilyPulse-final-high-fi?page-id=0%3A1&amp;node-id=1-1086&amp;node-type=CANVAS&amp;viewport=778%2C419%2C0.06&amp;t=8iccCv43xd6C4Sh2-1&amp;scaling=min-zoom&amp;content-scaling=fixed" rel="noopener" data-external>High-fidelity prototype</a>
+          <a class="button" href="#cite">Cite</a>
+        </div>
       </div>
-    </section>
+    </header>
 
-    <section class="card">
-      <h2>Full Abstract</h2>
-      <blockquote>
-        The increasing complexity of household financial management has been exacerbated by the fragmented architecture of existing digital financial tools. Although discrete applications support budgeting, expenditure tracking, forecasting, and account oversight, a critical gap remains: the absence of a unified platform that facilitates integrated financial planning and collaborative familial governance. This study introduces a comprehensive digital solution aimed at remedying this deficiency through a consolidated user interface augmented by predictive analytics.
-        <br><br>
-        Consequently, this paper delineates and assesses a holistic platform that directly ameliorates the functional fragmentation. Empirical inquiries, encompassing quantitative (N = 342 survey) and qualitative (N = 35 interviews) methodologies, discerned salient disutility points, revealing significant cognitive burden and a low satisfaction (2.7/5) with extant applications. An iterative prototype developmental trajectory, progressing from low-fidelity schematics to a high-fidelity interactive simulacrum, was informed by key dissatisfactions identified in the initial user research and insights from iterative usability validation cycles. Subsequent comparative performance assessment corroborated the platform’s integrative schema, with a mean satisfaction of the proposed prototype of 84.2 out of 100 (SD = 7.9). Through synthesis of rigorous empirical methodologies with sophisticated algorithmic prognostications and resilient cooperative functionalities, this platform furnishes a pragmatic resolution, establishing a scalable archetypal framework for holistic, human-centered financial applications, augmenting the state of the art of financial management applications.
-      </blockquote>
-    </section>
+    <div class="article">
+      <div class="wrap article-layout">
+        <nav class="toc" aria-label="On this page">
+          <ol>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#abstract">Abstract</a></li>
+            <li><a href="#problem">The problem</a></li>
+            <li><a href="#questions">Research questions</a></li>
+            <li><a href="#method">Method</a></li>
+            <li><a href="#findings">What was measured</a></li>
+            <li><a href="#design">The proposed platform</a></li>
+            <li><a href="#role">My role</a></li>
+            <li><a href="#reflection">Reflection</a></li>
+            <li><a href="#cite">Citation and links</a></li>
+          </ol>
+        </nav>
 
-    <section class="card">
-      <h2>Key Features Highlighted from the FamilyPulse Case</h2>
-      <ul>
-        <li>Unified dashboard that combines budgeting, transaction tracking, shared household goals, and account visibility in one view.</li>
-        <li>Predictive financial insights to support upcoming expense planning and proactive risk detection.</li>
-        <li>Collaborative household workflows (shared categories, role-aware access, and coordinated planning routines).</li>
-        <li>Research-driven UX development from pain-point mapping to iterative low/high-fidelity prototypes and usability testing.</li>
-        <li>Measured improvement in user outcomes, including stronger satisfaction and reduced management friction.</li>
-      </ul>
-    </section>
+        <div class="article-body">
+          <section id="summary" aria-labelledby="summary-h">
+            <h2 id="summary-h">Summary</h2>
+            <div class="prose">
+              <p>Most households do not manage money in one place. A budget lives in one app, bills in another, bank balances in a third, and the conversation about next month&rsquo;s expenses happens in a group chat or a spreadsheet. Each tool works; the whole does not.</p>
+              <p>This paper asks what people actually need from a household finance tool and whether a single, shared platform serves them better than a collection of separate ones. We combined a survey of 342 people with 35 interviews, used the findings to design a prototype that integrates the main financial tasks and adds shared planning for family members, and refined it through repeated usability testing.</p>
+            </div>
+            <ul class="figures" aria-label="Study at a glance">
+              <li><span class="value">342</span><span class="what">survey respondents</span></li>
+              <li><span class="value">35</span><span class="what">in-depth interviews</span></li>
+              <li><span class="value">2.7 / 5</span><span class="what">satisfaction with existing apps</span></li>
+              <li><span class="value">84.2 / 100</span><span class="what">mean satisfaction with the prototype (SD 7.9)</span></li>
+            </ul>
+            <p class="note"><strong>Reading the numbers.</strong> The two satisfaction figures come from different instruments on different scales. They describe two separate assessments, not a before-and-after change in one measure. All four figures are taken from the published abstract.</p>
+          </section>
 
-    <section class="card">
-      <h2>My Role</h2>
-      <p>
-        As first author and corresponding author, I led the full user-centered research-to-design pipeline across concept framing,
-        empirical study design, evidence synthesis, experience architecture, and prototype iteration. I translated mixed-method findings
-        into product requirements, defined the integrative interaction model, and shaped collaborative household governance and predictive
-        planning workflows. I also served as the official presenter at the 27th International Conference on Human-Computer Interaction
-        (HCII 2025), presenting the study and design outcomes.
-        I led the user-centered research-to-design pipeline across concept framing, evidence synthesis, experience architecture,
-        and prototype iteration. I translated mixed-method findings into product requirements, defined the integrative interaction model,
-        and helped shape collaborative household governance features and predictive planning flows for a practical, scalable release direction.
-      </p>
-    </section>
+          <section id="abstract" aria-labelledby="abstract-h">
+            <h2 id="abstract-h">Abstract</h2>
+            <div class="prose">
+              <p>The increasing complexity of household financial management has been exacerbated by the fragmented architecture of existing digital financial tools. Although discrete applications support budgeting, expenditure tracking, forecasting, and account oversight, a critical gap remains: the absence of a unified platform that facilitates integrated financial planning and collaborative familial governance. This study introduces a comprehensive digital solution aimed at remedying this deficiency through a consolidated user interface augmented by predictive analytics.</p>
+              <p>Consequently, this paper delineates and assesses a holistic platform that directly ameliorates the functional fragmentation. Empirical inquiries, encompassing quantitative (N&nbsp;=&nbsp;342 survey) and qualitative (N&nbsp;=&nbsp;35 interviews) methodologies, discerned salient disutility points, revealing significant cognitive burden and a low satisfaction (2.7/5) with extant applications. An iterative prototype developmental trajectory, progressing from low-fidelity schematics to a high-fidelity interactive simulacrum, was informed by key dissatisfactions identified in the initial user research and insights from iterative usability validation cycles. Subsequent comparative performance assessment corroborated the platform&rsquo;s integrative schema, with a mean satisfaction of the proposed prototype of 84.2 out of 100 (SD&nbsp;=&nbsp;7.9). Through synthesis of rigorous empirical methodologies with sophisticated algorithmic prognostications and resilient cooperative functionalities, this platform furnishes a pragmatic resolution, establishing a scalable archetypal framework for holistic, human-centered financial applications, augmenting the state of the art of financial management applications.</p>
+            </div>
+          </section>
 
-    <section class="card">
-      <h2>Selected Visuals</h2>
-      <p class="subtitle">Representative visuals sourced from the FamilyPulse case page.</p>
-      <div class="grid">
-        <figure class="visual-card primary">
-          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/66fa13c3e82c283b404b3734_66d54d8780378e00e01a4ea7_Copy%20FPulse-1.png" alt="FamilyPulse overview visual">
-          <figcaption>Unified dashboard overview combining budgeting, transactions, and shared household goals into one decision surface.</figcaption>
-        </figure>
-        <figure class="visual-card secondary">
-          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/67b63f29305c712e4dfe0f2a_FamilyPulsegif-ezgif.com-optimize.gif" alt="FamilyPulse animated prototype">
-          <figcaption>Interactive prototype walkthrough showing real-time navigation and quick transitions across planning modules.</figcaption>
-        </figure>
-        <figure class="visual-card tertiary">
-          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/66d54dd09af28bdc54463cb5_Copy%20FPulse-2%20%281%29.png" alt="FamilyPulse interface detail">
-          <figcaption>Interface detail focused on account visibility and summary cards for immediate financial status checks.</figcaption>
-        </figure>
-        <figure class="visual-card tertiary">
-          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/67b6447a349689167ae5caec_ezgif.com-webp-maker%20%282%29.webp" alt="FamilyPulse workflow visual">
-          <figcaption>Workflow view demonstrating collaborative family planning with role-aware participation and shared actions.</figcaption>
-        </figure>
-        <figure class="visual-card tertiary">
-          <img height="675" width="1200" loading="lazy" src="https://cdn.prod.website-files.com/66cff9ee105a891388f28351/67b65ccf37cc3b057c744d4f_CopyFPulse-331-ezgif.com-optipng.png" alt="FamilyPulse feature showcase visual">
-          <figcaption>Feature showcase highlighting predictive insights and category-level guidance for forward-looking decisions.</figcaption>
-        </figure>
+          <section id="problem" aria-labelledby="problem-h">
+            <h2 id="problem-h">The problem: one household, many tools</h2>
+            <div class="prose">
+              <p>Fragmentation is not only an inconvenience. When each tool holds part of the picture, the work of connecting them moves into people&rsquo;s heads: remembering which app shows what, re-entering the same figures, reconciling a forecast against spending that lives elsewhere, and relaying all of it to the other people in the household. The paper describes this as cognitive burden, and the survey and interviews found it to be significant.</p>
+            </div>
+
+            <figure class="figure" data-views data-default="frag">
+              <div class="segmented" role="group" aria-label="Diagram view">
+                <button type="button" data-view-btn="frag" aria-pressed="true">Separate tools</button>
+                <button type="button" data-view-btn="int" aria-pressed="false">Integrated platform</button>
+              </div>
+              <div class="figure__frame">
+                <svg class="diagram" viewBox="0 0 720 380" role="img" aria-labelledby="frag-t frag-d">
+                  <title id="frag-t">Household finance with separate tools compared with an integrated platform</title>
+                  <desc id="frag-d">Separate tools: a household connects individually to six tools, budgeting, bill reminders, bank accounts, forecasting, payment apps, and spreadsheets, and does the work of connecting them. Integrated platform: the household connects once to a single platform with budgets, transactions, accounts, shared goals, forecasts and alerts, and role-based access for family members.</desc>
+                  <g data-view="frag">
+                    <line class="ln" x1="360" y1="190" x2="135" y2="60"/>
+                    <line class="ln" x1="360" y1="190" x2="585" y2="60"/>
+                    <line class="ln" x1="360" y1="190" x2="105" y2="190"/>
+                    <line class="ln" x1="360" y1="190" x2="615" y2="190"/>
+                    <line class="ln" x1="360" y1="190" x2="145" y2="320"/>
+                    <line class="ln" x1="360" y1="190" x2="580" y2="320"/>
+                    <rect class="box" x="60" y="40" width="150" height="40"/><text x="135" y="65" text-anchor="middle">Budgeting app</text>
+                    <rect class="box" x="510" y="40" width="150" height="40"/><text x="585" y="65" text-anchor="middle">Bill reminders</text>
+                    <rect class="box" x="30" y="170" width="150" height="40"/><text x="105" y="195" text-anchor="middle">Bank accounts</text>
+                    <rect class="box" x="540" y="170" width="150" height="40"/><text x="615" y="195" text-anchor="middle">Forecasting</text>
+                    <rect class="box" x="60" y="300" width="170" height="40"/><text x="145" y="325" text-anchor="middle">Spreadsheets, notes</text>
+                    <rect class="box" x="500" y="300" width="160" height="40"/><text x="580" y="325" text-anchor="middle">Payment apps</text>
+                    <rect class="box-gold" x="300" y="168" width="120" height="44"/><text class="t-strong" x="360" y="195" text-anchor="middle">Household</text>
+                    <text class="t-gold" x="360" y="120" text-anchor="middle">Same figures entered twice</text>
+                    <text class="t-gold" x="360" y="268" text-anchor="middle">No shared view for the family</text>
+                  </g>
+                  <g data-view="int" class="view-alt">
+                    <rect class="box-gold" x="150" y="30" width="420" height="220"/>
+                    <text class="t-strong" x="360" y="60" text-anchor="middle">One shared platform</text>
+                    <rect class="box" x="175" y="80" width="120" height="44"/><text x="235" y="107" text-anchor="middle">Budgets</text>
+                    <rect class="box" x="300" y="80" width="120" height="44"/><text x="360" y="107" text-anchor="middle">Transactions</text>
+                    <rect class="box" x="425" y="80" width="120" height="44"/><text x="485" y="107" text-anchor="middle">Accounts</text>
+                    <rect class="box" x="175" y="134" width="120" height="44"/><text x="235" y="161" text-anchor="middle">Shared goals</text>
+                    <rect class="box" x="300" y="134" width="120" height="44"/><text x="360" y="161" text-anchor="middle">Forecasts</text>
+                    <rect class="box" x="425" y="134" width="120" height="44"/><text x="485" y="161" text-anchor="middle">Alerts</text>
+                    <text class="t-faint" x="360" y="212" text-anchor="middle">One record of each transaction; every view draws on it</text>
+                    <line class="ln-gold" x1="360" y1="250" x2="360" y2="296"/>
+                    <line class="ln-gold" x1="270" y1="250" x2="270" y2="296"/>
+                    <line class="ln-gold" x1="450" y1="250" x2="450" y2="296"/>
+                    <rect class="box" x="220" y="296" width="100" height="40"/><text x="270" y="321" text-anchor="middle">Parent</text>
+                    <rect class="box" x="310" y="296" width="100" height="40"/><text x="360" y="321" text-anchor="middle">Partner</text>
+                    <rect class="box" x="400" y="296" width="100" height="40"/><text x="450" y="321" text-anchor="middle">Teen</text>
+                    <text class="t-gold" x="360" y="364" text-anchor="middle">Each member sees what their role allows</text>
+                  </g>
+                </svg>
+              </div>
+              <figcaption><span class="fig-no">Figure 1.</span>The problem and the proposal. Use the toggle to switch views. <span class="fig-kind">Conceptual diagram</span> &mdash; the tools and household roles shown are examples for illustration, not data from the study.</figcaption>
+            </figure>
+          </section>
+
+          <section id="questions" aria-labelledby="questions-h">
+            <h2 id="questions-h">Research questions</h2>
+            <div class="prose"><p>The study was organized around three questions, each broken into more specific ones. They are transcribed from the original project proposal.</p></div>
+            <ol class="questions">
+              <li>
+                <div>
+                  <p>How do users&rsquo; financial management needs and preferences vary based on demographic factors?</p>
+                  <ul><li>Which financial management tasks do users find most challenging, and what obstacles hinder effective use of family finance apps?</li></ul>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p>What features do users find most valuable in a family finance app?</p>
+                  <ul>
+                    <li>How do users currently manage their budgets and expenses, and what tools or methods do they use?</li>
+                    <li>How effectively are real-time notifications influencing users&rsquo; financial behaviors and decision-making?</li>
+                    <li>How do users currently track their spending?</li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p>What factors influence users&rsquo; trust in a family finance app?</p>
+                  <ul><li>What privacy and security concerns do users have when using family finance apps and sharing financial information?</li></ul>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <section id="method" aria-labelledby="method-h">
+            <h2 id="method-h">Method</h2>
+            <div class="prose"><p>The work moved from research to design to evaluation, with the later stages looping back as testing revealed problems. Select a stage to see what it involved.</p></div>
+
+            <figure class="figure">
+              <div class="explorer" data-explorer data-default="survey">
+                <ul class="explorer__keys" aria-label="Method stages">
+                  <li><button type="button" data-key="review">1 Review</button></li>
+                  <li><button type="button" data-key="survey">2 Survey</button></li>
+                  <li><button type="button" data-key="interviews">3 Interviews</button></li>
+                  <li><button type="button" data-key="synthesis">4 Synthesis</button></li>
+                  <li><button type="button" data-key="lofi">5 Low-fidelity</button></li>
+                  <li><button type="button" data-key="hifi">6 High-fidelity</button></li>
+                  <li><button type="button" data-key="usability">7 Usability cycles</button></li>
+                  <li><button type="button" data-key="assessment">8 Assessment</button></li>
+                </ul>
+                <div class="figure__frame figure-scroll">
+                  <svg class="diagram" viewBox="0 0 760 210" aria-hidden="true">
+                    <text class="label t-faint" x="10" y="20">RESEARCH</text>
+                    <text class="label t-faint" x="400" y="20">DESIGN</text>
+                    <text class="label t-faint" x="590" y="20">EVALUATION</text>
+                    <line class="ln" x1="90" y1="72" x2="100" y2="72"/>
+                    <line class="ln" x1="180" y1="72" x2="190" y2="72"/>
+                    <line class="ln" x1="270" y1="72" x2="290" y2="72"/>
+                    <line class="ln" x1="370" y1="72" x2="400" y2="72"/>
+                    <line class="ln" x1="480" y1="72" x2="490" y2="72"/>
+                    <line class="ln" x1="570" y1="72" x2="590" y2="72"/>
+                    <line class="ln" x1="670" y1="72" x2="680" y2="72"/>
+                    <path class="ln-gold" d="M630 96 V140 H530 V96"/>
+                    <text class="t-gold" x="580" y="160" text-anchor="middle">iterate</text>
+                    <g data-key="review"><rect class="box" x="10" y="48" width="80" height="48"/><text x="50" y="70" text-anchor="middle">Review</text><text class="t-faint" x="50" y="86" text-anchor="middle">8 apps</text></g>
+                    <g data-key="survey"><rect class="box" x="100" y="48" width="80" height="48"/><text x="140" y="70" text-anchor="middle">Survey</text><text class="t-faint" x="140" y="86" text-anchor="middle">N = 342</text></g>
+                    <g data-key="interviews"><rect class="box" x="190" y="48" width="80" height="48"/><text x="230" y="70" text-anchor="middle">Interviews</text><text class="t-faint" x="230" y="86" text-anchor="middle">N = 35</text></g>
+                    <g data-key="synthesis"><rect class="box" x="290" y="48" width="80" height="48"/><text x="330" y="70" text-anchor="middle">Synthesis</text><text class="t-faint" x="330" y="86" text-anchor="middle">pain points</text></g>
+                    <g data-key="lofi"><rect class="box" x="400" y="48" width="80" height="48"/><text x="440" y="70" text-anchor="middle">Low-fi</text><text class="t-faint" x="440" y="86" text-anchor="middle">schematics</text></g>
+                    <g data-key="hifi"><rect class="box" x="490" y="48" width="80" height="48"/><text x="530" y="70" text-anchor="middle">High-fi</text><text class="t-faint" x="530" y="86" text-anchor="middle">interactive</text></g>
+                    <g data-key="usability"><rect class="box" x="590" y="48" width="80" height="48"/><text x="630" y="70" text-anchor="middle">Usability</text><text class="t-faint" x="630" y="86" text-anchor="middle">cycles</text></g>
+                    <g data-key="assessment"><rect class="box" x="680" y="48" width="74" height="48"/><text x="717" y="70" text-anchor="middle">Assess</text><text class="t-faint" x="717" y="86" text-anchor="middle">84.2 / 100</text></g>
+                    <text class="t-faint" x="10" y="196">Stages run left to right; usability findings fed back into the high-fidelity design.</text>
+                  </svg>
+                </div>
+                <div class="explorer__panels" aria-live="polite">
+                  <div class="explorer__panel" data-panel="review">
+                    <p class="label">Stage 1 &middot; Research</p>
+                    <h3>Review of existing apps</h3>
+                    <p>A comparative look at eight existing financial-management apps to map which tasks each covered and where the gaps between them fell.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="survey">
+                    <p class="label">Stage 2 &middot; Research</p>
+                    <h3>Survey, N = 342</h3>
+                    <p>The quantitative arm of the study. It identified where people struggled across budgeting, expense tracking, forecasting, and account oversight, and how satisfied they were with the tools they used.</p>
+                    <p>Satisfaction with existing applications averaged 2.7 out of 5.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="interviews">
+                    <p class="label">Stage 3 &middot; Research</p>
+                    <h3>Interviews, N = 35</h3>
+                    <p>The qualitative arm: conversations about how people actually manage money day to day, which tools they combine, and what they would trust a shared family app with.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="synthesis">
+                    <p class="label">Stage 4 &middot; Research</p>
+                    <h3>Synthesis of pain points</h3>
+                    <p>Survey and interview findings were combined into the key dissatisfactions that would shape the design. The central one was cognitive burden: the effort of holding a fragmented picture together.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="lofi">
+                    <p class="label">Stage 5 &middot; Design</p>
+                    <h3>Low-fidelity schematics</h3>
+                    <p>First structural sketches of a single platform: which tasks share a screen, how information flows between budgeting, transactions, and forecasting, and where family members fit in.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="hifi">
+                    <p class="label">Stage 6 &middot; Design</p>
+                    <h3>High-fidelity interactive prototype</h3>
+                    <p>A clickable prototype built in Figma, with a unified dashboard, predictive insights for upcoming expenses, and collaborative household workflows. <a href="https://www.figma.com/proto/lldnufkGqX014Z3f2aCebq/FamilyPulse-final-high-fi?page-id=0%3A1&amp;node-id=1-1086&amp;node-type=CANVAS&amp;viewport=778%2C419%2C0.06&amp;t=8iccCv43xd6C4Sh2-1&amp;scaling=min-zoom&amp;content-scaling=fixed" rel="noopener" data-external>Open the prototype</a></p>
+                  </div>
+                  <div class="explorer__panel" data-panel="usability">
+                    <p class="label">Stage 7 &middot; Evaluation</p>
+                    <h3>Iterative usability validation</h3>
+                    <p>Repeated rounds of usability testing. Problems found in each round were fed back into the high-fidelity design before the next.</p>
+                  </div>
+                  <div class="explorer__panel" data-panel="assessment">
+                    <p class="label">Stage 8 &middot; Evaluation</p>
+                    <h3>Comparative performance assessment</h3>
+                    <p>A final assessment of the prototype&rsquo;s integrated design. Mean satisfaction was 84.2 out of 100 (SD = 7.9).</p>
+                  </div>
+                </div>
+              </div>
+              <figcaption><span class="fig-no">Figure 2.</span>Research process. <span class="fig-kind">Process diagram</span> &mdash; stages and figures from the published abstract; the eight-app review is from my project notes.</figcaption>
+            </figure>
+          </section>
+
+          <section id="findings" aria-labelledby="findings-h">
+            <h2 id="findings-h">What was measured</h2>
+            <div class="prose"><p>The published abstract reports the following. I list each figure with the scale it was measured on so that they are not read against each other.</p></div>
+            <div class="table-scroll">
+              <table class="data-table">
+                <caption>Reported figures, from the paper&rsquo;s abstract</caption>
+                <thead><tr><th scope="col">Measure</th><th scope="col" class="num">Value</th><th scope="col">Scale</th><th scope="col">Stage</th></tr></thead>
+                <tbody>
+                  <tr><td>Survey respondents</td><td class="num">342</td><td>count</td><td>Research</td></tr>
+                  <tr><td>Interview participants</td><td class="num">35</td><td>count</td><td>Research</td></tr>
+                  <tr><td>Satisfaction with existing financial apps</td><td class="num">2.7</td><td>out of 5</td><td>Research</td></tr>
+                  <tr><td>Mean satisfaction with the prototype</td><td class="num">84.2 (SD 7.9)</td><td>out of 100</td><td>Evaluation</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="prose prose--after">
+              <h3>Qualitative findings</h3>
+              <p>The research identified significant cognitive burden from managing money across disconnected tools, alongside the specific dissatisfactions that shaped the design. The details, including breakdowns by task and demographic group, are in the full paper.</p>
+            </div>
+          </section>
+
+          <section id="design" aria-labelledby="design-h">
+            <h2 id="design-h">The proposed platform</h2>
+            <div class="prose">
+              <p>The prototype&mdash;developed as a product concept called FamilyPulse&mdash;answers the fragmentation problem with three design commitments. These are design proposals, not findings.</p>
+            </div>
+            <ol class="steps steps--row steps--3">
+              <li><h3>One surface</h3><p>A single dashboard that combines budgeting, transaction tracking, shared household goals, and account visibility, so no figure has to be carried between apps.</p></li>
+              <li><h3>Look ahead</h3><p>Predictive insights that flag upcoming expenses and potential shortfalls, connected to the same records as day-to-day spending.</p></li>
+              <li><h3>Plan together</h3><p>Shared categories, role-aware access, and coordinated planning routines so that a household can manage money as a group without every member seeing everything.</p></li>
+            </ol>
+            <figure class="figure">
+              <div class="figure__frame figure__frame--bare">
+                <img src="assets/images/familypulse-business-model.png" width="1920" height="918" loading="lazy" alt="Mind map of the FamilyPulse business model. A central node, Business Model, branches into four parts: User Value (personalization, convenience, comparison tools, trust and transparency, financial education); Products and Services (budgeting tools, financial tools, mobile app, finance advice, credit score monitoring); Revenue Streams (lead generation, sponsored content, advertising, affiliate marketing); and Ecosystem (consumers, content partners, technology partners, advertisers, financial institutions).">
+              </div>
+              <figcaption><span class="fig-no">Figure 3.</span>Business-model map for the FamilyPulse concept, from the project&rsquo;s original case study. It places the research-driven features within a plausible product: free users, revenue through partner and affiliate agreements. <span class="fig-kind">Product concept</span></figcaption>
+            </figure>
+          </section>
+
+          <section id="role" aria-labelledby="role-h">
+            <h2 id="role-h">My role</h2>
+            <div class="prose">
+              <p>I was first and corresponding author. I framed the research problem, designed the empirical study, synthesized the survey and interview findings, and translated them into product requirements. I defined the integrated interaction model and the collaborative household and forecasting workflows, led the prototype through its low- and high-fidelity iterations, and presented the paper at HCII 2025.</p>
+            </div>
+          </section>
+
+          <section id="reflection" aria-labelledby="reflection-h">
+            <h2 id="reflection-h">Reflection</h2>
+            <div class="prose">
+              <p>The study shows that people find a unified, shared tool more satisfying to use than the patchwork they currently rely on. It does not yet show that such a tool changes how households actually manage money. The evaluation measured satisfaction with a prototype; a natural next step would be a longitudinal study of a working version, tracking whether shared visibility changes planning behaviour, disagreements, or missed payments over months rather than minutes.</p>
+              <p>The trust question also deserves more attention than a prototype can give it. Asking a family to put every account in one place concentrates risk as well as convenience, and the privacy concerns raised in research question 3 would need to be tested against a real data model, not a mock-up.</p>
+            </div>
+          </section>
+
+          <section id="cite" aria-labelledby="cite-h">
+            <h2 id="cite-h">Citation and links</h2>
+            <div class="citation">
+              <p id="citation-text">Dang, H., Ding, F. (2026). Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management. In: Schrepp, M., Rauterberg, M. (eds) <em>HCI International 2025 &ndash; Late Breaking Papers</em>. HCII 2025. Lecture Notes in Computer Science, vol 16342. Springer, Cham. https://doi.org/10.1007/978-3-032-13164-5_2</p>
+              <button class="copy-button" type="button" data-copy-target="#citation-text">Copy citation</button>
+            </div>
+            <details class="disclosure">
+              <summary>BibTeX</summary>
+              <div class="disclosure__body disclosure__body--wide">
+<pre id="bibtex" class="citation citation--code">@inproceedings{dang2026household,
+  author    = {Dang, Henglong and Ding, Fang},
+  title     = {Revolutionizing Household Finance: A User-Centered
+               Platform for Holistic Financial Management},
+  booktitle = {HCI International 2025 -- Late Breaking Papers},
+  editor    = {Schrepp, M. and Rauterberg, M.},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {16342},
+  pages     = {22--40},
+  publisher = {Springer, Cham},
+  year      = {2026},
+  doi       = {10.1007/978-3-032-13164-5_2}
+}</pre>
+              </div>
+            </details>
+            <ul class="ref-list">
+              <li><a href="https://doi.org/10.1007/978-3-032-13164-5_2" rel="noopener" data-external>Springer chapter (DOI)</a><span class="what">Full text, publisher&rsquo;s version</span></li>
+              <li><a href="https://www.figma.com/proto/lldnufkGqX014Z3f2aCebq/FamilyPulse-final-high-fi?page-id=0%3A1&amp;node-id=1-1086&amp;node-type=CANVAS&amp;viewport=778%2C419%2C0.06&amp;t=8iccCv43xd6C4Sh2-1&amp;scaling=min-zoom&amp;content-scaling=fixed" rel="noopener" data-external>High-fidelity prototype (Figma)</a><span class="what">Interactive prototype from stage 6</span></li>
+              <li><a href="https://books.google.com/books?id=lIOlEQAAQBAJ" rel="noopener" data-external>Google Books listing</a><span class="what">The proceedings volume</span></li>
+              <li><a href="https://2025.hci.international/proceedings.html" rel="noopener" data-external>HCII 2025 proceedings</a><span class="what">Conference website</span></li>
+            </ul>
+            <nav class="pager" aria-label="More work">
+              <a href="work.html"><span class="label">Back to</span><span class="title">All work</span></a>
+              <a class="next" href="Bellevue-Housing.html"><span class="label">Next project</span><span class="title">Housing Friction Index</span></a>
+            </nav>
+          </section>
+        </div>
       </div>
-      <p style="margin-top:1rem;">
-        Additional information architecture reference:
-        <a href="https://www.dfdrawlab.com/ux/ux-familypulse" target="_blank" rel="noopener noreferrer">DFDraw Lab: FamilyPulse Case Study</a>.
-      </p>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>Full Citation</h2>
-      <p>
-        Dang, H., Ding, F. (2026). Revolutionizing Household Finance: A User-Centered Platform for Holistic Financial Management.
-        In: Schrepp, M., Rauterberg, M. (eds) <em>HCI International 2025 – Late Breaking Papers</em>. HCII 2025.
-        Lecture Notes in Computer Science, vol 16342. Springer, Cham.
-        <a href="https://doi.org/10.1007/978-3-032-13164-5_2" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/978-3-032-13164-5_2</a>
-      </p>
-    </section>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-shell">
-      <p>© Henglong Dang — Research, Systems, and Human-Centered AI.</p>
+  <!-- @footer -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <p class="label">Contact</p>
+          <h2>Write to me directly.</h2>
+          <p>I am glad to hear about research collaborations, roles in data, product, or technology operations, and questions about anything on this site.</p>
+          <div class="email-line">
+            <a href="mailto:danghenglong@gmail.com">danghenglong@gmail.com</a>
+            <button class="copy-button" type="button" data-copy="danghenglong@gmail.com" data-status="copy-status">Copy address</button>
+            <span id="copy-status" class="copy-status" role="status"></span>
+          </div>
+        </div>
+        <div>
+          <p class="label">Elsewhere</p>
+          <ul class="elsewhere">
+            <li><a href="https://www.linkedin.com/in/henglongdang/" rel="noopener" data-external>LinkedIn</a></li>
+            <li><a href="https://scholar.google.com/citations?user=D06-T50AAAAJ&amp;hl=en" rel="noopener" data-external>Google Scholar</a></li>
+            <li><a href="https://orcid.org/0009-0002-5215-9534" rel="noopener" data-external>ORCID</a></li>
+            <li><a href="https://medium.com/@henglongdang" rel="noopener" data-external>Medium</a></li>
+            <li><a href="https://www.crunchbase.com/person/henglong-dang" rel="noopener" data-external>Crunchbase</a></li>
+            <li><a href="https://www.f6s.com/henglongdang" rel="noopener" data-external>F6S</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="colophon">
+        <p>&copy; 2026 Henglong Dang</p>
+        <p>Set in Fraunces and Inter. A static site on GitHub Pages &middot; <a href="https://github.com/henglongdang/home" rel="noopener">source</a></p>
+        <p><a href="#top">Back to top</a></p>
+      </div>
     </div>
   </footer>
+  <a class="to-top" href="#top" aria-label="Back to top"><span aria-hidden="true">&uarr;</span></a>
+  <!-- /@footer -->
 </body>
 </html>
